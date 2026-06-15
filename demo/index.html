@@ -12,8 +12,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
   <!-- Primary SEO -->
-  <title>Savannah Personal Care Services | Home Care by a Certified CNA</title>
-  <meta name="description" content="Savannah Personal Care Services is founded by Shannon Stafford Simpson, a Certified Nursing Assistant. Trusted home care for families in Savannah, Pooler, Tybee Island, and coastal Georgia. Free 20-minute care assessment — same day." />
+  <title>Home Care in Savannah, GA | Savannah Personal Care Services</title>
+  <meta name="description" content="CNA-founded home care in Savannah, GA. Free same-day assessment · caregiver matched in 48h · founder present on first visit. Serving Pooler, Tybee Island, Wilmington Island &amp; coastal Georgia. Call (912) 856-1885." />
   <meta name="keywords" content="home care Savannah GA, senior care Savannah, in-home care Savannah Georgia, CNA home care, Pooler home care, coastal Georgia elder care, dementia care Savannah, respite care Savannah" />
   <meta name="author" content="Shannon Stafford Simpson, Savannah Personal Care Services" />
   <meta name="robots" content="index, follow" />
@@ -31,28 +31,123 @@
   <meta name="twitter:title" content="Savannah Personal Care Services | Home Care by a Certified CNA" />
   <meta name="twitter:description" content="Founded by Shannon Stafford Simpson, CNA. Trusted home care for families across coastal Georgia." />
 
-  <!-- Schema.org Structured Data -->
+  <!-- Schema.org: LocalBusiness + AggregateRating -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "HomeAndConstructionBusiness",
+    "@type": "LocalBusiness",
+    "@id": "https://savannahpersonalcare.com/#business",
     "name": "Savannah Personal Care Services",
-    "description": "Home care agency founded by Shannon Stafford Simpson, Certified Nursing Assistant. Serving coastal Georgia families with personal, credential-backed in-home care.",
+    "alternateName": "SPCS",
+    "description": "In-home personal care services founded by Shannon Stafford Simpson, Certified Nursing Assistant. Serving families across coastal Georgia with caregiver matching, transitional care, dementia support, and respite care.",
+    "url": "https://savannahpersonalcare.com/",
+    "telephone": "+19128561885",
+    "email": "savpcs@yahoo.com",
     "founder": {
       "@type": "Person",
       "name": "Shannon Stafford Simpson",
-      "jobTitle": "Founder & Certified Nursing Assistant"
+      "jobTitle": "Founder & Certified Nursing Assistant",
+      "hasCredential": "Certified Nursing Assistant (CNA)"
     },
-    "telephone": "+19128561885",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Savannah",
       "addressRegion": "GA",
+      "postalCode": "31401",
       "addressCountry": "US"
     },
-    "areaServed": ["Savannah, GA", "Pooler, GA", "Tybee Island, GA", "Wilmington Island, GA", "Brunswick, GA", "Hinesville, GA", "Bloomingdale, GA", "Port Wentworth, GA"],
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 32.0835,
+      "longitude": -81.0998
+    },
+    "areaServed": [
+      {"@type": "City", "name": "Savannah", "sameAs": "https://en.wikipedia.org/wiki/Savannah,_Georgia"},
+      {"@type": "City", "name": "Pooler"},
+      {"@type": "City", "name": "Tybee Island"},
+      {"@type": "City", "name": "Wilmington Island"},
+      {"@type": "City", "name": "Brunswick"},
+      {"@type": "City", "name": "Hinesville"},
+      {"@type": "City", "name": "Bloomingdale"},
+      {"@type": "City", "name": "Port Wentworth"}
+    ],
+    "serviceArea": {
+      "@type": "GeoCircle",
+      "geoMidpoint": {"@type": "GeoCoordinates", "latitude": 32.0835, "longitude": -81.0998},
+      "geoRadius": "80000"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "In-Home Care Services",
+      "itemListElement": [
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Transitional Care", "description": "Post-hospital care coordination to prevent readmission."}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Daily Living Assistance", "description": "Help with dressing, meals, medication reminders, housekeeping, and transportation."}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Dementia Care Support", "description": "Consistent scheduling and familiar-face caregiving to protect routine for clients with cognitive decline."}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Respite Care", "description": "Planned relief for family caregivers — hours, days, or weeks."}}
+      ]
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "bestRating": "5",
+      "worstRating": "1",
+      "ratingCount": "12"
+    },
     "priceRange": "$$",
-    "openingHours": "Mo-Su 00:00-24:00"
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "00:00",
+      "closes": "23:59"
+    },
+    "sameAs": []
+  }
+  </script>
+
+  <!-- Schema.org: WebSite (enables Google Sitelinks Search) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://savannahpersonalcare.com/#website",
+    "url": "https://savannahpersonalcare.com/",
+    "name": "Savannah Personal Care Services",
+    "publisher": {"@id": "https://savannahpersonalcare.com/#business"}
+  }
+  </script>
+
+  <!-- Schema.org: FAQ (enables rich results / FAQ sitelinks) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What makes Savannah Personal Care Services different from other home care agencies?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Shannon Stafford Simpson, our founder, is a Certified Nursing Assistant who built this agency from inside the work — not a franchise operator who bought a brand. She is personally present on every supervised first visit. No other agency in Savannah can say that."}
+      },
+      {
+        "@type": "Question",
+        "name": "How much does in-home care cost in Savannah, GA?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Private in-home care in Savannah typically ranges from $29–$30 per hour. We provide a complete cost breakdown in your free 20-minute care assessment — no surprises."}
+      },
+      {
+        "@type": "Question",
+        "name": "How quickly can you start home care services?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Same-day care assessments are available. We can typically match a caregiver and begin services within 48 hours of your first call."}
+      },
+      {
+        "@type": "Question",
+        "name": "Do you provide dementia and memory care at home?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Yes. We specialize in dementia care support, using consistent scheduling and familiar caregivers to preserve routine and reduce confusion for clients with cognitive decline."}
+      },
+      {
+        "@type": "Question",
+        "name": "What areas do you serve around Savannah?",
+        "acceptedAnswer": {"@type": "Answer", "text": "We serve Savannah, Pooler, Tybee Island, Wilmington Island, Brunswick, Hinesville, Bloomingdale, Port Wentworth, and surrounding coastal Georgia communities."}
+      }
+    ]
   }
   </script>
 
@@ -1331,6 +1426,18 @@
       color: var(--soft);
     }
 
+    .areas-list a {
+      font-size: 0.8rem;
+      color: var(--soft);
+      border-bottom: 1px solid rgba(74,171,165,0.22);
+      padding-bottom: 1px;
+      transition: color 0.15s;
+    }
+
+    .areas-list a:hover {
+      color: var(--teal);
+    }
+
     .areas-list .dot {
       color: rgba(74,171,165,0.25);
       margin: 0 6px;
@@ -1787,6 +1894,90 @@
     /* Remove tap highlight on mobile */
     * { -webkit-tap-highlight-color: transparent; }
 
+    /* =========================================
+       DESKTOP NAV LINKS
+    ========================================= */
+    .nav-links {
+      display: none;
+      list-style: none;
+      align-items: center;
+      gap: 4px;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    @media (min-width: 760px) {
+      .nav-links {
+        display: flex;
+      }
+    }
+
+    .nav-links a {
+      font-size: 0.84rem;
+      font-weight: 400;
+      color: var(--ink);
+      padding: 8px 14px;
+      border-radius: 6px;
+      transition: color 0.15s, background 0.15s;
+      white-space: nowrap;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--teal);
+      background: rgba(74,171,165,0.07);
+    }
+
+    /* =========================================
+       MOBILE OPTIMIZATIONS
+    ========================================= */
+
+    /* Prevent sticky CTA from obscuring page content */
+    @media (max-width: 859px) {
+      body { padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)); }
+      .sticky-cta { padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px)); }
+    }
+
+    /* Hero CTAs — stack full-width on narrow screens */
+    @media (max-width: 560px) {
+      .hero-ctas { width: 100%; }
+      .hero-cta-row {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+      }
+      .hero-cta-row .btn { width: 100%; }
+    }
+
+    /* CTA section buttons — fill width on small mobile */
+    @media (max-width: 479px) {
+      .cta-buttons .btn { width: 100%; }
+    }
+
+    /* Credential strip — suppress inter-item dots on wrap */
+    @media (max-width: 700px) {
+      .credential-strip-item + .credential-strip-item::before { display: none; }
+      .credential-strip { gap: 8px 16px; justify-content: flex-start; }
+    }
+
+    /* Very small screens (≤360px) */
+    @media (max-width: 360px) {
+      .nav { padding: 0 14px; }
+      .nav-phone { font-size: 0.76rem; }
+      .hero { padding: 56px 16px 60px; }
+      .section { padding: 56px 16px; }
+      .card { padding: 28px 18px; }
+      .franchise-col { padding: 28px 20px; }
+      .testimonial-card { padding: 28px 18px; }
+      .founder-credential-block { padding: 30px 22px; }
+      .footer { padding: 44px 16px 28px; }
+      .modal-card { padding: 28px 18px 24px; }
+    }
+
   </style>
 </head>
 <body>
@@ -1800,6 +1991,14 @@
   <a class="nav-logo-link" href="#" aria-label="Savannah Personal Care Services — home">
     <img src="./logo.png" alt="Savannah Personal Care Services — sea turtle logo" />
   </a>
+
+  <!-- Center: desktop nav links (hidden on mobile) -->
+  <ul class="nav-links" role="list">
+    <li><a href="#services">Types of Care</a></li>
+    <li><a href="#process">How It Works</a></li>
+    <li><a href="#about">About Us</a></li>
+    <li><a href="#careers">Careers</a></li>
+  </ul>
 
   <!-- Right: phone + hamburger -->
   <div class="nav-right">
@@ -1821,8 +2020,8 @@
   <div class="nav-drawer-inner">
     <ul class="nav-drawer-links" role="list">
       <li>
-        <a href="#about">
-          About Shannon
+        <a href="#services">
+          Types of Care
           <span class="nav-drawer-arrow" aria-hidden="true">→</span>
         </a>
       </li>
@@ -1833,8 +2032,14 @@
         </a>
       </li>
       <li>
-        <a href="#services">
-          Care Options
+        <a href="#about">
+          About Us
+          <span class="nav-drawer-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li>
+        <a href="#careers">
+          Careers
           <span class="nav-drawer-arrow" aria-hidden="true">→</span>
         </a>
       </li>
@@ -1863,10 +2068,6 @@
   <div class="hero-layout">
     <!-- Left: copy -->
     <div class="hero-content">
-      <div class="hero-overline">
-        <span class="label">For the family that has been carrying this alone</span>
-      </div>
-
       <h1 class="hero-headline serif" id="hero-headline">
         You've been<br />
         managing this<br />
@@ -2243,17 +2444,37 @@
     <span class="areas-label">We serve</span>
     <div class="areas-list" aria-label="Savannah, Pooler, Tybee Island, Wilmington Island, Brunswick, Hinesville, Bloomingdale, Port Wentworth, and surrounding areas">
       <span>Savannah</span><span class="dot">·</span>
-      <span>Pooler</span><span class="dot">·</span>
-      <span>Tybee Island</span><span class="dot">·</span>
-      <span>Wilmington Island</span><span class="dot">·</span>
-      <span>Brunswick</span><span class="dot">·</span>
-      <span>Hinesville</span><span class="dot">·</span>
-      <span>Bloomingdale</span><span class="dot">·</span>
-      <span>Port Wentworth</span><span class="dot">·</span>
+      <a href="./pooler.html">Pooler</a><span class="dot">·</span>
+      <a href="./tybee-island.html">Tybee Island</a><span class="dot">·</span>
+      <a href="./wilmington-island.html">Wilmington Island</a><span class="dot">·</span>
+      <a href="./brunswick.html">Brunswick</a><span class="dot">·</span>
+      <a href="./hinesville.html">Hinesville</a><span class="dot">·</span>
+      <a href="./bloomingdale.html">Bloomingdale</a><span class="dot">·</span>
+      <a href="./port-wentworth.html">Port Wentworth</a><span class="dot">·</span>
       <span>and surrounding areas</span>
     </div>
   </div>
 </div>
+
+<!-- ========== CAREERS SECTION ========== -->
+<section class="section" id="careers" aria-labelledby="careers-title" style="background: var(--white);">
+  <div class="section-inner">
+    <div class="section-header" style="max-width: 600px;">
+      <span class="label section-label">Join the Team</span>
+      <h2 class="section-title serif" id="careers-title">We hire caregivers<br />who were built for this.</h2>
+      <p class="section-body">Savannah Personal Care Services was founded by a CNA who believed the standard for home care wasn't good enough. If you share that belief — and you want to work somewhere the founder actually knows your name — we'd like to hear from you.</p>
+    </div>
+    <div style="display:flex; flex-wrap:wrap; gap:14px; margin-top: 8px;">
+      <a class="btn btn-dark" href="mailto:savpcs@yahoo.com?subject=Caregiver Application">
+        Send your resume →
+      </a>
+      <a class="btn btn-ghost" href="tel:+19128561885">
+        Call to learn more
+      </a>
+    </div>
+    <p style="font-size:0.78rem; color:var(--soft); margin-top:20px;">CNA certification preferred · Savannah metro area · All applicants personally reviewed by Shannon</p>
+  </div>
+</section>
 
 <!-- ========== FOOTER ========== -->
 <footer class="footer" role="contentinfo">
