@@ -316,7 +316,113 @@
       height: 1.5px;
       background: var(--teal);
       border-radius: 2px;
-      transition: opacity 0.2s;
+      transition: transform 0.25s, opacity 0.2s;
+    }
+
+    /* Animated X when open */
+    .nav-menu-btn.is-open span:nth-child(1) {
+      transform: translateY(6.5px) rotate(45deg);
+    }
+    .nav-menu-btn.is-open span:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+    .nav-menu-btn.is-open span:nth-child(3) {
+      transform: translateY(-6.5px) rotate(-45deg);
+    }
+
+    /* =========================================
+       NAVIGATION DRAWER
+    ========================================= */
+    .nav-drawer {
+      position: fixed;
+      top: 56px; /* nav height */
+      left: 0;
+      right: 0;
+      z-index: 99;
+      background: var(--white);
+      border-bottom: 1px solid rgba(10,92,82,0.1);
+      box-shadow: 0 12px 40px rgba(4,35,32,0.12);
+      transform: translateY(-8px);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.25s ease, opacity 0.2s ease;
+    }
+
+    .nav-drawer.is-open {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .nav-drawer-inner {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 8px 24px 24px;
+    }
+
+    .nav-drawer-links {
+      list-style: none;
+      border-bottom: 1px solid rgba(10,92,82,0.1);
+      margin-bottom: 20px;
+      padding-bottom: 8px;
+    }
+
+    .nav-drawer-links li a {
+      display: flex;
+      align-items: center;
+      padding: 14px 4px;
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--ink);
+      border-bottom: 1px solid rgba(10,92,82,0.07);
+      transition: color 0.15s, padding-left 0.15s;
+      text-decoration: none;
+    }
+
+    .nav-drawer-links li:last-child a {
+      border-bottom: none;
+    }
+
+    .nav-drawer-links li a:hover,
+    .nav-drawer-links li a:focus-visible {
+      color: var(--teal);
+      padding-left: 8px;
+    }
+
+    .nav-drawer-links li a .nav-drawer-arrow {
+      margin-left: auto;
+      font-size: 0.75rem;
+      color: var(--teal);
+      opacity: 0.5;
+    }
+
+    .nav-drawer-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .nav-drawer-actions .btn {
+      flex: 1;
+      min-width: 140px;
+      justify-content: center;
+    }
+
+    /* Drawer backdrop */
+    .nav-backdrop {
+      position: fixed;
+      inset: 56px 0 0 0;
+      z-index: 98;
+      background: rgba(4,35,32,0.3);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s;
+    }
+
+    .nav-backdrop.is-open {
+      opacity: 1;
+      pointer-events: all;
     }
 
     /* =========================================
@@ -1696,6 +1802,48 @@
   </div>
 </nav>
 
+<!-- ========== NAV DRAWER ========== -->
+<div class="nav-backdrop" id="nav-backdrop" aria-hidden="true"></div>
+
+<div class="nav-drawer" id="nav-drawer" role="dialog" aria-label="Navigation menu" aria-modal="false" hidden>
+  <div class="nav-drawer-inner">
+    <ul class="nav-drawer-links" role="list">
+      <li>
+        <a href="#about">
+          About Shannon
+          <span class="nav-drawer-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li>
+        <a href="#process">
+          How It Works
+          <span class="nav-drawer-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li>
+        <a href="#services">
+          Care Options
+          <span class="nav-drawer-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li>
+        <a href="#guide-section">
+          Free Family Guide
+          <span class="nav-drawer-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+    </ul>
+    <div class="nav-drawer-actions">
+      <a class="btn btn-ghost" href="tel:+19128561885">
+        Call (912) 856-1885
+      </a>
+      <button class="btn btn-teal open-modal" aria-haspopup="dialog">
+        Find the right care
+      </button>
+    </div>
+  </div>
+</div>
+
 <!-- ========== HERO ========== -->
 <section class="hero" aria-labelledby="hero-headline">
   <div class="hero-watermark" aria-hidden="true">You.</div>
@@ -1813,7 +1961,7 @@
 </section>
 
 <!-- ========== FOUNDER SECTION ========== -->
-<section class="section founder-section" aria-labelledby="founder-title">
+<section class="section founder-section" id="about" aria-labelledby="founder-title">
   <div class="section-inner">
     <div class="founder-grid">
       <div class="founder-credential-block" aria-label="Shannon Stafford Simpson credentials">
@@ -1900,7 +2048,7 @@
 </section>
 
 <!-- ========== PROCESS SECTION ========== -->
-<section class="section process-section" aria-labelledby="process-title">
+<section class="section process-section" id="process" aria-labelledby="process-title">
   <div class="section-inner">
     <div class="section-header">
       <span class="label section-label">The Shannon Standard</span>
@@ -1968,7 +2116,7 @@
 </section>
 
 <!-- ========== SERVICES SECTION ========== -->
-<section class="section services-section" aria-labelledby="services-title">
+<section class="section services-section" id="services" aria-labelledby="services-title">
   <div class="section-inner">
     <div class="section-header">
       <span class="label section-label">Care Options</span>
@@ -2448,6 +2596,74 @@
   });
 
   confirmClose.addEventListener('click', closeModal);
+
+  // ---- NAV DRAWER ----
+  var menuBtn      = document.querySelector('.nav-menu-btn');
+  var navDrawer    = document.getElementById('nav-drawer');
+  var navBackdrop  = document.getElementById('nav-backdrop');
+  var isDrawerOpen = false;
+
+  function openDrawer() {
+    isDrawerOpen = true;
+    navDrawer.removeAttribute('hidden');
+    // rAF so display:block is painted before transition fires
+    requestAnimationFrame(function() {
+      requestAnimationFrame(function() {
+        navDrawer.classList.add('is-open');
+        navBackdrop.classList.add('is-open');
+        menuBtn.classList.add('is-open');
+        menuBtn.setAttribute('aria-expanded', 'true');
+        menuBtn.setAttribute('aria-label', 'Close menu');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    document.addEventListener('keydown', onDrawerKey);
+  }
+
+  function closeDrawer() {
+    isDrawerOpen = false;
+    navDrawer.classList.remove('is-open');
+    navBackdrop.classList.remove('is-open');
+    menuBtn.classList.remove('is-open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+    menuBtn.setAttribute('aria-label', 'Open menu');
+    document.body.style.overflow = '';
+    document.removeEventListener('keydown', onDrawerKey);
+    // Hide after transition completes
+    setTimeout(function() {
+      if (!isDrawerOpen) navDrawer.setAttribute('hidden', '');
+    }, 260);
+  }
+
+  function onDrawerKey(e) {
+    if (e.key === 'Escape') closeDrawer();
+  }
+
+  if (menuBtn) {
+    menuBtn.addEventListener('click', function() {
+      isDrawerOpen ? closeDrawer() : openDrawer();
+    });
+  }
+
+  // Close when backdrop is clicked
+  if (navBackdrop) {
+    navBackdrop.addEventListener('click', closeDrawer);
+  }
+
+  // Close drawer when any drawer link is clicked (smooth scroll to section)
+  if (navDrawer) {
+    navDrawer.querySelectorAll('a[href^="#"]').forEach(function(link) {
+      link.addEventListener('click', function() {
+        closeDrawer();
+      });
+    });
+    // Also close if "Find the right care" modal CTA is clicked from drawer
+    navDrawer.querySelectorAll('.open-modal').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        closeDrawer();
+      });
+    });
+  }
 
   // Mobile sticky CTA — show after scrolling past hero
   var stickyCta = document.getElementById('sticky-cta');
