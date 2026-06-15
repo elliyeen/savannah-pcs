@@ -22,9 +22,9 @@
       --teal-dark:  #2A8280;
       --teal-lt:    #E3F5F4;
       --sand:       #F0FAFA;
-      --ink:        #183736;
+      --ink:        #111111;
       --ink-deep:   #031F1E;
-      --soft:       #4a7070;
+      --soft:       #555555;
       --white:      #ffffff;
       --rule:       rgba(74,171,165,0.15);
       --gold:       #c09040;
@@ -165,9 +165,10 @@
     .nav-links > li > a.active { color: var(--teal); }
 
     /* Dropdown */
+    .nav-dropdown { position: relative; }
     .nav-dropdown-menu {
       position: absolute;
-      top: calc(100% + 8px);
+      top: calc(100% + 6px);
       left: 50%;
       transform: translateX(-50%) translateY(-6px);
       background: var(--white);
@@ -180,6 +181,14 @@
       padding: 8px;
       z-index: 200;
     }
+    /* Invisible bridge fills the gap so mouse movement doesn't kill hover */
+    .nav-dropdown-menu::before {
+      content: '';
+      position: absolute;
+      top: -12px;
+      left: 0; right: 0;
+      height: 12px;
+    }
     .nav-dropdown:hover .nav-dropdown-menu,
     .nav-dropdown:focus-within .nav-dropdown-menu {
       opacity: 1;
@@ -189,26 +198,17 @@
     .nav-dropdown-menu a {
       display: flex;
       align-items: center;
-      padding: 10px 14px;
+      padding: 11px 16px;
       font-size: 0.84rem;
       color: var(--ink);
       border-radius: 7px;
       transition: background 0.15s, color 0.15s;
-      gap: 10px;
     }
     .nav-dropdown-menu a:hover {
       background: var(--sand);
       color: var(--teal);
     }
-    .nav-dropdown-menu a .dd-dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--teal);
-      flex-shrink: 0;
-      opacity: 0.4;
-    }
-    .nav-dropdown-menu a:hover .dd-dot { opacity: 1; }
-    .nav-caret { font-size: 0.6rem; opacity: 0.5; }
+    .nav-caret { font-size: 0.6rem; opacity: 0.5; margin-left: 3px; }
 
     .nav-right {
       display: flex;
@@ -582,6 +582,21 @@
     .dash { color: rgba(74,171,165,0.3); font-size: 18px; font-weight: 300; }
 
     /* =========================================
+       TABLE COLUMN HOVER HIGHLIGHT
+    ========================================= */
+    .compare-table td.col-highlight,
+    .compare-table th.col-highlight {
+      background: rgba(74,171,165,0.09) !important;
+      transition: background 0.18s ease;
+    }
+    .compare-table th.is-featured.col-highlight {
+      background: #35958e !important; /* slightly brighter than teal for featured header */
+    }
+    .compare-table td.is-featured-col.col-highlight {
+      background: rgba(74,171,165,0.18) !important;
+    }
+
+    /* =========================================
        SERVICE DETAIL SECTIONS
     ========================================= */
     .service-detail {
@@ -814,17 +829,10 @@
     .footer-logo-primary {
       display: block;
       font-family: 'DM Serif Display', Georgia, serif;
-      font-size: 26px;
+      font-size: 22px;
       color: var(--white);
-      line-height: 1.1;
+      line-height: 1.15;
       letter-spacing: -0.01em;
-    }
-    .footer-logo-secondary {
-      display: block;
-      font-family: 'DM Serif Display', Georgia, serif;
-      font-size: 14px;
-      color: rgba(255,255,255,0.4);
-      letter-spacing: 0.04em;
     }
 
     .footer-v2-tagline {
@@ -1043,10 +1051,10 @@
         Types of Care <span class="nav-caret" aria-hidden="true">▾</span>
       </a>
       <div class="nav-dropdown-menu" role="menu">
-        <a href="#transitional" role="menuitem"><span class="dd-dot" aria-hidden="true"></span>Transitional Care</a>
-        <a href="#daily-living" role="menuitem"><span class="dd-dot" aria-hidden="true"></span>Daily Living Assistance</a>
-        <a href="#dementia" role="menuitem"><span class="dd-dot" aria-hidden="true"></span>Dementia Care Support</a>
-        <a href="#respite" role="menuitem"><span class="dd-dot" aria-hidden="true"></span>Respite Care</a>
+        <a href="#transitional" role="menuitem">Transitional Care</a>
+        <a href="#daily-living" role="menuitem">Daily Living Assistance</a>
+        <a href="#dementia" role="menuitem">Dementia Care Support</a>
+        <a href="#respite" role="menuitem">Respite Care</a>
       </div>
     </li>
     <li><a href="./index.html#process">How It Works</a></li>
@@ -1581,10 +1589,9 @@
       <div class="footer-v2-brand">
         <a href="./index.html" class="footer-logo-mark" aria-label="Savannah Personal Care Services — home">
           <span class="footer-logo-eyebrow">Savannah</span>
-          <span class="footer-logo-primary">Personal Care</span>
-          <span class="footer-logo-secondary">Services</span>
+          <span class="footer-logo-primary">Personal Care Services</span>
         </a>
-        <p class="footer-v2-tagline">Founded by Shannon Stafford Simpson, CNA.<br />Serving coastal Georgia.</p>
+        <p class="footer-v2-tagline">Bringing Compassion and Mercy Home.</p>
         <div class="footer-social">
           <a href="#" class="footer-social-link" aria-label="Follow us on Facebook" rel="noopener noreferrer">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -1873,6 +1880,45 @@
     window.addEventListener('scroll', function() {
       stickyCta.classList.toggle('is-visible', heroEl.getBoundingClientRect().bottom < 0);
     }, { passive: true });
+  }
+
+  // ---- COMPARISON TABLE COLUMN HOVER ----
+  var compareTable = document.querySelector('.compare-table');
+  if (compareTable) {
+    function getColIdx(cell) {
+      var row = cell.parentElement;
+      var idx = 0;
+      for (var i = 0; i < row.cells.length; i++) {
+        if (row.cells[i] === cell) return idx;
+        idx += (row.cells[i].colSpan || 1);
+      }
+      return -1;
+    }
+
+    function clearHighlights() {
+      compareTable.querySelectorAll('.col-highlight').forEach(function(el) {
+        el.classList.remove('col-highlight');
+      });
+    }
+
+    compareTable.addEventListener('mouseover', function(e) {
+      var cell = e.target.closest('td, th');
+      if (!cell || (cell.colSpan || 1) > 1) return; // skip spanning cells
+      var colIdx = getColIdx(cell);
+      if (colIdx < 1) return; // skip feature-label column (col 0)
+      clearHighlights();
+      compareTable.querySelectorAll('tr').forEach(function(row) {
+        var idx = 0;
+        for (var i = 0; i < row.cells.length; i++) {
+          var c = row.cells[i];
+          var span = c.colSpan || 1;
+          if (span === 1 && idx === colIdx) { c.classList.add('col-highlight'); break; }
+          idx += span;
+        }
+      });
+    });
+
+    compareTable.addEventListener('mouseleave', clearHighlights);
   }
 
 })();
