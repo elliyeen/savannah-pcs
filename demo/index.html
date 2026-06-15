@@ -330,15 +330,16 @@
       left: 0;
       right: 0;
       z-index: 100;
-      height: 56px;
+      height: 68px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 24px;
-      background: rgba(255,255,255,0.92);
+      padding: 0 28px;
+      background: rgba(255,255,255,0.96);
       backdrop-filter: saturate(180%) blur(20px);
       -webkit-backdrop-filter: saturate(180%) blur(20px);
-      border-bottom: 1px solid rgba(74,171,165,0.15);
+      border-bottom: 1px solid rgba(17,17,17,0.08);
+      box-shadow: 0 1px 0 rgba(17,17,17,0.04);
     }
 
     /* Logo link — far left */
@@ -369,14 +370,15 @@
     }
 
     .nav-phone {
-      font-size: 0.88rem;
-      font-weight: 600;
+      font-size: 1rem;
+      font-weight: 700;
       color: var(--ink);
       min-height: 44px;
       display: flex;
       align-items: center;
-      padding: 0 8px;
+      padding: 0 10px;
       white-space: nowrap;
+      letter-spacing: -0.01em;
     }
 
     .nav-phone:hover {
@@ -436,7 +438,7 @@
     ========================================= */
     .nav-drawer {
       position: fixed;
-      top: 56px; /* nav height */
+      top: 68px; /* nav height */
       left: 0;
       right: 0;
       z-index: 99;
@@ -513,7 +515,7 @@
     /* Drawer backdrop */
     .nav-backdrop {
       position: fixed;
-      inset: 56px 0 0 0;
+      inset: 68px 0 0 0;
       z-index: 98;
       background: rgba(4,35,32,0.3);
       opacity: 0;
@@ -561,7 +563,7 @@
 
     .hero-watermark {
       position: absolute;
-      top: 56px;
+      top: 68px;
       right: -1vw;
       font-family: 'DM Serif Display', Georgia, serif;
       font-size: clamp(120px, 22vw, 240px);
@@ -2132,10 +2134,10 @@
     }
 
     .nav-links a {
-      font-size: 0.84rem;
+      font-size: 0.9rem;
       font-weight: 400;
       color: var(--ink);
-      padding: 8px 14px;
+      padding: 8px 16px;
       border-radius: 6px;
       transition: color 0.15s, background 0.15s;
       white-space: nowrap;
@@ -2253,9 +2255,9 @@
 
     /* Very small screens (≤360px) */
     @media (max-width: 360px) {
-      .nav { padding: 0 14px; }
-      .nav-phone { font-size: 0.76rem; }
-      .hero { padding: 56px 16px 60px; }
+      .nav { padding: 0 16px; }
+      .nav-phone { font-size: 0.88rem; }
+      .hero { padding: 68px 16px 60px; }
       .section { padding: 56px 16px; }
       .card { padding: 28px 18px; }
       .franchise-col { padding: 28px 20px; }
