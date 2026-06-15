@@ -1700,6 +1700,65 @@
       color: rgba(255,255,255,0.5);
     }
 
+    /* Guide bar */
+    .footer-guide-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 28px 32px;
+      margin: 40px 0 0;
+      border-radius: 10px;
+      background: rgba(74,171,165,0.08);
+      border: 1px solid rgba(74,171,165,0.18);
+    }
+
+    .footer-guide-text {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .footer-guide-eyebrow {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--teal);
+    }
+
+    .footer-guide-headline {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 17px;
+      color: rgba(255,255,255,0.88);
+      line-height: 1.2;
+    }
+
+    .footer-guide-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 22px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      min-height: 42px;
+      border: 1px solid rgba(74,171,165,0.45);
+      background: transparent;
+      color: var(--teal);
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background 0.18s, border-color 0.18s, color 0.18s;
+      flex-shrink: 0;
+    }
+
+    .footer-guide-btn:hover {
+      background: var(--teal);
+      border-color: var(--teal);
+      color: #fff;
+    }
+
     .footer-license-badge {
       display: inline-flex;
       align-items: center;
@@ -3015,6 +3074,17 @@
         </div>
       </div>
 
+    </div>
+
+    <!-- Guide bar -->
+    <div class="footer-guide-bar">
+      <div class="footer-guide-text">
+        <span class="footer-guide-eyebrow">Free Resource</span>
+        <span class="footer-guide-headline">The Savannah Family Guide to Home Care</span>
+      </div>
+      <a class="footer-guide-btn" href="#guide-section">
+        Download the Free Family Guide →
+      </a>
     </div>
 
     <div class="footer-v2-bottom">
