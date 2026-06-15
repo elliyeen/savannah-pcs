@@ -154,9 +154,9 @@
   <!-- Google Fonts — async load to avoid render blocking -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" />
   </noscript>
 
   <style>
@@ -168,9 +168,9 @@
       --teal-dark:  #2A8280;
       --teal-lt:    #E3F5F4;
       --sand:       #F0FAFA;
-      --ink:        #183736;
-      --ink-deep:   #031F1E;
-      --soft:       #4a7070;
+      --ink:        #1a1a1a;
+      --ink-deep:   #0a0a0a;
+      --soft:       #555555;
       --white:      #ffffff;
       --rule:       rgba(74,171,165,0.15);
       --gold:       #c09040;
@@ -192,9 +192,9 @@
     }
 
     body {
-      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      font-size: 15px;
-      line-height: 1.65;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 17px;
+      line-height: 1.7;
       color: var(--ink);
       background: var(--white);
       overflow-x: hidden;
@@ -236,7 +236,7 @@
     /* =========================================
        TYPOGRAPHY UTILITIES
     ========================================= */
-    .serif { font-family: 'DM Serif Display', Georgia, serif; }
+    .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
 
     .label {
       font-size: 13px;
@@ -255,9 +255,9 @@
       justify-content: center;
       padding: 14px 28px;
       border-radius: 999px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
       min-height: 44px;
       min-width: 44px;
       transition: background 0.18s, color 0.18s, border-color 0.18s, opacity 0.18s;
@@ -565,7 +565,7 @@
       position: absolute;
       top: 68px;
       right: -1vw;
-      font-family: 'DM Serif Display', Georgia, serif;
+      font-family: 'Cormorant Garamond', Georgia, serif;
       font-size: clamp(120px, 22vw, 240px);
       color: transparent;
       -webkit-text-stroke: 1px rgba(10, 92, 82, 0.07);
@@ -597,20 +597,21 @@
     }
 
     .hero-headline {
-      font-family: 'DM Serif Display', Georgia, serif;
-      font-size: clamp(44px, 9vw, 88px);
-      line-height: 1.01;
-      letter-spacing: -0.025em;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(48px, 7vw, 80px);
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
       color: var(--ink);
       margin-bottom: 28px;
     }
 
     .hero-subhead {
-      font-weight: 300;
-      font-size: clamp(15px, 2vw, 19px);
-      line-height: 1.65;
+      font-weight: 400;
+      font-size: clamp(17px, 2vw, 20px);
+      line-height: 1.75;
       color: var(--soft);
-      max-width: 500px;
+      max-width: 520px;
       margin-bottom: 40px;
     }
 
@@ -886,7 +887,7 @@
     }
 
     .featured-testimonial-quote {
-      font-family: 'DM Serif Display', Georgia, serif;
+      font-family: 'Cormorant Garamond', Georgia, serif;
       font-style: italic;
       font-size: clamp(24px, 4vw, 38px);
       line-height: 1.35;
@@ -1012,18 +1013,19 @@
     }
 
     .section-title {
-      font-family: 'DM Serif Display', Georgia, serif;
-      font-size: clamp(32px, 5.5vw, 54px);
-      line-height: 1.08;
-      letter-spacing: -0.025em;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 500;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
       color: var(--ink);
       margin-bottom: 20px;
     }
 
     .section-body {
-      font-size: clamp(15px, 1.8vw, 17px);
-      font-weight: 300;
-      line-height: 1.65;
+      font-size: clamp(17px, 1.8vw, 20px);
+      font-weight: 400;
+      line-height: 1.75;
       color: var(--soft);
       max-width: 560px;
     }
@@ -1061,7 +1063,7 @@
     }
 
     .card-number {
-      font-family: 'DM Serif Display', Georgia, serif;
+      font-family: 'Cormorant Garamond', Georgia, serif;
       font-size: 0.8rem;
       color: var(--soft);
       letter-spacing: 0.06em;
@@ -1070,7 +1072,7 @@
     }
 
     .card-question {
-      font-family: 'DM Serif Display', Georgia, serif;
+      font-family: 'Cormorant Garamond', Georgia, serif;
       font-style: italic;
       font-size: clamp(17px, 2.2vw, 20px);
       line-height: 1.35;
@@ -1113,7 +1115,7 @@
     }
 
     .founder-name {
-      font-family: 'DM Serif Display', Georgia, serif;
+      font-family: 'Cormorant Garamond', Georgia, serif;
       font-size: clamp(28px, 5vw, 44px);
       color: var(--white);
       line-height: 1.08;
@@ -1157,7 +1159,7 @@
     }
 
     .founder-quote {
-      font-family: 'DM Serif Display', Georgia, serif;
+      font-family: 'Cormorant Garamond', Georgia, serif;
       font-style: italic;
       font-size: clamp(17px, 2vw, 20px);
       line-height: 1.5;
@@ -1198,7 +1200,7 @@
     }
 
     .process-step-num {
-      font-family: 'DM Serif Display', Georgia, serif;
+      font-family: 'Cormorant Garamond', Georgia, serif;
       font-size: 1rem;
       color: var(--soft);
       padding-top: 4px;
@@ -1218,7 +1220,7 @@
     }
 
     .process-title {
-      font-family: 'DM Serif Display', Georgia, serif;
+      font-family: 'Cormorant Garamond', Georgia, serif;
       font-size: clamp(18px, 2.5vw, 24px);
       color: var(--ink);
       line-height: 1.2;
@@ -1298,7 +1300,7 @@
     }
 
     .testimonial-quote {
-      font-family: 'DM Serif Display', Georgia, serif;
+      font-family: 'Cormorant Garamond', Georgia, serif;
       font-style: italic;
       font-size: clamp(16px, 1.8vw, 19px);
       line-height: 1.55;
@@ -1576,7 +1578,7 @@
     }
 
     .footer-logo-eyebrow {
-      font-family: 'DM Sans', system-ui, sans-serif;
+      font-family: 'Inter', system-ui, sans-serif;
       font-size: 11px;
       font-weight: 500;
       text-transform: uppercase;
@@ -1586,7 +1588,7 @@
     }
 
     .footer-logo-primary {
-      font-family: 'DM Serif Display', Georgia, serif;
+      font-family: 'Cormorant Garamond', Georgia, serif;
       font-size: 22px;
       color: var(--white);
       line-height: 1.1;
@@ -1732,7 +1734,7 @@
     }
 
     .footer-guide-headline {
-      font-family: 'DM Serif Display', Georgia, serif;
+      font-family: 'Cormorant Garamond', Georgia, serif;
       font-size: 17px;
       color: rgba(255,255,255,0.88);
       line-height: 1.2;
@@ -1879,7 +1881,7 @@
     }
 
     .modal-heading {
-      font-family: 'DM Serif Display', Georgia, serif;
+      font-family: 'Cormorant Garamond', Georgia, serif;
       font-size: 1.5rem;
       color: var(--ink);
       margin-bottom: 8px;
@@ -1928,7 +1930,7 @@
       color: var(--ink);
       text-align: left;
       background: var(--white);
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
       transition: border-color 0.15s, background 0.15s;
       display: flex;
       align-items: center;
@@ -2010,7 +2012,7 @@
       border: none;
       cursor: pointer;
       min-height: 52px;
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
       transition: background 0.18s;
       display: flex;
       align-items: center;
@@ -2048,7 +2050,7 @@
     }
 
     .modal-confirm-heading {
-      font-family: 'DM Serif Display', Georgia, serif;
+      font-family: 'Cormorant Garamond', Georgia, serif;
       font-size: 1.5rem;
       color: var(--ink);
       margin-bottom: 12px;
@@ -2305,7 +2307,7 @@
     }
 
     .job-title {
-      font-family: 'DM Serif Display', Georgia, serif;
+      font-family: 'Cormorant Garamond', Georgia, serif;
       font-size: 1.35rem;
       line-height: 1.2;
       letter-spacing: -0.01em;
@@ -2426,8 +2428,8 @@
       </div>
     </li>
     <li><a href="#process">How It Works</a></li>
-    <li><a href="#about">About Us</a></li>
-    <li><a href="#careers">Careers</a></li>
+    <li><a href="./about.html">About Us</a></li>
+    <li><a href="./careers.html">Careers</a></li>
   </ul>
 
   <!-- Right: phone + hamburger -->
@@ -2468,13 +2470,13 @@
         </a>
       </li>
       <li>
-        <a href="#about">
+        <a href="./about.html">
           About Us
           <span class="nav-drawer-arrow" aria-hidden="true">→</span>
         </a>
       </li>
       <li>
-        <a href="#careers">
+        <a href="./careers.html">
           Careers
           <span class="nav-drawer-arrow" aria-hidden="true">→</span>
         </a>
@@ -2704,93 +2706,6 @@
   </div>
 </section>
 
-<!-- ========== FOUNDER SECTION ========== -->
-<section class="section founder-section" id="about" aria-labelledby="founder-title">
-  <div class="section-inner">
-    <div class="founder-grid">
-      <div class="founder-credential-block" aria-label="Shannon Stafford Simpson credentials">
-        <p class="founder-name serif">Shannon<br />Stafford<br />Simpson</p>
-        <p class="founder-role">Founder &amp; Care Coordinator</p>
-        <div class="founder-pills">
-          <span class="founder-pill">Certified CNA</span>
-          <span class="founder-pill">CPR Certified</span>
-          <span class="founder-pill">Med Tech</span>
-        </div>
-      </div>
-
-      <div class="founder-text">
-        <span class="label section-label">Why this agency exists</span>
-        <h2 class="section-title serif" id="founder-title">Every other agency hired caregivers. Shannon was one.</h2>
-        <p class="founder-body">Most home care businesses are built by operators who understand business but have never provided care. Shannon built this agency from the inside out — as a Certified Nursing Assistant who decided the standard she experienced wasn't good enough for her own family, let alone yours.</p>
-        <blockquote class="founder-quote">
-          "I didn't buy a franchise. I earned a credential — then built a team I'd trust with my own mother."
-        </blockquote>
-        <p class="founder-body">That difference shows up in how every member of our Care Team is selected, how families are communicated with, and why Shannon is personally present on the first visit with every new client.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ========== FRANCHISE COMPARISON SECTION ========== -->
-<section class="franchise-section" aria-labelledby="franchise-title">
-  <div class="franchise-inner">
-    <div class="franchise-header">
-      <span class="label section-label">Why it matters who founded this</span>
-      <h2 class="section-title serif" id="franchise-title">Most agencies bought a manual.<br />Shannon earned a credential.</h2>
-      <p class="section-body">The largest home care companies in Savannah are franchises. Their own websites say so. Here is what that means for your family.</p>
-    </div>
-
-    <div class="franchise-grid">
-      <!-- Franchise column -->
-      <div class="franchise-col franchise-col-franchise">
-        <span class="franchise-col-label">A franchise agency</span>
-        <div class="franchise-rows">
-          <div class="franchise-row">
-            <span class="franchise-icon" aria-hidden="true">–</span>
-            <p class="franchise-row-text">"Each franchise is independently owned and operated." The local operator bought the brand — not the clinical expertise.</p>
-          </div>
-          <div class="franchise-row">
-            <span class="franchise-icon" aria-hidden="true">–</span>
-            <p class="franchise-row-text">The founder has likely never provided in-home care. They built a business around it.</p>
-          </div>
-          <div class="franchise-row">
-            <span class="franchise-icon" aria-hidden="true">–</span>
-            <p class="franchise-row-text">A call center coordinates your intake. The caregiver who shows up on day one is whoever is available that week.</p>
-          </div>
-          <div class="franchise-row">
-            <span class="franchise-icon" aria-hidden="true">–</span>
-            <p class="franchise-row-text">Your first visit is unsupervised. A stranger enters your loved one's home alone.</p>
-          </div>
-        </div>
-        <p class="franchise-footnote">Source: homeinstead.com footer disclosure</p>
-      </div>
-
-      <!-- Shannon column -->
-      <div class="franchise-col franchise-col-shannon">
-        <span class="franchise-col-label">Shannon Stafford Simpson, CNA</span>
-        <div class="franchise-rows">
-          <div class="franchise-row">
-            <span class="franchise-icon" aria-hidden="true">✓</span>
-            <p class="franchise-row-text">Shannon is a Certified Nursing Assistant who built this agency from inside the work. The credential came before the business.</p>
-          </div>
-          <div class="franchise-row">
-            <span class="franchise-icon" aria-hidden="true">✓</span>
-            <p class="franchise-row-text">She has been in the room when families make this decision — hundreds of times. She knows what you are carrying.</p>
-          </div>
-          <div class="franchise-row">
-            <span class="franchise-icon" aria-hidden="true">✓</span>
-            <p class="franchise-row-text">Your intake is a conversation — not a form. Shannon's team selects one specific caregiver based on personality, not schedule.</p>
-          </div>
-          <div class="franchise-row">
-            <span class="franchise-icon" aria-hidden="true">✓</span>
-            <p class="franchise-row-text">Shannon or a senior coordinator is present on the first visit. Every time. For every family.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ========== SERVICES SECTION ========== -->
 <section class="section services-section" id="services" aria-labelledby="services-title">
   <div class="section-inner">
@@ -2907,108 +2822,6 @@
   </div>
 </section>
 
-<!-- ========== CAREERS SECTION ========== -->
-<section class="section" id="careers" aria-labelledby="careers-title" style="background: var(--white);">
-  <div class="section-inner">
-    <div class="section-header" style="max-width: 600px;">
-      <span class="label section-label">Join the Team</span>
-      <h2 class="section-title serif" id="careers-title">We hire caregivers<br />who were built for this.</h2>
-      <p class="section-body">Savannah Personal Care Services was founded by a CNA who believed the standard for home care wasn't good enough. If you share that belief — and you want to work somewhere the founder actually knows your name — we'd like to hear from you.</p>
-    </div>
-
-    <!-- Job Listings -->
-    <div class="jobs-grid" role="list" aria-label="Open positions">
-
-      <!-- CNA -->
-      <article class="job-card" role="listitem">
-        <span class="job-role-label">Clinical</span>
-        <h3 class="job-title">Certified Nursing Assistant (CNA)</h3>
-        <div class="job-chips">
-          <span class="job-chip">Savannah, GA</span>
-          <span class="job-chip">Full-time · Part-time</span>
-          <span class="job-chip">In-Home</span>
-        </div>
-        <p class="job-desc">Join a team built by a CNA who set the standard she wanted to work under herself. You'll carry out individualized care plans, build real relationships with clients, and be recognized by name — not badge number.</p>
-        <span class="job-quals-label">Minimum qualifications</span>
-        <ul class="job-quals" aria-label="CNA minimum qualifications">
-          <li>Active Georgia CNA certification in good standing</li>
-          <li>CPR/First Aid certification (current)</li>
-          <li>Reliable transportation within Savannah metro area</li>
-          <li>Background check clearance</li>
-        </ul>
-        <span class="job-quals-label">Preferred qualifications</span>
-        <ul class="job-quals" aria-label="CNA preferred qualifications">
-          <li>1+ year of in-home or long-term care experience</li>
-          <li>Medication technician certification</li>
-          <li>Experience supporting clients with dementia or Parkinson's</li>
-        </ul>
-        <a class="job-apply" href="mailto:savpcs@yahoo.com?subject=CNA Application — Savannah Personal Care Services" aria-label="Apply for CNA position">
-          Apply now →
-        </a>
-      </article>
-
-      <!-- RN -->
-      <article class="job-card" role="listitem">
-        <span class="job-role-label">Nursing</span>
-        <h3 class="job-title">Registered Nurse (RN)</h3>
-        <div class="job-chips">
-          <span class="job-chip">Savannah, GA</span>
-          <span class="job-chip">Part-time · Per Diem</span>
-          <span class="job-chip">In-Home</span>
-        </div>
-        <p class="job-desc">We're looking for an RN to perform care assessments, create individualized care plans, and provide clinical oversight for our growing client roster. You'll work alongside Shannon directly — this is a hands-on clinical role, not a supervisory desk position.</p>
-        <span class="job-quals-label">Minimum qualifications</span>
-        <ul class="job-quals" aria-label="RN minimum qualifications">
-          <li>Active Georgia RN license in good standing</li>
-          <li>CPR/BLS certification (current)</li>
-          <li>Experience in home health, hospice, or post-acute care</li>
-          <li>Strong written documentation skills</li>
-        </ul>
-        <span class="job-quals-label">Preferred qualifications</span>
-        <ul class="job-quals" aria-label="RN preferred qualifications">
-          <li>2+ years home health or private duty nursing experience</li>
-          <li>Familiarity with Georgia PHCP licensing requirements</li>
-          <li>Experience conducting initial client assessments</li>
-        </ul>
-        <a class="job-apply" href="mailto:savpcs@yahoo.com?subject=RN Application — Savannah Personal Care Services" aria-label="Apply for RN position">
-          Apply now →
-        </a>
-      </article>
-
-      <!-- Home Health Companion -->
-      <article class="job-card" role="listitem">
-        <span class="job-role-label">Companion Care</span>
-        <h3 class="job-title">Home Health Companion</h3>
-        <div class="job-chips">
-          <span class="job-chip">Savannah, GA</span>
-          <span class="job-chip">Full-time · Part-time</span>
-          <span class="job-chip">In-Home</span>
-        </div>
-        <p class="job-desc">This role is for people who are genuinely good at being present. You'll provide non-medical companionship, light household assistance, and transportation — and you'll be the consistent face a family relies on. That consistency matters more than a long resume.</p>
-        <span class="job-quals-label">Minimum qualifications</span>
-        <ul class="job-quals" aria-label="Home Health Companion minimum qualifications">
-          <li>High school diploma or GED equivalent</li>
-          <li>Valid Georgia driver's license and reliable vehicle</li>
-          <li>Background check clearance</li>
-          <li>Strong interpersonal and communication skills</li>
-        </ul>
-        <span class="job-quals-label">Preferred qualifications</span>
-        <ul class="job-quals" aria-label="Home Health Companion preferred qualifications">
-          <li>Prior caregiving, home health aide, or companion experience</li>
-          <li>CPR/First Aid certification</li>
-          <li>Patience and comfort working with elderly adults</li>
-        </ul>
-        <a class="job-apply" href="mailto:savpcs@yahoo.com?subject=Home Health Companion Application — Savannah Personal Care Services" aria-label="Apply for Home Health Companion position">
-          Apply now →
-        </a>
-      </article>
-
-    </div><!-- /.jobs-grid -->
-
-    <p style="font-size:0.78rem; color:var(--soft); margin-top:24px;">All applicants personally reviewed by Shannon · Savannah metro area · Equal opportunity employer</p>
-  </div>
-</section>
-
 <!-- ========== FOOTER ========== -->
 <footer class="footer-v2" role="contentinfo">
   <div class="footer-v2-inner">
@@ -3051,9 +2864,9 @@
       <div>
         <p class="footer-col-label">Company</p>
         <nav class="footer-col-links" aria-label="Company links">
-          <a href="#about">About Shannon</a>
+          <a href="./about.html">About Shannon</a>
           <a href="#process">How It Works</a>
-          <a href="#careers">Careers</a>
+          <a href="./careers.html">Careers</a>
           <a href="#guide-section">Free Family Guide</a>
         </nav>
       </div>
