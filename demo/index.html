@@ -273,10 +273,29 @@
       background: var(--sand);
       min-height: 100svh;
       display: flex;
-      align-items: flex-end;
-      padding: 52px 28px 80px;
+      align-items: center;
+      padding: 52px 28px 72px;
       position: relative;
       overflow: hidden;
+    }
+
+    .hero-layout {
+      max-width: 980px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (min-width: 860px) {
+      .hero-layout {
+        grid-template-columns: 1fr 340px;
+        gap: 64px;
+      }
     }
 
     .hero-watermark {
@@ -286,7 +305,7 @@
       font-family: 'DM Serif Display', Georgia, serif;
       font-size: clamp(120px, 22vw, 240px);
       color: transparent;
-      -webkit-text-stroke: 1px rgba(10, 92, 82, 0.09);
+      -webkit-text-stroke: 1px rgba(10, 92, 82, 0.07);
       pointer-events: none;
       user-select: none;
       line-height: 1;
@@ -294,7 +313,6 @@
     }
 
     .hero-content {
-      max-width: 660px;
       position: relative;
       z-index: 1;
     }
@@ -362,6 +380,306 @@
     .hero-tertiary a:hover {
       color: var(--ink);
       border-color: var(--ink);
+    }
+
+    /* Hero trust signal */
+    .hero-trust {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 28px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(0,0,0,0.08);
+    }
+
+    .hero-trust-stars {
+      color: var(--gold);
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+    }
+
+    .hero-trust-text {
+      font-size: 0.78rem;
+      color: var(--soft);
+    }
+
+    .hero-trust-text strong {
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    /* Hero stats block (right column desktop) */
+    .hero-stats-block {
+      background: var(--teal);
+      border-radius: 12px;
+      padding: 40px 32px;
+      display: none;
+    }
+
+    @media (min-width: 860px) {
+      .hero-stats-block {
+        display: block;
+      }
+    }
+
+    .hero-stat {
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .hero-stat:first-child {
+      padding-top: 0;
+    }
+
+    .hero-stat:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .hero-stat-number {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(36px, 4vw, 48px);
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .hero-stat-label {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.55);
+      font-weight: 300;
+      line-height: 1.4;
+    }
+
+    .hero-stat-sub {
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.35);
+      margin-top: 4px;
+      font-style: italic;
+    }
+
+    /* =========================================
+       FRANCHISE COMPARISON SECTION
+    ========================================= */
+    .franchise-section {
+      background: var(--ink);
+      padding: clamp(64px, 8vw, 110px) 28px;
+    }
+
+    .franchise-inner {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .franchise-header {
+      max-width: 600px;
+      margin-bottom: 56px;
+    }
+
+    .franchise-header .section-label {
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .franchise-header .section-title {
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+
+    .franchise-header .section-body {
+      color: rgba(255,255,255,0.5);
+    }
+
+    .franchise-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2px;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    @media (min-width: 640px) {
+      .franchise-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .franchise-col {
+      padding: 40px 36px;
+    }
+
+    .franchise-col-franchise {
+      background: rgba(255,255,255,0.04);
+    }
+
+    .franchise-col-shannon {
+      background: var(--teal);
+    }
+
+    .franchise-col-label {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 500;
+      margin-bottom: 24px;
+      display: block;
+    }
+
+    .franchise-col-franchise .franchise-col-label {
+      color: rgba(255,255,255,0.3);
+    }
+
+    .franchise-col-shannon .franchise-col-label {
+      color: rgba(255,255,255,0.6);
+    }
+
+    .franchise-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .franchise-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .franchise-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .franchise-col-franchise .franchise-icon {
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.3);
+    }
+
+    .franchise-col-shannon .franchise-icon {
+      background: rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.9);
+    }
+
+    .franchise-row-text {
+      font-size: 0.88rem;
+      line-height: 1.55;
+      font-weight: 300;
+    }
+
+    .franchise-col-franchise .franchise-row-text {
+      color: rgba(255,255,255,0.45);
+    }
+
+    .franchise-col-shannon .franchise-row-text {
+      color: rgba(255,255,255,0.85);
+    }
+
+    .franchise-footnote {
+      margin-top: 32px;
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.2);
+      font-style: italic;
+    }
+
+    /* =========================================
+       FEATURED TESTIMONIAL PULLOUT
+    ========================================= */
+    .featured-testimonial {
+      background: var(--sand);
+      padding: clamp(56px, 7vw, 96px) 28px;
+      text-align: center;
+    }
+
+    .featured-testimonial-inner {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .featured-testimonial-stars {
+      color: var(--gold);
+      font-size: 1rem;
+      letter-spacing: 3px;
+      display: block;
+      margin-bottom: 28px;
+    }
+
+    .featured-testimonial-quote {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-style: italic;
+      font-size: clamp(24px, 4vw, 38px);
+      line-height: 1.35;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+      margin-bottom: 28px;
+    }
+
+    .featured-testimonial-name {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--soft);
+    }
+
+    /* =========================================
+       MOBILE STICKY CTA BAR
+    ========================================= */
+    .sticky-cta {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      background: var(--ink);
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .sticky-cta.is-visible {
+      transform: translateY(0);
+    }
+
+    @media (min-width: 860px) {
+      .sticky-cta {
+        display: none;
+      }
+    }
+
+    .sticky-cta-text {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.7);
+      font-weight: 300;
+      line-height: 1.3;
+    }
+
+    .sticky-cta-text strong {
+      display: block;
+      color: var(--white);
+      font-weight: 500;
+    }
+
+    .sticky-cta-actions {
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .sticky-cta .btn {
+      padding: 10px 18px;
+      font-size: 0.82rem;
     }
 
     /* =========================================
@@ -1317,38 +1635,69 @@
 <section class="hero" aria-labelledby="hero-headline">
   <div class="hero-watermark" aria-hidden="true">You.</div>
 
-  <div class="hero-content">
-    <div class="hero-overline">
-      <span class="label">For the family that has been carrying this alone</span>
-    </div>
-
-    <h1 class="hero-headline serif" id="hero-headline">
-      You've been<br />
-      managing this<br />
-      long enough.
-    </h1>
-
-    <p class="hero-subhead">
-      The medications. The appointments. The 2am worry.
-      You didn't fail your mother — you did everything
-      one person could do. The question now is whether
-      the caregiver who walks through that door was built
-      for this work, or just hired for it.
-    </p>
-
-    <div class="hero-ctas">
-      <div class="hero-cta-row">
-        <button class="btn btn-dark open-modal" aria-haspopup="dialog">
-          Find the right care — 60 seconds
-        </button>
-        <a class="btn btn-ghost" href="#guide-section">
-          Download the Free Family Guide
-        </a>
+  <div class="hero-layout">
+    <!-- Left: copy -->
+    <div class="hero-content">
+      <div class="hero-overline">
+        <span class="label">For the family that has been carrying this alone</span>
       </div>
-      <p class="hero-tertiary">
-        Or call now: <a href="tel:+19128561885">(912) 856-1885</a>
+
+      <h1 class="hero-headline serif" id="hero-headline">
+        You've been<br />
+        managing this<br />
+        long enough.
+      </h1>
+
+      <p class="hero-subhead">
+        The medications. The appointments. The 2am worry.
+        You didn't fail your mother — you did everything
+        one person could do. The question now is whether
+        the caregiver who walks through that door was built
+        for this work, or just hired for it.
       </p>
+
+      <div class="hero-ctas">
+        <div class="hero-cta-row">
+          <button class="btn btn-dark open-modal" aria-haspopup="dialog">
+            Find the right care — 60 seconds
+          </button>
+          <a class="btn btn-ghost" href="#guide-section">
+            Download the Free Family Guide
+          </a>
+        </div>
+        <p class="hero-tertiary">
+          Or call now: <a href="tel:+19128561885">(912) 856-1885</a>
+        </p>
+      </div>
+
+      <div class="hero-trust" aria-label="5-star rated home care in Savannah Georgia">
+        <span class="hero-trust-stars" aria-hidden="true">★★★★★</span>
+        <p class="hero-trust-text">
+          <strong>5-star rated</strong> · Savannah, GA · Georgia PHCP Licensed
+        </p>
+      </div>
     </div>
+
+    <!-- Right: stats block (desktop only) -->
+    <aside class="hero-stats-block" aria-label="At a glance">
+      <div class="hero-stat">
+        <p class="hero-stat-number serif">24/7</p>
+        <p class="hero-stat-label">Care available around the clock — including nights, weekends, and holidays</p>
+      </div>
+      <div class="hero-stat">
+        <p class="hero-stat-number serif">48h</p>
+        <p class="hero-stat-label">From your first call to a matched caregiver in your home</p>
+        <p class="hero-stat-sub">[VERIFY timeline with Shannon]</p>
+      </div>
+      <div class="hero-stat">
+        <p class="hero-stat-number serif">5</p>
+        <p class="hero-stat-label">Step process with written follow-up at every stage</p>
+      </div>
+      <div class="hero-stat">
+        <p class="hero-stat-number serif">100%</p>
+        <p class="hero-stat-label">Supervised first visits — Shannon or senior coordinator present</p>
+      </div>
+    </aside>
   </div>
 </section>
 
@@ -1420,6 +1769,66 @@
           "I didn't buy a franchise. I earned a credential — then built a team I'd trust with my own mother."
         </blockquote>
         <p class="founder-body">That difference shows up in how every member of our Care Team is selected, how families are communicated with, and why Shannon is personally present on the first visit with every new client.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FRANCHISE COMPARISON SECTION ========== -->
+<section class="franchise-section" aria-labelledby="franchise-title">
+  <div class="franchise-inner">
+    <div class="franchise-header">
+      <span class="label section-label">Why it matters who founded this</span>
+      <h2 class="section-title serif" id="franchise-title">Most agencies bought a manual.<br />Shannon earned a credential.</h2>
+      <p class="section-body">The largest home care companies in Savannah are franchises. Their own websites say so. Here is what that means for your family.</p>
+    </div>
+
+    <div class="franchise-grid">
+      <!-- Franchise column -->
+      <div class="franchise-col franchise-col-franchise">
+        <span class="franchise-col-label">A franchise agency</span>
+        <div class="franchise-rows">
+          <div class="franchise-row">
+            <span class="franchise-icon" aria-hidden="true">–</span>
+            <p class="franchise-row-text">"Each franchise is independently owned and operated." The local operator bought the brand — not the clinical expertise.</p>
+          </div>
+          <div class="franchise-row">
+            <span class="franchise-icon" aria-hidden="true">–</span>
+            <p class="franchise-row-text">The founder has likely never provided in-home care. They built a business around it.</p>
+          </div>
+          <div class="franchise-row">
+            <span class="franchise-icon" aria-hidden="true">–</span>
+            <p class="franchise-row-text">A call center coordinates your intake. The caregiver who shows up on day one is whoever is available that week.</p>
+          </div>
+          <div class="franchise-row">
+            <span class="franchise-icon" aria-hidden="true">–</span>
+            <p class="franchise-row-text">Your first visit is unsupervised. A stranger enters your loved one's home alone.</p>
+          </div>
+        </div>
+        <p class="franchise-footnote">Source: homeinstead.com footer disclosure</p>
+      </div>
+
+      <!-- Shannon column -->
+      <div class="franchise-col franchise-col-shannon">
+        <span class="franchise-col-label">Shannon Stafford Simpson, CNA</span>
+        <div class="franchise-rows">
+          <div class="franchise-row">
+            <span class="franchise-icon" aria-hidden="true">✓</span>
+            <p class="franchise-row-text">Shannon is a Certified Nursing Assistant who built this agency from inside the work. The credential came before the business.</p>
+          </div>
+          <div class="franchise-row">
+            <span class="franchise-icon" aria-hidden="true">✓</span>
+            <p class="franchise-row-text">She has been in the room when families make this decision — hundreds of times. She knows what you are carrying.</p>
+          </div>
+          <div class="franchise-row">
+            <span class="franchise-icon" aria-hidden="true">✓</span>
+            <p class="franchise-row-text">Your intake is a conversation — not a form. Shannon's team selects one specific caregiver based on personality, not schedule.</p>
+          </div>
+          <div class="franchise-row">
+            <span class="franchise-icon" aria-hidden="true">✓</span>
+            <p class="franchise-row-text">Shannon or a senior coordinator is present on the first visit. Every time. For every family.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1569,6 +1978,17 @@
   </div>
 </section>
 
+<!-- ========== FEATURED TESTIMONIAL ========== -->
+<section class="featured-testimonial" aria-label="Featured family review">
+  <div class="featured-testimonial-inner">
+    <span class="featured-testimonial-stars" aria-label="5 out of 5 stars">★★★★★</span>
+    <blockquote class="featured-testimonial-quote">
+      "We finally slept through the night."
+    </blockquote>
+    <p class="featured-testimonial-name">Robert S. · Pooler, GA · after the first week of care</p>
+  </div>
+</section>
+
 <!-- ========== GUIDE TEASER SECTION ========== -->
 <section class="guide-section" id="guide-section" aria-labelledby="guide-title">
   <div class="guide-inner">
@@ -1647,6 +2067,18 @@
     </div>
   </div>
 </footer>
+
+<!-- ========== MOBILE STICKY CTA ========== -->
+<div class="sticky-cta" id="sticky-cta" role="complementary" aria-label="Quick contact">
+  <div class="sticky-cta-text">
+    <strong>Free 20-min care assessment</strong>
+    Same day · No obligation
+  </div>
+  <div class="sticky-cta-actions">
+    <a class="btn btn-ghost-white" href="tel:+19128561885" aria-label="Call now">Call</a>
+    <button class="btn btn-teal open-modal" aria-haspopup="dialog">60-sec finder</button>
+  </div>
+</div>
 
 <!-- ========== INTAKE MODAL ========== -->
 <div class="modal-overlay" id="intake-modal" role="dialog" aria-modal="true" aria-labelledby="modal-heading-1">
@@ -1951,6 +2383,21 @@
   });
 
   confirmClose.addEventListener('click', closeModal);
+
+  // Mobile sticky CTA — show after scrolling past hero
+  var stickyCta = document.getElementById('sticky-cta');
+  var heroEl = document.querySelector('.hero');
+  if (stickyCta && heroEl) {
+    var scrollHandler = function() {
+      var heroBottom = heroEl.getBoundingClientRect().bottom;
+      if (heroBottom < 0) {
+        stickyCta.classList.add('is-visible');
+      } else {
+        stickyCta.classList.remove('is-visible');
+      }
+    };
+    window.addEventListener('scroll', scrollHandler, { passive: true });
+  }
 
 })();
 </script>
