@@ -967,12 +967,14 @@
     }
 
     .credential-strip-item {
-      font-size: 12px;
-      color: rgba(255,255,255,0.85);
+      font-size: 15px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.9);
       display: flex;
       align-items: center;
       gap: 10px;
       white-space: nowrap;
+      letter-spacing: 0.01em;
     }
 
     .credential-strip-item + .credential-strip-item::before {
@@ -1406,56 +1408,130 @@
     /* =========================================
        AREAS STRIP
     ========================================= */
-    .areas-strip {
-      padding: 24px 28px;
+    /* =========================================
+       CITY TICKER
+    ========================================= */
+    .ticker-wrap {
       border-top: 1px solid rgba(74,171,165,0.18);
+      border-bottom: 1px solid rgba(74,171,165,0.1);
+      overflow: hidden;
+      background: var(--white);
     }
 
-    .areas-inner {
-      max-width: 980px;
-      margin: 0 auto;
+    .ticker-inner {
       display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 6px 18px;
+      align-items: stretch;
+      height: 52px;
     }
 
-    .areas-label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--teal);
+    .ticker-label {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      padding: 0 22px 0 28px;
+      font-size: 0.62rem;
       font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--teal);
+      border-right: 1px solid rgba(74,171,165,0.2);
+      background: var(--white);
+      z-index: 3;
       white-space: nowrap;
+      gap: 8px;
     }
 
-    .areas-list {
+    .ticker-label::before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--teal);
+      animation: ticker-pulse 1.6s ease-in-out infinite;
+    }
+
+    @keyframes ticker-pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.25; }
+    }
+
+    .ticker-overflow {
+      flex: 1;
+      overflow: hidden;
+      position: relative;
       display: flex;
-      flex-wrap: wrap;
-      gap: 4px 0;
       align-items: center;
     }
 
-    .areas-list span {
-      font-size: 0.8rem;
-      color: var(--soft);
+    .ticker-overflow::before,
+    .ticker-overflow::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 48px;
+      z-index: 2;
+      pointer-events: none;
     }
 
-    .areas-list a {
-      font-size: 0.8rem;
+    .ticker-overflow::before {
+      left: 0;
+      background: linear-gradient(to right, var(--white) 40%, transparent);
+    }
+
+    .ticker-overflow::after {
+      right: 0;
+      background: linear-gradient(to left, var(--white) 40%, transparent);
+    }
+
+    .ticker-track {
+      display: flex;
+      align-items: center;
+      width: max-content;
+      animation: ticker-scroll 32s linear infinite;
+      will-change: transform;
+    }
+
+    .ticker-track:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes ticker-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-33.333%); }
+    }
+
+    .ticker-city {
+      padding: 0 22px;
+      font-size: 0.88rem;
+      font-weight: 400;
       color: var(--soft);
-      border-bottom: 1px solid rgba(74,171,165,0.22);
-      padding-bottom: 1px;
+      white-space: nowrap;
+      letter-spacing: 0.01em;
+    }
+
+    .ticker-city a {
+      color: var(--soft);
+      text-decoration: none;
       transition: color 0.15s;
     }
 
-    .areas-list a:hover {
+    .ticker-city a:hover {
       color: var(--teal);
     }
 
-    .areas-list .dot {
-      color: rgba(74,171,165,0.25);
-      margin: 0 6px;
+    .ticker-sep {
+      color: var(--teal);
+      font-size: 0.45rem;
+      opacity: 0.45;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    @media (max-width: 480px) {
+      .ticker-label { padding: 0 14px 0 16px; font-size: 0.55rem; }
+      .ticker-city { padding: 0 14px; font-size: 0.8rem; }
     }
 
     /* =========================================
@@ -2588,21 +2664,47 @@
 </section>
 
 <!-- ========== AREAS STRIP ========== -->
-<div class="areas-strip" role="complementary" aria-label="Service areas">
-  <div class="areas-inner">
-    <span class="areas-label">We serve</span>
-    <div class="areas-list" aria-label="Savannah, Pooler, Tybee Island, Wilmington Island, Brunswick, Hinesville, Bloomingdale, Port Wentworth, and surrounding areas">
-      <span>Savannah</span><span class="dot">·</span>
-      <a href="./pooler.html">Pooler</a><span class="dot">·</span>
-      <a href="./tybee-island.html">Tybee Island</a><span class="dot">·</span>
-      <a href="./wilmington-island.html">Wilmington Island</a><span class="dot">·</span>
-      <a href="./brunswick.html">Brunswick</a><span class="dot">·</span>
-      <a href="./hinesville.html">Hinesville</a><span class="dot">·</span>
-      <a href="./bloomingdale.html">Bloomingdale</a><span class="dot">·</span>
-      <a href="./port-wentworth.html">Port Wentworth</a><span class="dot">·</span>
-      <span>and surrounding areas</span>
+<!-- ========== CITY TICKER ========== -->
+<div class="ticker-wrap" role="complementary" aria-label="Service areas">
+  <!-- Visible scrolling display — hidden from screen readers via aria-hidden -->
+  <div class="ticker-inner" aria-hidden="true">
+    <span class="ticker-label">Now Serving</span>
+    <div class="ticker-overflow">
+      <div class="ticker-track">
+        <!-- Set 1 -->
+        <span class="ticker-city">Savannah, GA</span><span class="ticker-sep">◆</span>
+        <span class="ticker-city"><a href="./pooler.html">Pooler, GA</a></span><span class="ticker-sep">◆</span>
+        <span class="ticker-city"><a href="./tybee-island.html">Tybee Island, GA</a></span><span class="ticker-sep">◆</span>
+        <span class="ticker-city"><a href="./wilmington-island.html">Wilmington Island, GA</a></span><span class="ticker-sep">◆</span>
+        <span class="ticker-city"><a href="./brunswick.html">Brunswick, GA</a></span><span class="ticker-sep">◆</span>
+        <span class="ticker-city"><a href="./hinesville.html">Hinesville, GA</a></span><span class="ticker-sep">◆</span>
+        <span class="ticker-city"><a href="./bloomingdale.html">Bloomingdale, GA</a></span><span class="ticker-sep">◆</span>
+        <span class="ticker-city"><a href="./port-wentworth.html">Port Wentworth, GA</a></span><span class="ticker-sep">◆</span>
+        <!-- Set 2 -->
+        <span class="ticker-city">Savannah, GA</span><span class="ticker-sep">◆</span>
+        <span class="ticker-city"><a href="./pooler.html">Pooler, GA</a></span><span class="ticker-sep">◆</span>
+        <span class="ticker-city"><a href="./tybee-island.html">Tybee Island, GA</a></span><span class="ticker-sep">◆</span>
+        <span class="ticker-city"><a href="./wilmington-island.html">Wilmington Island, GA</a></span><span class="ticker-sep">◆</span>
+        <span class="ticker-city"><a href="./brunswick.html">Brunswick, GA</a></span><span class="ticker-sep">◆</span>
+        <span class="ticker-city"><a href="./hinesville.html">Hinesville, GA</a></span><span class="ticker-sep">◆</span>
+        <span class="ticker-city"><a href="./bloomingdale.html">Bloomingdale, GA</a></span><span class="ticker-sep">◆</span>
+        <span class="ticker-city"><a href="./port-wentworth.html">Port Wentworth, GA</a></span><span class="ticker-sep">◆</span>
+        <!-- Set 3 -->
+        <span class="ticker-city">Savannah, GA</span><span class="ticker-sep">◆</span>
+        <span class="ticker-city"><a href="./pooler.html">Pooler, GA</a></span><span class="ticker-sep">◆</span>
+        <span class="ticker-city"><a href="./tybee-island.html">Tybee Island, GA</a></span><span class="ticker-sep">◆</span>
+        <span class="ticker-city"><a href="./wilmington-island.html">Wilmington Island, GA</a></span><span class="ticker-sep">◆</span>
+        <span class="ticker-city"><a href="./brunswick.html">Brunswick, GA</a></span><span class="ticker-sep">◆</span>
+        <span class="ticker-city"><a href="./hinesville.html">Hinesville, GA</a></span><span class="ticker-sep">◆</span>
+        <span class="ticker-city"><a href="./bloomingdale.html">Bloomingdale, GA</a></span><span class="ticker-sep">◆</span>
+        <span class="ticker-city"><a href="./port-wentworth.html">Port Wentworth, GA</a></span><span class="ticker-sep">◆</span>
+      </div>
     </div>
   </div>
+  <!-- Screen reader text -->
+  <p style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;">
+    Serving: Savannah, Pooler, Tybee Island, Wilmington Island, Brunswick, Hinesville, Bloomingdale, Port Wentworth, GA and surrounding areas.
+  </p>
 </div>
 
 <!-- ========== CAREERS SECTION ========== -->
