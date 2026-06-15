@@ -1,0 +1,1882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Care Services — Savannah Personal Care Services</title>
+  <meta name="description" content="Explore in-home care options from Savannah Personal Care Services — Transitional Care, Daily Living Assistance, Dementia Care Support, and Respite Care. CNA-founded. Serving coastal Georgia." />
+  <link rel="canonical" href="https://savannahpersonalcare.com/care-options" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" /></noscript>
+
+  <style>
+    /* =========================================
+       DESIGN TOKENS
+    ========================================= */
+    :root {
+      --teal:       #4AABA5;
+      --teal-dark:  #2A8280;
+      --teal-lt:    #E3F5F4;
+      --sand:       #F0FAFA;
+      --ink:        #183736;
+      --ink-deep:   #031F1E;
+      --soft:       #4a7070;
+      --white:      #ffffff;
+      --rule:       rgba(74,171,165,0.15);
+      --gold:       #c09040;
+      --muted:      #9a9a9a;
+    }
+
+    /* =========================================
+       RESET & BASE
+    ========================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--ink);
+      background: var(--white);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+    * { -webkit-tap-highlight-color: transparent; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+    /* =========================================
+       TYPOGRAPHY
+    ========================================= */
+    .serif { font-family: 'DM Serif Display', Georgia, serif; }
+
+    .label {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--teal);
+    }
+
+    /* =========================================
+       BUTTONS
+    ========================================= */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 28px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      font-family: 'DM Sans', sans-serif;
+      min-height: 44px;
+      min-width: 44px;
+      transition: background 0.18s, color 0.18s, border-color 0.18s, opacity 0.18s;
+      cursor: pointer;
+      border: 1px solid transparent;
+      text-decoration: none;
+      line-height: 1.2;
+    }
+    .btn-dark  { background: var(--teal-dark); color: var(--white); border-color: var(--teal-dark); }
+    .btn-dark:hover  { background: var(--teal); border-color: var(--teal); }
+    .btn-teal  { background: var(--teal); color: var(--white); border-color: var(--teal); }
+    .btn-teal:hover  { background: var(--teal-dark); border-color: var(--teal-dark); }
+    .btn-ghost { background: transparent; color: var(--ink); border-color: rgba(74,171,165,0.3); }
+    .btn-ghost:hover { border-color: var(--ink); }
+    .btn-white { background: var(--white); color: var(--teal); border-color: var(--white); }
+    .btn-white:hover { opacity: 0.9; }
+    .btn-ghost-white { background: transparent; color: rgba(255,255,255,0.85); border-color: rgba(255,255,255,0.3); }
+    .btn-ghost-white:hover { border-color: rgba(255,255,255,0.7); color: var(--white); }
+    :focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+
+    /* =========================================
+       NAV
+    ========================================= */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid rgba(74,171,165,0.15);
+    }
+
+    .nav-logo-link {
+      display: flex;
+      align-items: flex-start;
+      flex-shrink: 0;
+      text-decoration: none;
+      height: 38px;
+      overflow: hidden;
+    }
+    .nav-logo-link img {
+      height: 62px;
+      width: auto;
+      display: block;
+      flex-shrink: 0;
+    }
+
+    /* Desktop nav links */
+    .nav-links {
+      display: none;
+      list-style: none;
+      align-items: center;
+      gap: 4px;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    @media (min-width: 760px) {
+      .nav-links { display: flex; }
+    }
+    .nav-links > li { position: relative; }
+    .nav-links > li > a {
+      font-size: 0.84rem;
+      font-weight: 400;
+      color: var(--ink);
+      padding: 8px 14px;
+      border-radius: 6px;
+      transition: color 0.15s, background 0.15s;
+      white-space: nowrap;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .nav-links > li > a:hover,
+    .nav-links > li > a:focus-visible {
+      color: var(--teal);
+      background: rgba(74,171,165,0.07);
+    }
+    .nav-links > li > a.active { color: var(--teal); }
+
+    /* Dropdown */
+    .nav-dropdown-menu {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%) translateY(-6px);
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: 0 8px 40px rgba(4,35,32,0.13), 0 0 0 1px rgba(74,171,165,0.1);
+      min-width: 230px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.18s ease, transform 0.18s ease;
+      padding: 8px;
+      z-index: 200;
+    }
+    .nav-dropdown:hover .nav-dropdown-menu,
+    .nav-dropdown:focus-within .nav-dropdown-menu {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(-50%) translateY(0);
+    }
+    .nav-dropdown-menu a {
+      display: flex;
+      align-items: center;
+      padding: 10px 14px;
+      font-size: 0.84rem;
+      color: var(--ink);
+      border-radius: 7px;
+      transition: background 0.15s, color 0.15s;
+      gap: 10px;
+    }
+    .nav-dropdown-menu a:hover {
+      background: var(--sand);
+      color: var(--teal);
+    }
+    .nav-dropdown-menu a .dd-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--teal);
+      flex-shrink: 0;
+      opacity: 0.4;
+    }
+    .nav-dropdown-menu a:hover .dd-dot { opacity: 1; }
+    .nav-caret { font-size: 0.6rem; opacity: 0.5; }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .nav-phone {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--teal);
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      padding: 0 8px;
+      white-space: nowrap;
+    }
+    .nav-phone:hover { color: var(--teal-dark); }
+
+    @media (min-width: 760px) {
+      .nav-menu-btn { display: none; }
+    }
+    .nav-menu-btn {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 44px;
+      height: 44px;
+      align-items: center;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      border-radius: 6px;
+      transition: background 0.15s;
+      flex-shrink: 0;
+    }
+    .nav-menu-btn:hover { background: rgba(74,171,165,0.12); }
+    .nav-menu-btn span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--teal);
+      border-radius: 2px;
+      transition: transform 0.25s, opacity 0.2s;
+    }
+    .nav-menu-btn.is-open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-menu-btn.is-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-menu-btn.is-open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* =========================================
+       NAV DRAWER
+    ========================================= */
+    .nav-drawer {
+      position: fixed;
+      top: 56px; left: 0; right: 0;
+      z-index: 99;
+      background: var(--white);
+      border-bottom: 1px solid rgba(74,171,165,0.15);
+      box-shadow: 0 12px 40px rgba(4,35,32,0.12);
+      transform: translateY(-8px);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.25s ease, opacity 0.2s ease;
+    }
+    .nav-drawer.is-open { transform: translateY(0); opacity: 1; pointer-events: all; }
+    .nav-backdrop {
+      position: fixed;
+      inset: 56px 0 0 0;
+      z-index: 98;
+      background: rgba(4,35,32,0.3);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s;
+    }
+    .nav-backdrop.is-open { opacity: 1; pointer-events: all; }
+    .nav-drawer-inner { max-width: 980px; margin: 0 auto; padding: 8px 24px 24px; }
+    .nav-drawer-links { list-style: none; border-bottom: 1px solid rgba(74,171,165,0.15); margin-bottom: 20px; padding-bottom: 8px; }
+    .nav-drawer-links li a {
+      display: flex;
+      align-items: center;
+      padding: 14px 4px;
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--ink);
+      border-bottom: 1px solid rgba(74,171,165,0.1);
+      transition: color 0.15s, padding-left 0.15s;
+    }
+    .nav-drawer-links li:last-child a { border-bottom: none; }
+    .nav-drawer-links li a:hover { color: var(--teal); padding-left: 8px; }
+    .nav-drawer-links li a .nav-drawer-arrow { margin-left: auto; font-size: 0.75rem; color: var(--teal); opacity: 0.5; }
+    .nav-drawer-sub { list-style: none; padding-left: 16px; }
+    .nav-drawer-sub li a {
+      font-size: 0.9rem;
+      color: var(--soft);
+      padding: 10px 4px;
+      border-bottom: 1px solid rgba(74,171,165,0.07);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.15s, padding-left 0.15s;
+    }
+    .nav-drawer-sub li:last-child a { border-bottom: none; }
+    .nav-drawer-sub li a:hover { color: var(--teal); padding-left: 12px; }
+    .nav-drawer-sub .sub-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--teal); opacity: 0.4; flex-shrink: 0; }
+    .nav-drawer-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .nav-drawer-actions .btn { flex: 1; min-width: 140px; justify-content: center; }
+
+    /* =========================================
+       PAGE HERO
+    ========================================= */
+    .page-hero {
+      background: var(--sand);
+      padding: 120px 28px 72px;
+      text-align: center;
+    }
+    .page-hero-inner { max-width: 680px; margin: 0 auto; }
+    .page-hero .label { display: block; margin-bottom: 20px; }
+    .page-hero-headline {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(36px, 6vw, 64px);
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+    .page-hero-sub {
+      font-size: clamp(15px, 1.8vw, 18px);
+      font-weight: 300;
+      color: var(--soft);
+      line-height: 1.65;
+      max-width: 520px;
+      margin: 0 auto 36px;
+    }
+    .page-hero-actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+
+    /* =========================================
+       SERVICE CARDS (top overview)
+    ========================================= */
+    .services-overview {
+      padding: clamp(64px, 8vw, 100px) 28px;
+      background: var(--white);
+    }
+    .services-overview-inner { max-width: 1080px; margin: 0 auto; }
+    .services-overview-header { text-align: center; margin-bottom: clamp(36px, 5vw, 56px); }
+    .section-title {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(32px, 5.5vw, 54px);
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+    .section-body {
+      font-size: clamp(15px, 1.8vw, 17px);
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--soft);
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1px;
+      background: rgba(74,171,165,0.1);
+      border: 1px solid rgba(74,171,165,0.1);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    @media (min-width: 600px) { .services-grid { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 1000px) { .services-grid { grid-template-columns: repeat(4, 1fr); } }
+
+    .service-card {
+      background: var(--white);
+      padding: 36px 28px 32px;
+      display: flex;
+      flex-direction: column;
+      transition: background 0.18s;
+    }
+    .service-card:hover { background: var(--sand); }
+    .service-card.is-featured {
+      background: var(--teal);
+    }
+    .service-card.is-featured:hover { background: var(--teal-dark); }
+
+    .service-card-num {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 16px;
+    }
+    .service-card.is-featured .service-card-num { color: rgba(255,255,255,0.6); }
+
+    .service-card-name {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(20px, 2.5vw, 26px);
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 14px;
+    }
+    .service-card.is-featured .service-card-name { color: var(--white); }
+
+    .service-card-desc {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--soft);
+      flex: 1;
+      margin-bottom: 24px;
+    }
+    .service-card.is-featured .service-card-desc { color: rgba(255,255,255,0.82); }
+
+    .service-card-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--teal);
+      transition: gap 0.15s, color 0.15s;
+    }
+    .service-card:hover .service-card-cta { gap: 10px; }
+    .service-card.is-featured .service-card-cta { color: rgba(255,255,255,0.9); }
+
+    /* =========================================
+       COMPARISON TABLE
+    ========================================= */
+    .compare-section {
+      padding: clamp(64px, 8vw, 100px) 28px;
+      background: var(--sand);
+    }
+    .compare-inner { max-width: 1080px; margin: 0 auto; }
+    .compare-header { text-align: center; margin-bottom: clamp(36px, 5vw, 56px); }
+
+    .compare-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .compare-table {
+      width: 100%;
+      min-width: 680px;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    /* Column header row */
+    .compare-table thead th {
+      padding: 0;
+      background: var(--sand);
+      position: sticky;
+      top: 56px;
+      z-index: 10;
+    }
+    .compare-table thead tr { border-bottom: 2px solid rgba(74,171,165,0.2); }
+
+    .compare-th-feature {
+      width: 200px;
+      min-width: 160px;
+      text-align: left;
+      padding: 20px 20px 20px 0;
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--soft);
+    }
+
+    .compare-th-plan {
+      text-align: center;
+      padding: 20px 16px;
+      min-width: 160px;
+    }
+    .compare-th-plan.is-featured { background: var(--teal); border-radius: 12px 12px 0 0; }
+
+    .compare-plan-name {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(16px, 2vw, 20px);
+      color: var(--ink);
+      display: block;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+    .compare-th-plan.is-featured .compare-plan-name { color: var(--white); }
+
+    .compare-plan-tag {
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--soft);
+      display: block;
+      margin-bottom: 16px;
+    }
+    .compare-th-plan.is-featured .compare-plan-tag { color: rgba(255,255,255,0.65); }
+
+    .compare-plan-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 18px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 500;
+      font-family: 'DM Sans', sans-serif;
+      border: 1px solid rgba(74,171,165,0.3);
+      color: var(--teal);
+      background: transparent;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .compare-plan-btn:hover { background: var(--teal); color: var(--white); border-color: var(--teal); }
+    .compare-th-plan.is-featured .compare-plan-btn {
+      background: var(--white);
+      color: var(--teal);
+      border-color: var(--white);
+    }
+    .compare-th-plan.is-featured .compare-plan-btn:hover { background: rgba(255,255,255,0.88); }
+
+    /* Category rows */
+    .compare-table tbody .cat-row td {
+      padding: 20px 16px 10px;
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--teal);
+      border-top: 2px solid rgba(74,171,165,0.18);
+    }
+    .compare-table tbody .cat-row td:first-child { padding-left: 0; }
+    .compare-table tbody .cat-row .is-featured-col { background: rgba(74,171,165,0.06); }
+
+    /* Feature rows */
+    .compare-table tbody tr.feature-row {
+      border-bottom: 1px solid rgba(74,171,165,0.1);
+    }
+    .compare-table tbody tr.feature-row:last-child { border-bottom: none; }
+
+    .compare-td-label {
+      padding: 14px 16px 14px 0;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--ink);
+      vertical-align: middle;
+    }
+    .compare-td-label p { font-size: 12px; font-weight: 300; color: var(--soft); margin-top: 2px; }
+
+    .compare-td {
+      padding: 14px 16px;
+      text-align: center;
+      vertical-align: middle;
+      font-size: 14px;
+      color: var(--soft);
+      font-weight: 300;
+    }
+    .compare-td.is-featured-col { background: rgba(74,171,165,0.06); }
+
+    .check {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px; height: 22px;
+      background: var(--teal-lt);
+      border-radius: 50%;
+      color: var(--teal);
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .is-featured-col .check { background: rgba(74,171,165,0.2); }
+    .dash { color: rgba(74,171,165,0.3); font-size: 18px; font-weight: 300; }
+
+    /* =========================================
+       SERVICE DETAIL SECTIONS
+    ========================================= */
+    .service-detail {
+      padding: clamp(64px, 8vw, 100px) 28px;
+      scroll-margin-top: 72px;
+    }
+    .service-detail:nth-child(odd) { background: var(--white); }
+    .service-detail:nth-child(even) { background: var(--sand); }
+
+    .service-detail-inner {
+      max-width: 980px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    @media (min-width: 680px) {
+      .service-detail-inner { grid-template-columns: 1fr 1.5fr; gap: 64px; }
+    }
+
+    .service-detail-aside {
+      background: var(--teal);
+      border-radius: 10px;
+      padding: 40px 36px;
+    }
+    .service-detail:nth-child(even) .service-detail-aside {
+      background: var(--ink-deep);
+    }
+
+    .service-detail-num {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 16px;
+      display: block;
+    }
+    .service-detail-aside-title {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(26px, 4vw, 38px);
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+
+    .service-features {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .service-feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.85);
+      font-weight: 300;
+      line-height: 1.5;
+    }
+    .service-feature-item::before {
+      content: '✓';
+      flex-shrink: 0;
+      font-size: 11px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.7);
+      margin-top: 2px;
+    }
+
+    .service-detail-body .label { display: block; margin-bottom: 16px; }
+    .service-detail-title {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(26px, 4vw, 38px);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+    .service-detail-text {
+      font-size: clamp(15px, 1.6vw, 17px);
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--soft);
+      margin-bottom: 28px;
+    }
+    .service-detail-cta { display: flex; flex-wrap: wrap; gap: 12px; }
+
+    /* =========================================
+       FAQ SECTION
+    ========================================= */
+    .faq-section {
+      background: var(--white);
+      padding: clamp(72px, 9vw, 120px) 28px;
+    }
+    .faq-inner { max-width: 720px; margin: 0 auto; }
+    .faq-header { margin-bottom: clamp(36px, 5vw, 56px); }
+    .faq-header .label { display: block; margin-bottom: 16px; }
+
+    .faq-list { display: flex; flex-direction: column; }
+
+    .faq-item {
+      border-top: 1px solid rgba(74,171,165,0.18);
+    }
+    .faq-item:last-child { border-bottom: 1px solid rgba(74,171,165,0.18); }
+
+    .faq-question {
+      width: 100%;
+      text-align: left;
+      padding: 22px 4px;
+      font-size: clamp(15px, 1.6vw, 17px);
+      font-weight: 400;
+      color: var(--ink);
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-style: italic;
+      line-height: 1.4;
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      transition: color 0.15s;
+    }
+    .faq-question:hover { color: var(--teal); }
+    .faq-question[aria-expanded="true"] { color: var(--teal); }
+
+    .faq-icon {
+      flex-shrink: 0;
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      border: 1px solid rgba(74,171,165,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: var(--teal);
+      transition: transform 0.25s, background 0.15s;
+    }
+    .faq-question[aria-expanded="true"] .faq-icon {
+      transform: rotate(45deg);
+      background: var(--teal);
+      color: var(--white);
+      border-color: var(--teal);
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 0 4px 24px;
+      font-size: clamp(14px, 1.5vw, 16px);
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--soft);
+    }
+    .faq-answer.is-open { display: block; }
+
+    /* =========================================
+       MAIN CTA STRIP
+    ========================================= */
+    .cta-strip {
+      background: var(--teal);
+      padding: clamp(64px, 8vw, 100px) 28px;
+      text-align: center;
+    }
+    .cta-strip-inner { max-width: 600px; margin: 0 auto; }
+    .cta-strip .label { color: rgba(255,255,255,0.5); display: block; margin-bottom: 16px; }
+    .cta-strip-title {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(32px, 5.5vw, 52px);
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .cta-strip-body {
+      font-size: clamp(15px, 1.8vw, 17px);
+      font-weight: 300;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.65;
+      margin-bottom: 36px;
+    }
+    .cta-strip-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+    .cta-strip-note {
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      margin-top: 20px;
+    }
+
+    /* =========================================
+       FOOTER — EVERNOTE STYLE
+    ========================================= */
+    .footer-v2 {
+      background: var(--ink-deep);
+      padding: 64px 28px 0;
+    }
+    .footer-v2-inner { max-width: 1080px; margin: 0 auto; }
+
+    .footer-v2-top {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    @media (min-width: 640px) {
+      .footer-v2-top { grid-template-columns: 220px 1fr; gap: 64px; }
+    }
+
+    /* Brand column */
+    .footer-v2-brand {}
+    .footer-logo-mark {
+      display: inline-block;
+      margin-bottom: 20px;
+      text-decoration: none;
+    }
+    .footer-logo-eyebrow {
+      display: block;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--teal);
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    .footer-logo-primary {
+      display: block;
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 26px;
+      color: var(--white);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+    .footer-logo-secondary {
+      display: block;
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 14px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.04em;
+    }
+
+    .footer-v2-tagline {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 10px;
+    }
+    .footer-social-link {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.5);
+      transition: border-color 0.15s, color 0.15s, background 0.15s;
+    }
+    .footer-social-link:hover {
+      border-color: var(--teal);
+      color: var(--teal);
+      background: rgba(74,171,165,0.08);
+    }
+    .footer-social-link svg { width: 16px; height: 16px; }
+
+    /* Nav columns */
+    .footer-v2-nav {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+    @media (min-width: 480px) {
+      .footer-v2-nav { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .footer-v2-col-title {
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 16px;
+    }
+    .footer-v2-col-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-v2-col-links a {
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.55);
+      transition: color 0.15s;
+      line-height: 1.4;
+    }
+    .footer-v2-col-links a:hover { color: var(--white); }
+
+    /* Bottom bar */
+    .footer-v2-bottom {
+      padding: 20px 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+    .footer-v2-copy {
+      font-size: 12px;
+      color: rgba(255,255,255,0.22);
+    }
+    .footer-v2-legal {
+      display: flex;
+      gap: 20px;
+    }
+    .footer-v2-legal a {
+      font-size: 12px;
+      color: rgba(255,255,255,0.22);
+      transition: color 0.15s;
+    }
+    .footer-v2-legal a:hover { color: rgba(255,255,255,0.55); }
+
+    /* =========================================
+       MODAL
+    ========================================= */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 1000;
+      background: rgba(4,35,32,0.82);
+      display: flex; align-items: center; justify-content: center;
+      padding: 20px;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.25s;
+    }
+    .modal-overlay.is-open { opacity: 1; pointer-events: all; }
+    .modal-card {
+      background: var(--white);
+      border-radius: 16px;
+      width: 100%; max-width: 520px;
+      padding: 48px 40px;
+      position: relative;
+      transform: translateY(12px);
+      transition: transform 0.25s;
+      max-height: 90vh; overflow-y: auto;
+    }
+    .modal-overlay.is-open .modal-card { transform: translateY(0); }
+    @media (max-width: 480px) {
+      .modal-overlay { padding: 0; align-items: flex-end; }
+      .modal-card { border-radius: 20px 20px 0 0; padding: 36px 28px 28px; max-height: 92vh; }
+    }
+    .modal-close {
+      position: absolute; top: 20px; right: 20px;
+      font-size: 1.1rem; color: var(--soft);
+      width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 50%; transition: background 0.15s;
+    }
+    .modal-close:hover { background: rgba(74,171,165,0.12); }
+    .modal-progress { display: flex; gap: 6px; margin-bottom: 32px; }
+    .modal-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(74,171,165,0.2); transition: background 0.2s; }
+    .modal-dot.active { background: var(--teal); }
+    .modal-dot.completed { background: rgba(10,92,82,0.4); }
+    .modal-step { display: none; }
+    .modal-step.is-active { display: block; }
+    .modal-heading { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.5rem; color: var(--ink); margin-bottom: 8px; line-height: 1.2; }
+    .modal-subhead { font-size: 0.88rem; font-weight: 300; color: var(--soft); margin-bottom: 28px; }
+    .modal-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+    .modal-pill { background: var(--teal-lt); color: var(--teal); font-size: 0.72rem; padding: 4px 10px; border-radius: 20px; }
+    .modal-options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+    .modal-option {
+      width: 100%; min-height: 64px;
+      border: 1px solid rgba(74,171,165,0.2);
+      border-radius: 8px; cursor: pointer;
+      padding: 0 20px; font-size: 0.9rem;
+      color: var(--ink); text-align: left;
+      background: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      transition: border-color 0.15s, background 0.15s;
+      display: flex; align-items: center;
+    }
+    .modal-option:hover { border-color: var(--teal); background: var(--sand); }
+    .modal-back { font-size: 0.8rem; color: var(--soft); padding: 8px 0; margin-top: 8px; min-height: 44px; display: flex; align-items: center; }
+    .modal-back:hover { color: var(--ink); }
+    .modal-fields { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
+    .modal-field label { display: block; font-size: 0.78rem; font-weight: 500; color: var(--soft); margin-bottom: 6px; }
+    .modal-field input { width: 100%; border: 1px solid rgba(74,171,165,0.22); border-radius: 8px; padding: 14px 16px; font-size: 0.9rem; color: var(--ink); background: var(--white); transition: border-color 0.15s; min-height: 44px; }
+    .modal-field input:focus { outline: none; border-color: var(--teal); box-shadow: 0 0 0 3px rgba(74,171,165,0.18); }
+    .modal-field input::placeholder { color: rgba(110,110,115,0.5); }
+    .modal-submit { width: 100%; border-radius: 8px; background: var(--teal); color: var(--white); font-size: 0.9rem; font-weight: 500; padding: 16px; border: none; cursor: pointer; min-height: 52px; font-family: 'DM Sans', sans-serif; transition: background 0.18s; display: flex; align-items: center; justify-content: center; }
+    .modal-submit:hover { background: var(--teal-dark); }
+    .modal-submit-note { font-size: 0.75rem; color: var(--muted); text-align: center; margin-top: 12px; line-height: 1.5; }
+    .modal-confirm { display: none; text-align: center; padding: 20px 0; }
+    .modal-confirm.is-active { display: block; }
+    .modal-check { width: 40px; height: 40px; color: var(--teal); margin: 0 auto 20px; }
+    .modal-confirm-heading { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.5rem; color: var(--ink); margin-bottom: 12px; }
+    .modal-confirm-body { font-size: 0.9rem; font-weight: 300; color: var(--soft); line-height: 1.6; margin-bottom: 8px; }
+    .modal-confirm-secondary { font-size: 0.82rem; color: var(--soft); margin-bottom: 28px; font-weight: 300; }
+    .modal-confirm-actions { display: flex; flex-direction: column; gap: 10px; }
+    .spinner { display: inline-block; width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.4); border-top-color: white; border-radius: 50%; animation: spin 0.7s linear infinite; margin-right: 8px; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    #modal-live { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+
+    /* =========================================
+       RESPONSIVE
+    ========================================= */
+    @media (max-width: 859px) {
+      body { padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)); }
+    }
+    @media (max-width: 560px) {
+      .page-hero-actions { flex-direction: column; align-items: stretch; }
+      .page-hero-actions .btn { width: 100%; }
+      .cta-strip-buttons { flex-direction: column; align-items: stretch; }
+      .cta-strip-buttons .btn { width: 100%; }
+    }
+    @media (max-width: 360px) {
+      .nav { padding: 0 14px; }
+      .nav-phone { font-size: 0.76rem; }
+      .service-card { padding: 28px 20px 24px; }
+      .service-detail-aside { padding: 28px 20px; }
+    }
+
+    /* Sticky mobile CTA */
+    .sticky-cta {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      z-index: 200; background: var(--teal-dark);
+      padding: 12px 20px calc(12px + env(safe-area-inset-bottom, 0px));
+      display: flex; align-items: center; justify-content: space-between; gap: 10px;
+      transform: translateY(100%); transition: transform 0.3s ease;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .sticky-cta.is-visible { transform: translateY(0); }
+    @media (min-width: 860px) { .sticky-cta { display: none; } }
+    .sticky-cta-text { font-size: 0.82rem; color: rgba(255,255,255,0.7); font-weight: 300; line-height: 1.3; }
+    .sticky-cta-text strong { display: block; color: var(--white); font-weight: 500; }
+    .sticky-cta-actions { display: flex; gap: 8px; flex-shrink: 0; }
+    .sticky-cta .btn { padding: 10px 18px; font-size: 0.82rem; }
+  </style>
+</head>
+<body>
+
+<div id="modal-live" aria-live="polite" aria-atomic="true"></div>
+
+<!-- ===== NAV ===== -->
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <a class="nav-logo-link" href="./index.html" aria-label="Savannah Personal Care Services — home">
+    <img src="./logo.png" alt="Savannah Personal Care Services" />
+  </a>
+
+  <ul class="nav-links" role="list">
+    <li class="nav-dropdown">
+      <a href="./care-options.html" class="active" aria-haspopup="true">
+        Types of Care <span class="nav-caret" aria-hidden="true">▾</span>
+      </a>
+      <div class="nav-dropdown-menu" role="menu">
+        <a href="#transitional" role="menuitem"><span class="dd-dot" aria-hidden="true"></span>Transitional Care</a>
+        <a href="#daily-living" role="menuitem"><span class="dd-dot" aria-hidden="true"></span>Daily Living Assistance</a>
+        <a href="#dementia" role="menuitem"><span class="dd-dot" aria-hidden="true"></span>Dementia Care Support</a>
+        <a href="#respite" role="menuitem"><span class="dd-dot" aria-hidden="true"></span>Respite Care</a>
+      </div>
+    </li>
+    <li><a href="./index.html#process">How It Works</a></li>
+    <li><a href="./index.html#about">About Us</a></li>
+    <li><a href="./index.html#careers">Careers</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <a class="nav-phone" href="tel:+19128561885" aria-label="Call (912) 856-1885">(912) 856-1885</a>
+    <button class="nav-menu-btn" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ===== NAV DRAWER ===== -->
+<div class="nav-backdrop" id="nav-backdrop" aria-hidden="true"></div>
+<div class="nav-drawer" id="nav-drawer" aria-label="Mobile navigation" hidden>
+  <div class="nav-drawer-inner">
+    <ul class="nav-drawer-links" role="list">
+      <li>
+        <a href="./care-options.html">Types of Care <span class="nav-drawer-arrow" aria-hidden="true">→</span></a>
+        <ul class="nav-drawer-sub" role="list">
+          <li><a href="#transitional"><span class="sub-dot" aria-hidden="true"></span>Transitional Care</a></li>
+          <li><a href="#daily-living"><span class="sub-dot" aria-hidden="true"></span>Daily Living Assistance</a></li>
+          <li><a href="#dementia"><span class="sub-dot" aria-hidden="true"></span>Dementia Care Support</a></li>
+          <li><a href="#respite"><span class="sub-dot" aria-hidden="true"></span>Respite Care</a></li>
+        </ul>
+      </li>
+      <li><a href="./index.html#process">How It Works <span class="nav-drawer-arrow" aria-hidden="true">→</span></a></li>
+      <li><a href="./index.html#about">About Us <span class="nav-drawer-arrow" aria-hidden="true">→</span></a></li>
+      <li><a href="./index.html#careers">Careers <span class="nav-drawer-arrow" aria-hidden="true">→</span></a></li>
+      <li><a href="./index.html#guide-section">Free Family Guide <span class="nav-drawer-arrow" aria-hidden="true">→</span></a></li>
+    </ul>
+    <div class="nav-drawer-actions">
+      <a class="btn btn-ghost" href="tel:+19128561885">Call (912) 856-1885</a>
+      <button class="btn btn-teal open-modal" aria-haspopup="dialog">Find the right care</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="page-hero" aria-labelledby="care-hero-title">
+  <div class="page-hero-inner">
+    <span class="label">Care Options</span>
+    <h1 class="page-hero-headline serif" id="care-hero-title">Find the right care<br />for your family.</h1>
+    <p class="page-hero-sub">Every family's situation is different. We offer four types of in-home care — each built around what your loved one actually needs.</p>
+    <div class="page-hero-actions">
+      <button class="btn btn-dark open-modal" aria-haspopup="dialog">Find the right care — 60 seconds</button>
+      <a class="btn btn-ghost" href="tel:+19128561885">Call (912) 856-1885</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICE CARDS ===== -->
+<section class="services-overview" aria-labelledby="services-grid-title">
+  <div class="services-overview-inner">
+    <div class="services-overview-header">
+      <span class="label" style="display:block;margin-bottom:12px;">Four types of care</span>
+      <h2 class="section-title serif" id="services-grid-title">One standard.<br />Four ways to serve.</h2>
+      <p class="section-body">Every service includes the Shannon Standard: free same-day assessment, supervised first visit, caregiver match within 48 hours, and a 72-hour follow-up.</p>
+    </div>
+
+    <div class="services-grid" role="list">
+      <!-- Transitional Care -->
+      <article class="service-card" role="listitem">
+        <span class="service-card-num">01</span>
+        <h3 class="service-card-name serif">Transitional Care</h3>
+        <p class="service-card-desc">We help with discharge coordination and execution — whether leaving from a hospital, rehabilitation facility, or nursing home. A Care Coordinator develops your home care needs and liaises with the facility social worker before discharge.</p>
+        <a href="#transitional" class="service-card-cta">
+          Learn more <span aria-hidden="true">→</span>
+        </a>
+      </article>
+
+      <!-- Daily Living (featured) -->
+      <article class="service-card is-featured" role="listitem">
+        <span class="service-card-num">02</span>
+        <h3 class="service-card-name serif">Daily Living Assistance</h3>
+        <p class="service-card-desc">Assisting with daily activities to promote independence and enhance quality of life — dressing, bathing, meals, medication reminders, housekeeping, transportation, mobility support, and fall prevention.</p>
+        <a href="#daily-living" class="service-card-cta">
+          Learn more <span aria-hidden="true">→</span>
+        </a>
+      </article>
+
+      <!-- Dementia -->
+      <article class="service-card" role="listitem">
+        <span class="service-card-num">03</span>
+        <h3 class="service-card-name serif">Dementia Care Support</h3>
+        <p class="service-card-desc">Personalized, non-medical support allowing individuals with cognitive decline to remain in a familiar, comfortable environment — rather than transitioning to a facility.</p>
+        <a href="#dementia" class="service-card-cta">
+          Learn more <span aria-hidden="true">→</span>
+        </a>
+      </article>
+
+      <!-- Respite -->
+      <article class="service-card" role="listitem">
+        <span class="service-card-num">04</span>
+        <h3 class="service-card-name serif">Respite Care</h3>
+        <p class="service-card-desc">Trained caregivers providing temporary relief — for a few hours, days, or weeks when family caregivers need a break. You cannot pour from an empty cup.</p>
+        <a href="#respite" class="service-card-cta">
+          Learn more <span aria-hidden="true">→</span>
+        </a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COMPARISON TABLE ===== -->
+<section class="compare-section" aria-labelledby="compare-title">
+  <div class="compare-inner">
+    <div class="compare-header">
+      <span class="label" style="display:block;margin-bottom:12px;">Side by side</span>
+      <h2 class="section-title serif" id="compare-title">What's included<br />in each type of care.</h2>
+      <p class="section-body">Not sure which applies? Every column includes the Shannon Standard. The difference is what each care type specializes in.</p>
+    </div>
+
+    <div class="compare-scroll" role="region" aria-label="Care type comparison table" tabindex="0">
+      <table class="compare-table" aria-label="Care type comparison">
+        <thead>
+          <tr>
+            <th class="compare-th-feature" scope="col">Feature</th>
+            <th class="compare-th-plan" scope="col">
+              <span class="compare-plan-name serif">Transitional Care</span>
+              <span class="compare-plan-tag">Post-hospital</span>
+              <button class="compare-plan-btn open-modal">Get started</button>
+            </th>
+            <th class="compare-th-plan is-featured" scope="col">
+              <span class="compare-plan-name serif">Daily Living</span>
+              <span class="compare-plan-tag">Ongoing support</span>
+              <button class="compare-plan-btn open-modal">Get started</button>
+            </th>
+            <th class="compare-th-plan" scope="col">
+              <span class="compare-plan-name serif">Dementia Care</span>
+              <span class="compare-plan-tag">Cognitive decline</span>
+              <button class="compare-plan-btn open-modal">Get started</button>
+            </th>
+            <th class="compare-th-plan" scope="col">
+              <span class="compare-plan-name serif">Respite Care</span>
+              <span class="compare-plan-tag">Family relief</span>
+              <button class="compare-plan-btn open-modal">Get started</button>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <!-- Category: When it fits -->
+          <tr class="cat-row">
+            <td colspan="5">When it fits</td>
+          </tr>
+          <tr class="feature-row">
+            <td class="compare-td-label">Best for<p>Who benefits most</p></td>
+            <td class="compare-td">Coming home from hospital or rehab</td>
+            <td class="compare-td is-featured-col">Ongoing daily support at home</td>
+            <td class="compare-td">Memory loss or cognitive decline</td>
+            <td class="compare-td">Family caregiver burnout</td>
+          </tr>
+          <tr class="feature-row">
+            <td class="compare-td-label">Typical duration</td>
+            <td class="compare-td">30–90 days</td>
+            <td class="compare-td is-featured-col">Ongoing</td>
+            <td class="compare-td">Ongoing</td>
+            <td class="compare-td">Hours, days, or weeks</td>
+          </tr>
+          <tr class="feature-row">
+            <td class="compare-td-label">When to start</td>
+            <td class="compare-td">Before discharge — we coordinate ahead</td>
+            <td class="compare-td is-featured-col">When daily tasks become difficult</td>
+            <td class="compare-td">Early stages — routine matters most</td>
+            <td class="compare-td">Now. Don't wait for burnout.</td>
+          </tr>
+
+          <!-- Category: Care services included -->
+          <tr class="cat-row">
+            <td colspan="5">Care services included</td>
+          </tr>
+          <tr class="feature-row">
+            <td class="compare-td-label">Hospital / facility coordination</td>
+            <td class="compare-td"><span class="check" aria-label="Included">✓</span></td>
+            <td class="compare-td is-featured-col"><span class="dash" aria-label="Not included">—</span></td>
+            <td class="compare-td"><span class="dash" aria-label="Not included">—</span></td>
+            <td class="compare-td"><span class="dash" aria-label="Not included">—</span></td>
+          </tr>
+          <tr class="feature-row">
+            <td class="compare-td-label">Social worker liaison</td>
+            <td class="compare-td"><span class="check" aria-label="Included">✓</span></td>
+            <td class="compare-td is-featured-col"><span class="dash" aria-label="Not included">—</span></td>
+            <td class="compare-td"><span class="dash" aria-label="Not included">—</span></td>
+            <td class="compare-td"><span class="dash" aria-label="Not included">—</span></td>
+          </tr>
+          <tr class="feature-row">
+            <td class="compare-td-label">Dressing &amp; grooming</td>
+            <td class="compare-td"><span class="dash" aria-label="Not included">—</span></td>
+            <td class="compare-td is-featured-col"><span class="check" aria-label="Included">✓</span></td>
+            <td class="compare-td"><span class="check" aria-label="Included">✓</span></td>
+            <td class="compare-td"><span class="check" aria-label="Included">✓</span></td>
+          </tr>
+          <tr class="feature-row">
+            <td class="compare-td-label">Bathing, toileting &amp; hygiene</td>
+            <td class="compare-td"><span class="dash" aria-label="Not included">—</span></td>
+            <td class="compare-td is-featured-col"><span class="check" aria-label="Included">✓</span></td>
+            <td class="compare-td"><span class="check" aria-label="Included">✓</span></td>
+            <td class="compare-td"><span class="check" aria-label="Included">✓</span></td>
+          </tr>
+          <tr class="feature-row">
+            <td class="compare-td-label">Medication reminders</td>
+            <td class="compare-td"><span class="check" aria-label="Included">✓</span></td>
+            <td class="compare-td is-featured-col"><span class="check" aria-label="Included">✓</span></td>
+            <td class="compare-td"><span class="check" aria-label="Included">✓</span></td>
+            <td class="compare-td"><span class="dash" aria-label="Not included">—</span></td>
+          </tr>
+          <tr class="feature-row">
+            <td class="compare-td-label">Meal preparation &amp; diet monitoring</td>
+            <td class="compare-td"><span class="check" aria-label="Included">✓</span></td>
+            <td class="compare-td is-featured-col"><span class="check" aria-label="Included">✓</span></td>
+            <td class="compare-td"><span class="check" aria-label="Included">✓</span></td>
+            <td class="compare-td"><span class="check" aria-label="Included">✓</span></td>
+          </tr>
+          <tr class="feature-row">
+            <td class="compare-td-label">Light housekeeping</td>
+            <td class="compare-td"><span class="dash" aria-label="Not included">—</span></td>
+            <td class="compare-td is-featured-col"><span class="check" aria-label="Included">✓</span></td>
+            <td class="compare-td"><span class="check" aria-label="Included">✓</span></td>
+            <td class="compare-td"><span class="check" aria-label="Included">✓</span></td>
+          </tr>
+          <tr class="feature-row">
+            <td class="compare-td-label">Errands &amp; transportation to appointments</td>
+            <td class="compare-td"><span class="check" aria-label="Included">✓</span></td>
+            <td class="compare-td is-featured-col"><span class="check" aria-label="Included">✓</span></td>
+            <td class="compare-td"><span class="dash" aria-label="Not included">—</span></td>
+            <td class="compare-td"><span class="dash" aria-label="Not included">—</span></td>
+          </tr>
+          <tr class="feature-row">
+            <td class="compare-td-label">Mobility &amp; transfer support</td>
+            <td class="compare-td"><span class="check" aria-label="Included">✓</span></td>
+            <td class="compare-td is-featured-col"><span class="check" aria-label="Included">✓</span></td>
+            <td class="compare-td"><span class="check" aria-label="Included">✓</span></td>
+            <td class="compare-td"><span class="dash" aria-label="Not included">—</span></td>
+          </tr>
+          <tr class="feature-row">
+            <td class="compare-td-label">Fall prevention assistance</td>
+            <td class="compare-td"><span class="check" aria-label="Included">✓</span></td>
+            <td class="compare-td is-featured-col"><span class="check" aria-label="Included">✓</span></td>
+            <td class="compare-td"><span class="check" aria-label="Included">✓</span></td>
+            <td class="compare-td"><span class="dash" aria-label="Not included">—</span></td>
+          </tr>
+          <tr class="feature-row">
+            <td class="compare-td-label">Dementia-trained caregiver<p>Specialist matching</p></td>
+            <td class="compare-td"><span class="dash" aria-label="Not included">—</span></td>
+            <td class="compare-td is-featured-col"><span class="dash" aria-label="Not included">—</span></td>
+            <td class="compare-td"><span class="check" aria-label="Included">✓</span></td>
+            <td class="compare-td"><span class="dash" aria-label="Not included">—</span></td>
+          </tr>
+          <tr class="feature-row">
+            <td class="compare-td-label">Familiar routine protection<p>Consistent schedule and faces</p></td>
+            <td class="compare-td"><span class="dash" aria-label="Not included">—</span></td>
+            <td class="compare-td is-featured-col"><span class="check" aria-label="Included">✓</span></td>
+            <td class="compare-td"><span class="check" aria-label="Included">✓</span></td>
+            <td class="compare-td"><span class="dash" aria-label="Not included">—</span></td>
+          </tr>
+          <tr class="feature-row">
+            <td class="compare-td-label">Flexible scheduling<p>Hours, days, or weeks as needed</p></td>
+            <td class="compare-td"><span class="dash" aria-label="Not included">—</span></td>
+            <td class="compare-td is-featured-col"><span class="dash" aria-label="Not included">—</span></td>
+            <td class="compare-td"><span class="dash" aria-label="Not included">—</span></td>
+            <td class="compare-td"><span class="check" aria-label="Included">✓</span></td>
+          </tr>
+
+          <!-- Category: The Shannon Standard -->
+          <tr class="cat-row">
+            <td colspan="5">The Shannon Standard — included in all care types</td>
+          </tr>
+          <tr class="feature-row">
+            <td class="compare-td-label">Free care assessment<p>Same day · 20 min · No obligation</p></td>
+            <td class="compare-td"><span class="check" aria-label="Included">✓</span></td>
+            <td class="compare-td is-featured-col"><span class="check" aria-label="Included">✓</span></td>
+            <td class="compare-td"><span class="check" aria-label="Included">✓</span></td>
+            <td class="compare-td"><span class="check" aria-label="Included">✓</span></td>
+          </tr>
+          <tr class="feature-row">
+            <td class="compare-td-label">Supervised first visit<p>Shannon or senior coordinator present</p></td>
+            <td class="compare-td"><span class="check" aria-label="Included">✓</span></td>
+            <td class="compare-td is-featured-col"><span class="check" aria-label="Included">✓</span></td>
+            <td class="compare-td"><span class="check" aria-label="Included">✓</span></td>
+            <td class="compare-td"><span class="check" aria-label="Included">✓</span></td>
+          </tr>
+          <tr class="feature-row">
+            <td class="compare-td-label">Caregiver match within 48 hrs<p>[VERIFY timeline]</p></td>
+            <td class="compare-td"><span class="check" aria-label="Included">✓</span></td>
+            <td class="compare-td is-featured-col"><span class="check" aria-label="Included">✓</span></td>
+            <td class="compare-td"><span class="check" aria-label="Included">✓</span></td>
+            <td class="compare-td"><span class="check" aria-label="Included">✓</span></td>
+          </tr>
+          <tr class="feature-row">
+            <td class="compare-td-label">72-hour follow-up<p>Written update + check-in call</p></td>
+            <td class="compare-td"><span class="check" aria-label="Included">✓</span></td>
+            <td class="compare-td is-featured-col"><span class="check" aria-label="Included">✓</span></td>
+            <td class="compare-td"><span class="check" aria-label="Included">✓</span></td>
+            <td class="compare-td"><span class="check" aria-label="Included">✓</span></td>
+          </tr>
+          <tr class="feature-row">
+            <td class="compare-td-label">CNA-founded agency</td>
+            <td class="compare-td"><span class="check" aria-label="Included">✓</span></td>
+            <td class="compare-td is-featured-col"><span class="check" aria-label="Included">✓</span></td>
+            <td class="compare-td"><span class="check" aria-label="Included">✓</span></td>
+            <td class="compare-td"><span class="check" aria-label="Included">✓</span></td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICE DETAIL: TRANSITIONAL ===== -->
+<section class="service-detail" id="transitional" aria-labelledby="transitional-title">
+  <div class="service-detail-inner">
+    <div class="service-detail-aside">
+      <span class="service-detail-num">01 — Transitional Care</span>
+      <h2 class="service-detail-aside-title serif">What we handle before you get home.</h2>
+      <div class="service-features">
+        <div class="service-feature-item">Discharge coordination from hospital, rehab, or nursing home</div>
+        <div class="service-feature-item">Care plan developed with facility social worker before discharge</div>
+        <div class="service-feature-item">Medication management and reminders</div>
+        <div class="service-feature-item">Meal preparation and transportation to follow-up appointments</div>
+        <div class="service-feature-item">Mobility and transfer support at home</div>
+        <div class="service-feature-item">Fall prevention during recovery</div>
+      </div>
+    </div>
+    <div class="service-detail-body">
+      <span class="label">Transitional Care</span>
+      <h3 class="service-detail-title serif" id="transitional-title">Most hospital readmissions are preventable.</h3>
+      <p class="service-detail-text">We help with discharge coordination and execution — whether you are leaving from a hospital, rehabilitation facility, or nursing home. Prior to discharge, one of our Care Coordinators will assist in developing your home care needs and coordinate with the facility social worker to make sure all the needs of your loved one are met.</p>
+      <p class="service-detail-text">Most hospital readmissions happen within 30 days of discharge — not because patients got worse, but because home care coordination failed. We coordinate with your discharge team before your loved one leaves the building.</p>
+      <div class="service-detail-cta">
+        <button class="btn btn-dark open-modal">Schedule a free assessment</button>
+        <a class="btn btn-ghost" href="tel:+19128561885">Call (912) 856-1885</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICE DETAIL: DAILY LIVING ===== -->
+<section class="service-detail" id="daily-living" aria-labelledby="daily-living-title">
+  <div class="service-detail-inner">
+    <div class="service-detail-aside">
+      <span class="service-detail-num">02 — Daily Living Assistance</span>
+      <h2 class="service-detail-aside-title serif">Independence supported.</h2>
+      <div class="service-features">
+        <div class="service-feature-item">Dressing and grooming</div>
+        <div class="service-feature-item">Bathing, toileting and hygiene tasks</div>
+        <div class="service-feature-item">Medication reminders</div>
+        <div class="service-feature-item">Meal preparation and diet monitoring</div>
+        <div class="service-feature-item">Light housekeeping</div>
+        <div class="service-feature-item">Errands and transport to medical appointments</div>
+        <div class="service-feature-item">Mobility and transfer support</div>
+        <div class="service-feature-item">Fall prevention assistance</div>
+      </div>
+    </div>
+    <div class="service-detail-body">
+      <span class="label">Daily Living Assistance</span>
+      <h3 class="service-detail-title serif" id="daily-living-title">Independence isn't the absence of help.</h3>
+      <p class="service-detail-text">Assisting with daily activities to promote independence and enhance the quality of life. The right help at the right time — built around your loved one's routine, not ours.</p>
+      <p class="service-detail-text">Our Care Team handles the daily tasks that have become difficult, so your loved one stays in the home they know, with their schedule intact, their dignity preserved, and the people they trust around them.</p>
+      <div class="service-detail-cta">
+        <button class="btn btn-dark open-modal">Schedule a free assessment</button>
+        <a class="btn btn-ghost" href="tel:+19128561885">Call (912) 856-1885</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICE DETAIL: DEMENTIA ===== -->
+<section class="service-detail" id="dementia" aria-labelledby="dementia-title">
+  <div class="service-detail-inner">
+    <div class="service-detail-aside">
+      <span class="service-detail-num">03 — Dementia Care Support</span>
+      <h2 class="service-detail-aside-title serif">Familiar. Consistent. Safe.</h2>
+      <div class="service-features">
+        <div class="service-feature-item">Dementia-trained caregiver matched to your loved one</div>
+        <div class="service-feature-item">Consistent scheduling — same faces, same routine</div>
+        <div class="service-feature-item">Familiar home environment preserved</div>
+        <div class="service-feature-item">Non-medical support and daily living assistance</div>
+        <div class="service-feature-item">Mobility support and fall prevention</div>
+        <div class="service-feature-item">Family communication and regular updates</div>
+      </div>
+    </div>
+    <div class="service-detail-body">
+      <span class="label">Dementia Care Support</span>
+      <h3 class="service-detail-title serif" id="dementia-title">Staying home isn't just possible — it's the best option.</h3>
+      <p class="service-detail-text">We offer personalized, non-medical support, allowing individuals with cognitive decline to remain in a familiar, comfortable environment rather than transitioning to a facility.</p>
+      <p class="service-detail-text">Cognitive decline accelerates when familiar environments are disrupted. Every strategy we use — consistent scheduling, familiar faces, preserved routines — is designed to protect what is familiar for as long as possible. The caregiver we match to your loved one stays consistent. That consistency is the care.</p>
+      <div class="service-detail-cta">
+        <button class="btn btn-dark open-modal">Schedule a free assessment</button>
+        <a class="btn btn-ghost" href="tel:+19128561885">Call (912) 856-1885</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICE DETAIL: RESPITE ===== -->
+<section class="service-detail" id="respite" aria-labelledby="respite-title">
+  <div class="service-detail-inner">
+    <div class="service-detail-aside">
+      <span class="service-detail-num">04 — Respite Care</span>
+      <h2 class="service-detail-aside-title serif">You need a break. That's not a failure.</h2>
+      <div class="service-features">
+        <div class="service-feature-item">Temporary relief — hours, days, or weeks</div>
+        <div class="service-feature-item">Trained caregiver steps in fully while you rest</div>
+        <div class="service-feature-item">Flexible scheduling around your needs</div>
+        <div class="service-feature-item">Full personal care and meal preparation</div>
+        <div class="service-feature-item">Reduced caregiver stress</div>
+        <div class="service-feature-item">Time for yourself — without guilt</div>
+      </div>
+    </div>
+    <div class="service-detail-body">
+      <span class="label">Respite Care</span>
+      <h3 class="service-detail-title serif" id="respite-title">Family caregivers have a 63% higher mortality rate. Respite care is not a luxury.</h3>
+      <p class="service-detail-text">Respite care involves our trained caregivers providing temporary relief for a few hours, days, or weeks when needed. We exist so you can exist — without guilt.</p>
+      <p class="service-detail-text">You have been caring for someone you love. That is something to be proud of. But you cannot pour from an empty cup, and the person you're caring for needs you healthy. Taking time for yourself is the most protective thing you can do for both of you.</p>
+      <div class="service-detail-cta">
+        <button class="btn btn-dark open-modal">Schedule a free assessment</button>
+        <a class="btn btn-ghost" href="tel:+19128561885">Call (912) 856-1885</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="faq-section" aria-labelledby="faq-title">
+  <div class="faq-inner">
+    <div class="faq-header">
+      <span class="label">Common questions</span>
+      <h2 class="section-title serif" id="faq-title" style="margin-top:16px;">What families ask<br />before they call.</h2>
+    </div>
+
+    <div class="faq-list" role="list">
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-a1">
+          How do I know which type of care my parent needs?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq-a1" role="region">
+          The best place to start is our free 20-minute care assessment. Shannon or a Care Coordinator will listen to your situation and tell you exactly which care type fits — or whether a combination makes sense. You don't need to know the answer before you call.
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-a2">
+          How quickly can care begin after we call?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq-a2" role="region">
+          Same-day assessments are available. We typically match a caregiver and begin services within 48 hours of your first call. For hospital discharge situations, we prefer to be involved before your loved one leaves the facility — call us as soon as you know discharge is coming.
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-a3">
+          Can we change care types as needs evolve?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq-a3" role="region">
+          Yes. Many families start with Transitional Care after a hospital discharge, then transition to Daily Living Assistance as a long-term arrangement. Your care plan is reviewed and updated as your loved one's needs change — this is a living document, not a one-time decision.
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-a4">
+          Is there a minimum number of hours per week?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq-a4" role="region">
+          We'll discuss the right schedule during your free assessment. Many families start with just a few hours a week and scale from there. We meet your loved one where they are — we don't require a minimum commitment before you've seen whether it's the right fit.
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-a5">
+          What does "Supervised First Visit" actually mean?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq-a5" role="region">
+          Shannon or a senior coordinator is physically present when your caregiver meets your loved one for the first time. It is not a phone call. It is not paperwork. Someone you have already spoken with and trust is in the room — for every family, every time. This is not standard in home care. It is our standard.
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-a6">
+          Does Medicare or insurance cover in-home care?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq-a6" role="region">
+          Private in-home personal care services are typically not covered by Medicare or standard health insurance. Long-term care insurance may cover some services depending on your policy. We will walk you through what applies to your family's situation during the free assessment — there are no surprises.
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-a7">
+          My loved one is resistant to having someone come in. What do we do?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq-a7" role="region">
+          This is the most common thing families tell us. Shannon has navigated this conversation hundreds of times. We typically recommend starting with one afternoon a week and focusing on the relationship first — the care comes from the connection, not the other way around. The resistance usually softens when the right caregiver shows up. We match on personality first.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA STRIP ===== -->
+<section class="cta-strip" aria-labelledby="cta-strip-title">
+  <div class="cta-strip-inner">
+    <span class="label">Get started</span>
+    <h2 class="cta-strip-title serif" id="cta-strip-title">The first conversation<br />costs nothing.</h2>
+    <p class="cta-strip-body">A free 20-minute care assessment. No obligation, no sales script. We tell you exactly what care would look like and what it costs — before you make any decision.</p>
+    <div class="cta-strip-buttons">
+      <a class="btn btn-white" href="tel:+19128561885">Call (912) 856-1885</a>
+      <button class="btn btn-ghost-white open-modal">Find the right care — 60 seconds</button>
+    </div>
+    <p class="cta-strip-note">No pressure · We respond within 2 hours · Free, no obligation</p>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer-v2" role="contentinfo">
+  <div class="footer-v2-inner">
+    <div class="footer-v2-top">
+
+      <!-- Brand -->
+      <div class="footer-v2-brand">
+        <a href="./index.html" class="footer-logo-mark" aria-label="Savannah Personal Care Services — home">
+          <span class="footer-logo-eyebrow">Savannah</span>
+          <span class="footer-logo-primary">Personal Care</span>
+          <span class="footer-logo-secondary">Services</span>
+        </a>
+        <p class="footer-v2-tagline">Founded by Shannon Stafford Simpson, CNA.<br />Serving coastal Georgia.</p>
+        <div class="footer-social">
+          <a href="#" class="footer-social-link" aria-label="Follow us on Facebook" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+            </svg>
+          </a>
+          <a href="#" class="footer-social-link" aria-label="Follow us on Instagram" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Nav columns -->
+      <nav class="footer-v2-nav" aria-label="Footer navigation">
+        <div>
+          <p class="footer-v2-col-title">Care Services</p>
+          <div class="footer-v2-col-links">
+            <a href="#transitional">Transitional Care</a>
+            <a href="#daily-living">Daily Living Assistance</a>
+            <a href="#dementia">Dementia Care Support</a>
+            <a href="#respite">Respite Care</a>
+          </div>
+        </div>
+        <div>
+          <p class="footer-v2-col-title">Company</p>
+          <div class="footer-v2-col-links">
+            <a href="./index.html#about">About Shannon</a>
+            <a href="./index.html#process">How It Works</a>
+            <a href="./index.html#careers">Careers</a>
+          </div>
+        </div>
+        <div>
+          <p class="footer-v2-col-title">Contact</p>
+          <div class="footer-v2-col-links">
+            <a href="tel:+19128561885">(912) 856-1885</a>
+            <a href="mailto:savpcs@yahoo.com">savpcs@yahoo.com</a>
+            <a href="./index.html#guide-section">Free Family Guide</a>
+            <a href="./index.html">Home</a>
+          </div>
+        </div>
+      </nav>
+
+    </div>
+
+    <div class="footer-v2-bottom">
+      <span class="footer-v2-copy">© 2026 Savannah Personal Care Services · Georgia PHCP Licensed · Savannah, GA</span>
+      <nav class="footer-v2-legal" aria-label="Legal links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Accessibility</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== STICKY MOBILE CTA ===== -->
+<div class="sticky-cta" id="sticky-cta" role="complementary" aria-label="Quick contact">
+  <div class="sticky-cta-text">
+    <strong>Free 20-min care assessment</strong>
+    Same day · No obligation
+  </div>
+  <div class="sticky-cta-actions">
+    <a class="btn btn-ghost-white" href="tel:+19128561885" aria-label="Call now">Call</a>
+    <button class="btn btn-teal open-modal" aria-haspopup="dialog">60-sec finder</button>
+  </div>
+</div>
+
+<!-- ===== INTAKE MODAL ===== -->
+<div class="modal-overlay" id="intake-modal" role="dialog" aria-modal="true" aria-labelledby="modal-heading-1">
+  <div class="modal-card" id="modal-card">
+    <button class="modal-close" id="modal-close" aria-label="Close care finder">✕</button>
+    <div class="modal-progress" aria-hidden="true">
+      <div class="modal-dot active" id="dot-1"></div>
+      <div class="modal-dot" id="dot-2"></div>
+      <div class="modal-dot" id="dot-3"></div>
+    </div>
+    <div class="modal-step is-active" id="modal-step-1">
+      <h2 class="modal-heading serif" id="modal-heading-1">Let's find the right care.</h2>
+      <p class="modal-subhead">Three quick questions.</p>
+      <div class="modal-options" role="group" aria-labelledby="modal-heading-1">
+        <button class="modal-option" data-step="1" data-value="My parent">My parent</button>
+        <button class="modal-option" data-step="1" data-value="My spouse or partner">My spouse or partner</button>
+        <button class="modal-option" data-step="1" data-value="Myself">Myself</button>
+        <button class="modal-option" data-step="1" data-value="Someone else">Someone else</button>
+      </div>
+    </div>
+    <div class="modal-step" id="modal-step-2" aria-labelledby="modal-heading-2">
+      <div class="modal-pills" id="pills-2" aria-label="Previous selections"></div>
+      <h2 class="modal-heading serif" id="modal-heading-2">What's most important right now?</h2>
+      <div class="modal-options" role="group" aria-labelledby="modal-heading-2">
+        <button class="modal-option" data-step="2" data-value="Help coming home from hospital">Help coming home from hospital</button>
+        <button class="modal-option" data-step="2" data-value="Support with daily tasks at home">Support with daily tasks at home</button>
+        <button class="modal-option" data-step="2" data-value="Memory care or dementia support">Memory care or dementia support</button>
+        <button class="modal-option" data-step="2" data-value="A break for our family (respite)">A break for our family (respite)</button>
+        <button class="modal-option" data-step="2" data-value="I'm not sure yet">I'm not sure yet</button>
+      </div>
+      <button class="modal-back" id="back-1">← Back</button>
+    </div>
+    <div class="modal-step" id="modal-step-3" aria-labelledby="modal-heading-3">
+      <div class="modal-pills" id="pills-3" aria-label="Previous selections"></div>
+      <h2 class="modal-heading serif" id="modal-heading-3">Almost done.</h2>
+      <p class="modal-subhead">Shannon or her team will call you within 2 hours — not a call center.</p>
+      <form class="modal-fields" id="intake-form" novalidate>
+        <div class="modal-field">
+          <label for="field-name">Your first name</label>
+          <input type="text" id="field-name" name="name" placeholder="First name" required autocomplete="given-name" />
+        </div>
+        <div class="modal-field">
+          <label for="field-phone">Best phone number</label>
+          <input type="tel" id="field-phone" name="phone" placeholder="(912) 000-0000" required autocomplete="tel" />
+        </div>
+        <div class="modal-field">
+          <label for="field-email">Email <span style="font-weight:300;opacity:0.6;">(optional)</span></label>
+          <input type="email" id="field-email" name="email" placeholder="you@email.com" autocomplete="email" />
+        </div>
+        <button type="submit" class="modal-submit" id="modal-submit-btn">Connect me with Shannon →</button>
+      </form>
+      <p class="modal-submit-note">No pressure. No commitment. We'll answer your questions and let you decide what's next.</p>
+      <button class="modal-back" id="back-2">← Back</button>
+    </div>
+    <div class="modal-confirm" id="modal-confirm">
+      <svg class="modal-check" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <circle cx="20" cy="20" r="19" stroke="currentColor" stroke-width="2"/>
+        <path d="M12 20l6 6 10-12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <h2 class="modal-confirm-heading serif">You're all set.</h2>
+      <p class="modal-confirm-body">Shannon or her team will reach you within 2 hours at the number you provided.</p>
+      <p class="modal-confirm-secondary">In the meantime, the free Savannah Family Guide is worth a read.</p>
+      <div class="modal-confirm-actions">
+        <a href="./index.html#guide-section" class="btn btn-teal" id="confirm-guide-btn">Download the Guide →</a>
+        <button class="btn btn-ghost" id="confirm-close-btn">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  // ---- MODAL ----
+  var answers = { step1: '', step2: '' };
+  var currentStep = 1;
+  var previouslyFocused = null;
+  var overlay    = document.getElementById('intake-modal');
+  var card       = document.getElementById('modal-card');
+  var closeBtn   = document.getElementById('modal-close');
+  var step1      = document.getElementById('modal-step-1');
+  var step2      = document.getElementById('modal-step-2');
+  var step3      = document.getElementById('modal-step-3');
+  var confirm    = document.getElementById('modal-confirm');
+  var dots       = [document.getElementById('dot-1'), document.getElementById('dot-2'), document.getElementById('dot-3')];
+  var pills2     = document.getElementById('pills-2');
+  var pills3     = document.getElementById('pills-3');
+  var form       = document.getElementById('intake-form');
+  var submitBtn  = document.getElementById('modal-submit-btn');
+  var back1      = document.getElementById('back-1');
+  var back2      = document.getElementById('back-2');
+  var confirmGuide = document.getElementById('confirm-guide-btn');
+  var confirmClose = document.getElementById('confirm-close-btn');
+  var liveRegion = document.getElementById('modal-live');
+
+  function getFocusable() {
+    return Array.from(card.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])')).filter(function(el) { return el.offsetParent !== null; });
+  }
+  function trapFocus(e) {
+    if (!overlay.classList.contains('is-open')) return;
+    var focusable = getFocusable(); var first = focusable[0]; var last = focusable[focusable.length - 1];
+    if (e.key === 'Tab') { if (e.shiftKey) { if (document.activeElement === first) { e.preventDefault(); last.focus(); } } else { if (document.activeElement === last) { e.preventDefault(); first.focus(); } } }
+    if (e.key === 'Escape') closeModal();
+  }
+  function openModal() {
+    previouslyFocused = document.activeElement;
+    overlay.classList.add('is-open'); document.body.style.overflow = 'hidden';
+    document.addEventListener('keydown', trapFocus);
+    setTimeout(function() { var f = getFocusable(); if (f.length) f[0].focus(); }, 250);
+    announce('Care finder opened. Step 1 of 3.');
+  }
+  function closeModal() {
+    overlay.classList.remove('is-open'); document.body.style.overflow = '';
+    document.removeEventListener('keydown', trapFocus);
+    if (previouslyFocused) previouslyFocused.focus();
+  }
+  function announce(msg) { liveRegion.textContent = ''; setTimeout(function() { liveRegion.textContent = msg; }, 50); }
+  function updateDots(step) {
+    dots.forEach(function(dot, i) { dot.classList.remove('active','completed'); if (i+1<step) dot.classList.add('completed'); if (i+1===step) dot.classList.add('active'); });
+  }
+  function buildPills(container, values) {
+    container.innerHTML = '';
+    values.forEach(function(v) { if (!v) return; var pill = document.createElement('span'); pill.className='modal-pill'; pill.textContent=v; container.appendChild(pill); });
+  }
+  function showStep(n) {
+    currentStep = n;
+    step1.classList.toggle('is-active', n===1); step2.classList.toggle('is-active', n===2); step3.classList.toggle('is-active', n===3);
+    confirm.classList.remove('is-active'); updateDots(n);
+    if (n===2) { buildPills(pills2, [answers.step1]); announce('Step 2 of 3.'); }
+    if (n===3) { buildPills(pills3, [answers.step1, answers.step2]); announce('Step 3 of 3.'); }
+    setTimeout(function() { var f=getFocusable(); if (f.length) f[0].focus(); }, 50);
+  }
+  function showConfirm() {
+    step1.classList.remove('is-active'); step2.classList.remove('is-active'); step3.classList.remove('is-active');
+    confirm.classList.add('is-active');
+    dots.forEach(function(dot) { dot.classList.remove('active'); dot.classList.add('completed'); });
+    announce("You're all set. Shannon will contact you within 2 hours.");
+    setTimeout(function() { var f=getFocusable(); if (f.length) f[0].focus(); }, 50);
+  }
+
+  document.querySelectorAll('.open-modal').forEach(function(btn) {
+    btn.addEventListener('click', function() { answers = {step1:'',step2:''}; form.reset(); showStep(1); openModal(); });
+  });
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e) { if (e.target===overlay) closeModal(); });
+  step1.querySelectorAll('.modal-option').forEach(function(btn) { btn.addEventListener('click', function() { answers.step1=this.dataset.value; showStep(2); }); });
+  step2.querySelectorAll('.modal-option').forEach(function(btn) { btn.addEventListener('click', function() { answers.step2=this.dataset.value; showStep(3); }); });
+  back1.addEventListener('click', function() { showStep(1); });
+  back2.addEventListener('click', function() { showStep(2); });
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var name = document.getElementById('field-name').value.trim();
+    var phone = document.getElementById('field-phone').value.trim();
+    if (!name || !phone) { if (!name) document.getElementById('field-name').focus(); else document.getElementById('field-phone').focus(); announce('Please fill in the required fields.'); return; }
+    submitBtn.disabled = true; submitBtn.innerHTML = '<span class="spinner"></span>Connecting…';
+    setTimeout(function() { showConfirm(); submitBtn.disabled=false; submitBtn.innerHTML='Connect me with Shannon →'; }, 400);
+  });
+  if (confirmGuide) confirmGuide.addEventListener('click', function() { closeModal(); });
+  if (confirmClose) confirmClose.addEventListener('click', closeModal);
+
+  // ---- NAV DRAWER ----
+  var menuBtn      = document.querySelector('.nav-menu-btn');
+  var navDrawer    = document.getElementById('nav-drawer');
+  var navBackdrop  = document.getElementById('nav-backdrop');
+  var isDrawerOpen = false;
+
+  function openDrawer() {
+    isDrawerOpen = true; navDrawer.removeAttribute('hidden');
+    requestAnimationFrame(function() { requestAnimationFrame(function() {
+      navDrawer.classList.add('is-open'); navBackdrop.classList.add('is-open');
+      menuBtn.classList.add('is-open'); menuBtn.setAttribute('aria-expanded','true'); menuBtn.setAttribute('aria-label','Close menu');
+      document.body.style.overflow = 'hidden';
+    }); });
+    document.addEventListener('keydown', onDrawerKey);
+  }
+  function closeDrawer() {
+    isDrawerOpen = false; navDrawer.classList.remove('is-open'); navBackdrop.classList.remove('is-open');
+    menuBtn.classList.remove('is-open'); menuBtn.setAttribute('aria-expanded','false'); menuBtn.setAttribute('aria-label','Open menu');
+    document.body.style.overflow = '';
+    document.removeEventListener('keydown', onDrawerKey);
+    setTimeout(function() { if (!isDrawerOpen) navDrawer.setAttribute('hidden',''); }, 260);
+  }
+  function onDrawerKey(e) { if (e.key==='Escape') closeDrawer(); }
+  if (menuBtn) menuBtn.addEventListener('click', function() { isDrawerOpen ? closeDrawer() : openDrawer(); });
+  if (navBackdrop) navBackdrop.addEventListener('click', closeDrawer);
+  if (navDrawer) {
+    navDrawer.querySelectorAll('a[href]').forEach(function(link) { link.addEventListener('click', function() { closeDrawer(); }); });
+    navDrawer.querySelectorAll('.open-modal').forEach(function(btn) { btn.addEventListener('click', function() { closeDrawer(); }); });
+  }
+
+  // ---- FAQ ACCORDION ----
+  document.querySelectorAll('.faq-question').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var isOpen = this.getAttribute('aria-expanded') === 'true';
+      var answerId = this.getAttribute('aria-controls');
+      var answer = document.getElementById(answerId);
+      // Close all
+      document.querySelectorAll('.faq-question').forEach(function(b) {
+        b.setAttribute('aria-expanded','false');
+        var a = document.getElementById(b.getAttribute('aria-controls'));
+        if (a) a.classList.remove('is-open');
+      });
+      // Open this one if it was closed
+      if (!isOpen) {
+        this.setAttribute('aria-expanded','true');
+        if (answer) answer.classList.add('is-open');
+      }
+    });
+  });
+
+  // ---- STICKY CTA ----
+  var stickyCta = document.getElementById('sticky-cta');
+  var heroEl = document.querySelector('.page-hero');
+  if (stickyCta && heroEl) {
+    window.addEventListener('scroll', function() {
+      stickyCta.classList.toggle('is-visible', heroEl.getBoundingClientRect().bottom < 0);
+    }, { passive: true });
+  }
+
+})();
+</script>
+
+</body>
+</html>
