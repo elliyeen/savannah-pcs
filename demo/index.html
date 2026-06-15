@@ -452,8 +452,9 @@
 
     @media (min-width: 860px) {
       .hero-layout {
-        grid-template-columns: 1fr 340px;
-        gap: 64px;
+        grid-template-columns: 1fr 360px;
+        gap: 56px;
+        align-items: stretch;
       }
     }
 
@@ -567,54 +568,65 @@
       font-weight: 500;
     }
 
-    /* Hero stats block (right column desktop) */
-    .hero-stats-block {
-      background: var(--teal);
-      border-radius: 12px;
-      padding: 40px 32px;
+    /* Hero photo block (right column, desktop only) */
+    .hero-photo-wrap {
       display: none;
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      align-self: stretch;
+      min-height: 480px;
     }
 
     @media (min-width: 860px) {
-      .hero-stats-block {
+      .hero-photo-wrap {
         display: block;
       }
     }
 
-    .hero-stat {
-      padding: 24px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+    .hero-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
     }
 
-    .hero-stat:first-child {
-      padding-top: 0;
+    /* Dark gradient at bottom so stat pills stay legible */
+    .hero-photo-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 150px;
+      background: linear-gradient(to top, rgba(4,35,32,0.78) 0%, transparent 100%);
+      pointer-events: none;
     }
 
-    .hero-stat:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
+    /* Stat pills overlaid at bottom of photo */
+    .hero-photo-stats {
+      position: absolute;
+      bottom: 16px;
+      left: 16px;
+      right: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      z-index: 1;
     }
 
-    .hero-stat-number {
-      font-family: 'DM Serif Display', Georgia, serif;
-      font-size: clamp(36px, 4vw, 48px);
-      color: var(--white);
-      line-height: 1;
-      margin-bottom: 6px;
-    }
-
-    .hero-stat-label {
-      font-size: 0.72rem;
-      color: rgba(255,255,255,0.55);
-      font-weight: 300;
-      line-height: 1.4;
-    }
-
-    .hero-stat-sub {
-      font-size: 0.65rem;
-      color: rgba(255,255,255,0.35);
-      margin-top: 4px;
-      font-style: italic;
+    .hero-photo-stat {
+      background: rgba(245,240,232,0.92);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 5px 13px;
+      border-radius: 20px;
+      font-size: 0.68rem;
+      font-weight: 500;
+      color: var(--teal-dark);
+      letter-spacing: 0.02em;
+      white-space: nowrap;
     }
 
     /* =========================================
@@ -1891,26 +1903,20 @@
       </div>
     </div>
 
-    <!-- Right: stats block (desktop only) -->
-    <aside class="hero-stats-block" aria-label="At a glance">
-      <div class="hero-stat">
-        <p class="hero-stat-number serif">24/7</p>
-        <p class="hero-stat-label">Care available around the clock — including nights, weekends, and holidays</p>
+    <!-- Right: real photo — Shannon with a client (desktop only) -->
+    <div class="hero-photo-wrap">
+      <img
+        src="./hero-photo.jpg"
+        alt="Shannon Stafford Simpson, CNA, with a client at Savannah Personal Care Services"
+        loading="eager"
+      />
+      <div class="hero-photo-stats" aria-hidden="true">
+        <span class="hero-photo-stat">24/7 Care</span>
+        <span class="hero-photo-stat">48h Placement</span>
+        <span class="hero-photo-stat">5-Step Process</span>
+        <span class="hero-photo-stat">100% Supervised First Visits</span>
       </div>
-      <div class="hero-stat">
-        <p class="hero-stat-number serif">48h</p>
-        <p class="hero-stat-label">From your first call to a matched caregiver in your home</p>
-        <p class="hero-stat-sub">[VERIFY timeline with Shannon]</p>
-      </div>
-      <div class="hero-stat">
-        <p class="hero-stat-number serif">5</p>
-        <p class="hero-stat-label">Step process with written follow-up at every stage</p>
-      </div>
-      <div class="hero-stat">
-        <p class="hero-stat-number serif">100%</p>
-        <p class="hero-stat-label">Supervised first visits — Shannon or senior coordinator present</p>
-      </div>
-    </aside>
+    </div>
   </div>
 </section>
 
