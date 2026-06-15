@@ -174,6 +174,7 @@
       --white:      #ffffff;
       --rule:       rgba(74,171,165,0.15);
       --gold:       #c09040;
+      --muted:      #9a9a9a;
     }
 
     /* =========================================
@@ -238,9 +239,9 @@
     .serif { font-family: 'DM Serif Display', Georgia, serif; }
 
     .label {
-      font-size: 0.68rem;
+      font-size: 13px;
       font-weight: 500;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--teal);
     }
@@ -380,6 +381,10 @@
 
     .nav-phone:hover {
       color: var(--teal-dark);
+    }
+
+    @media (min-width: 760px) {
+      .nav-menu-btn { display: none; }
     }
 
     /* Hamburger menu button */
@@ -621,7 +626,7 @@
     }
 
     .hero-tertiary {
-      font-size: 0.84rem;
+      font-size: 13px;
       color: var(--soft);
       margin-top: 4px;
     }
@@ -654,7 +659,7 @@
     }
 
     .hero-trust-text {
-      font-size: 0.78rem;
+      font-size: 13px;
       color: var(--soft);
     }
 
@@ -754,7 +759,7 @@
     }
 
     .franchise-header .section-body {
-      color: rgba(255,255,255,0.5);
+      color: rgba(255,255,255,0.68);
     }
 
     .franchise-grid {
@@ -784,7 +789,7 @@
     }
 
     .franchise-col-label {
-      font-size: 0.65rem;
+      font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.12em;
       font-weight: 500;
@@ -835,13 +840,13 @@
     }
 
     .franchise-row-text {
-      font-size: 0.88rem;
+      font-size: clamp(14px, 1.4vw, 16px);
       line-height: 1.55;
       font-weight: 300;
     }
 
     .franchise-col-franchise .franchise-row-text {
-      color: rgba(255,255,255,0.45);
+      color: rgba(255,255,255,0.68);
     }
 
     .franchise-col-shannon .franchise-row-text {
@@ -888,7 +893,7 @@
     }
 
     .featured-testimonial-name {
-      font-size: 0.78rem;
+      font-size: 13px;
       text-transform: uppercase;
       letter-spacing: 0.1em;
       color: var(--soft);
@@ -962,8 +967,8 @@
     }
 
     .credential-strip-item {
-      font-size: 0.75rem;
-      color: rgba(255,255,255,0.82);
+      font-size: 12px;
+      color: rgba(255,255,255,0.85);
       display: flex;
       align-items: center;
       gap: 10px;
@@ -993,7 +998,7 @@
     }
 
     .section-header {
-      margin-bottom: 56px;
+      margin-bottom: clamp(36px, 5vw, 56px);
     }
 
     .section-label {
@@ -1069,7 +1074,7 @@
     }
 
     .card-answer {
-      font-size: 0.88rem;
+      font-size: clamp(14px, 1.5vw, 16px);
       font-weight: 300;
       line-height: 1.7;
       color: var(--soft);
@@ -1111,10 +1116,10 @@
     }
 
     .founder-role {
-      font-size: 0.7rem;
+      font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      color: rgba(255,255,255,0.5);
+      color: rgba(255,255,255,0.6);
       margin-bottom: 28px;
     }
 
@@ -1126,8 +1131,8 @@
 
     .founder-pill {
       border: 1px solid rgba(255,255,255,0.22);
-      color: rgba(255,255,255,0.8);
-      font-size: 0.68rem;
+      color: rgba(255,255,255,0.85);
+      font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.06em;
       padding: 5px 10px;
@@ -1166,6 +1171,10 @@
 
     .process-list {
       margin-top: 56px;
+    }
+
+    .process-row:last-child {
+      border-bottom: 1px solid rgba(74,171,165,0.18);
     }
 
     .process-row {
@@ -1211,7 +1220,7 @@
     }
 
     .process-time {
-      font-size: 0.65rem;
+      font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.1em;
       color: var(--teal);
@@ -1219,7 +1228,7 @@
     }
 
     .process-body {
-      font-size: 0.86rem;
+      font-size: clamp(14px, 1.4vw, 16px);
       font-weight: 300;
       line-height: 1.65;
       color: var(--soft);
@@ -1258,6 +1267,12 @@
       overflow: hidden;
     }
 
+    @media (min-width: 500px) and (max-width: 699px) {
+      .testimonials-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
     @media (min-width: 700px) {
       .testimonials-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -1287,20 +1302,20 @@
     }
 
     .testimonial-name {
-      font-size: 0.72rem;
+      font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      color: rgba(255,255,255,0.32);
-      line-height: 1.6;
+      color: rgba(255,255,255,0.42);
+      line-height: 1.8;
     }
 
     .testimonial-name strong {
-      color: rgba(255,255,255,0.75);
+      color: rgba(255,255,255,0.78);
       font-weight: 500;
       text-transform: none;
       letter-spacing: 0;
       display: block;
-      font-size: 0.82rem;
+      font-size: 13px;
     }
 
     /* =========================================
@@ -1332,7 +1347,7 @@
 
     .guide-note {
       font-size: 0.75rem;
-      color: #aaa;
+      color: var(--muted);
       margin-top: 14px;
     }
 
@@ -1406,7 +1421,7 @@
     }
 
     .areas-label {
-      font-size: 0.65rem;
+      font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.12em;
       color: var(--teal);
@@ -1479,9 +1494,9 @@
     }
 
     .footer-tagline {
-      font-size: 0.78rem;
+      font-size: 13px;
       font-weight: 300;
-      color: rgba(255,255,255,0.35);
+      color: rgba(255,255,255,0.45);
       line-height: 1.6;
       margin-bottom: 24px;
     }
@@ -1494,7 +1509,7 @@
     }
 
     .footer-contact a {
-      font-size: 0.85rem;
+      font-size: 14px;
       color: rgba(255,255,255,0.6);
       transition: color 0.15s;
     }
@@ -1504,7 +1519,7 @@
     }
 
     .footer-contact span {
-      font-size: 0.85rem;
+      font-size: 14px;
       color: rgba(255,255,255,0.45);
     }
 
@@ -1514,15 +1529,15 @@
       border: 1px solid rgba(255,255,255,0.1);
       padding: 3px 9px;
       border-radius: 3px;
-      font-size: 0.68rem;
-      color: rgba(255,255,255,0.35);
+      font-size: 11px;
+      color: rgba(255,255,255,0.45);
     }
 
     .footer-legal-label {
-      font-size: 0.65rem;
+      font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      color: rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.35);
       margin-bottom: 14px;
     }
 
@@ -1533,8 +1548,8 @@
     }
 
     .footer-legal-links a {
-      font-size: 0.82rem;
-      color: rgba(255,255,255,0.35);
+      font-size: 14px;
+      color: rgba(255,255,255,0.45);
       transition: color 0.15s;
     }
 
@@ -1550,8 +1565,8 @@
     }
 
     .footer-bottom span {
-      font-size: 0.68rem;
-      color: rgba(255,255,255,0.22);
+      font-size: 11px;
+      color: rgba(255,255,255,0.32);
     }
 
     /* =========================================
@@ -1773,6 +1788,7 @@
     .modal-field input:focus {
       outline: none;
       border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(74,171,165,0.18);
     }
 
     .modal-field input::placeholder {
@@ -1803,7 +1819,7 @@
 
     .modal-submit-note {
       font-size: 0.75rem;
-      color: #aaa;
+      color: var(--muted);
       text-align: center;
       margin-top: 12px;
       line-height: 1.5;
@@ -1978,6 +1994,139 @@
       .modal-card { padding: 28px 18px 24px; }
     }
 
+    /* =========================================
+       JOB LISTINGS
+    ========================================= */
+    .jobs-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1px;
+      background: rgba(74,171,165,0.12);
+      border: 1px solid rgba(74,171,165,0.12);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-top: 48px;
+    }
+
+    @media (min-width: 780px) {
+      .jobs-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .job-card {
+      background: var(--white);
+      padding: 36px 32px 32px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .job-role-label {
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .job-title {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 1.35rem;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 14px;
+    }
+
+    .job-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+
+    .job-chip {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--soft);
+      background: rgba(74,171,165,0.08);
+      border: 1px solid rgba(74,171,165,0.18);
+      border-radius: 999px;
+      padding: 4px 10px;
+      white-space: nowrap;
+    }
+
+    .job-desc {
+      font-size: 0.875rem;
+      font-weight: 300;
+      color: var(--soft);
+      line-height: 1.65;
+      margin-bottom: 22px;
+    }
+
+    .job-quals-label {
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink);
+      opacity: 0.5;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .job-quals {
+      list-style: none;
+      margin-bottom: 28px;
+      flex: 1;
+    }
+
+    .job-quals li {
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: var(--soft);
+      line-height: 1.55;
+      padding-left: 14px;
+      position: relative;
+      margin-bottom: 7px;
+    }
+
+    .job-quals li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--teal);
+      font-size: 0.7rem;
+      top: 1px;
+    }
+
+    .job-apply {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 12px 22px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      min-height: 42px;
+      border: 1px solid rgba(74,171,165,0.3);
+      background: transparent;
+      color: var(--ink);
+      transition: background 0.18s, border-color 0.18s, color 0.18s;
+      text-decoration: none;
+      align-self: flex-start;
+    }
+
+    .job-apply:hover {
+      background: var(--teal);
+      border-color: var(--teal);
+      color: #fff;
+    }
+
   </style>
 </head>
 <body>
@@ -2016,7 +2165,7 @@
 <!-- ========== NAV DRAWER ========== -->
 <div class="nav-backdrop" id="nav-backdrop" aria-hidden="true"></div>
 
-<div class="nav-drawer" id="nav-drawer" role="dialog" aria-label="Navigation menu" aria-modal="false" hidden>
+<div class="nav-drawer" id="nav-drawer" aria-label="Mobile navigation" hidden>
   <div class="nav-drawer-inner">
     <ul class="nav-drawer-links" role="list">
       <li>
@@ -2415,7 +2564,7 @@
     <span class="label section-label">Free Resource</span>
     <h2 class="section-title serif" id="guide-title">What most home care agencies<br />in Savannah won't tell you.</h2>
     <p class="section-body">A free guide for families navigating the home care decision — written by a Certified Nursing Assistant who built her own agency. What to ask, what to expect, and what to watch out for.</p>
-    <a href="#cta-section" class="btn btn-teal" style="margin-top: 8px;">
+    <a href="#cta-section" class="btn btn-teal">
       Download the Free Family Guide →
     </a>
     <p class="guide-note">No spam. First name and email only.</p>
@@ -2464,15 +2613,97 @@
       <h2 class="section-title serif" id="careers-title">We hire caregivers<br />who were built for this.</h2>
       <p class="section-body">Savannah Personal Care Services was founded by a CNA who believed the standard for home care wasn't good enough. If you share that belief — and you want to work somewhere the founder actually knows your name — we'd like to hear from you.</p>
     </div>
-    <div style="display:flex; flex-wrap:wrap; gap:14px; margin-top: 8px;">
-      <a class="btn btn-dark" href="mailto:savpcs@yahoo.com?subject=Caregiver Application">
-        Send your resume →
-      </a>
-      <a class="btn btn-ghost" href="tel:+19128561885">
-        Call to learn more
-      </a>
-    </div>
-    <p style="font-size:0.78rem; color:var(--soft); margin-top:20px;">CNA certification preferred · Savannah metro area · All applicants personally reviewed by Shannon</p>
+
+    <!-- Job Listings -->
+    <div class="jobs-grid" role="list" aria-label="Open positions">
+
+      <!-- CNA -->
+      <article class="job-card" role="listitem">
+        <span class="job-role-label">Clinical</span>
+        <h3 class="job-title">Certified Nursing Assistant (CNA)</h3>
+        <div class="job-chips">
+          <span class="job-chip">Savannah, GA</span>
+          <span class="job-chip">Full-time · Part-time</span>
+          <span class="job-chip">In-Home</span>
+        </div>
+        <p class="job-desc">Join a team built by a CNA who set the standard she wanted to work under herself. You'll carry out individualized care plans, build real relationships with clients, and be recognized by name — not badge number.</p>
+        <span class="job-quals-label">Minimum qualifications</span>
+        <ul class="job-quals" aria-label="CNA minimum qualifications">
+          <li>Active Georgia CNA certification in good standing</li>
+          <li>CPR/First Aid certification (current)</li>
+          <li>Reliable transportation within Savannah metro area</li>
+          <li>Background check clearance</li>
+        </ul>
+        <span class="job-quals-label">Preferred qualifications</span>
+        <ul class="job-quals" aria-label="CNA preferred qualifications">
+          <li>1+ year of in-home or long-term care experience</li>
+          <li>Medication technician certification</li>
+          <li>Experience supporting clients with dementia or Parkinson's</li>
+        </ul>
+        <a class="job-apply" href="mailto:savpcs@yahoo.com?subject=CNA Application — Savannah Personal Care Services" aria-label="Apply for CNA position">
+          Apply now →
+        </a>
+      </article>
+
+      <!-- RN -->
+      <article class="job-card" role="listitem">
+        <span class="job-role-label">Nursing</span>
+        <h3 class="job-title">Registered Nurse (RN)</h3>
+        <div class="job-chips">
+          <span class="job-chip">Savannah, GA</span>
+          <span class="job-chip">Part-time · Per Diem</span>
+          <span class="job-chip">In-Home</span>
+        </div>
+        <p class="job-desc">We're looking for an RN to perform care assessments, create individualized care plans, and provide clinical oversight for our growing client roster. You'll work alongside Shannon directly — this is a hands-on clinical role, not a supervisory desk position.</p>
+        <span class="job-quals-label">Minimum qualifications</span>
+        <ul class="job-quals" aria-label="RN minimum qualifications">
+          <li>Active Georgia RN license in good standing</li>
+          <li>CPR/BLS certification (current)</li>
+          <li>Experience in home health, hospice, or post-acute care</li>
+          <li>Strong written documentation skills</li>
+        </ul>
+        <span class="job-quals-label">Preferred qualifications</span>
+        <ul class="job-quals" aria-label="RN preferred qualifications">
+          <li>2+ years home health or private duty nursing experience</li>
+          <li>Familiarity with Georgia PHCP licensing requirements</li>
+          <li>Experience conducting initial client assessments</li>
+        </ul>
+        <a class="job-apply" href="mailto:savpcs@yahoo.com?subject=RN Application — Savannah Personal Care Services" aria-label="Apply for RN position">
+          Apply now →
+        </a>
+      </article>
+
+      <!-- Home Health Companion -->
+      <article class="job-card" role="listitem">
+        <span class="job-role-label">Companion Care</span>
+        <h3 class="job-title">Home Health Companion</h3>
+        <div class="job-chips">
+          <span class="job-chip">Savannah, GA</span>
+          <span class="job-chip">Full-time · Part-time</span>
+          <span class="job-chip">In-Home</span>
+        </div>
+        <p class="job-desc">This role is for people who are genuinely good at being present. You'll provide non-medical companionship, light household assistance, and transportation — and you'll be the consistent face a family relies on. That consistency matters more than a long resume.</p>
+        <span class="job-quals-label">Minimum qualifications</span>
+        <ul class="job-quals" aria-label="Home Health Companion minimum qualifications">
+          <li>High school diploma or GED equivalent</li>
+          <li>Valid Georgia driver's license and reliable vehicle</li>
+          <li>Background check clearance</li>
+          <li>Strong interpersonal and communication skills</li>
+        </ul>
+        <span class="job-quals-label">Preferred qualifications</span>
+        <ul class="job-quals" aria-label="Home Health Companion preferred qualifications">
+          <li>Prior caregiving, home health aide, or companion experience</li>
+          <li>CPR/First Aid certification</li>
+          <li>Patience and comfort working with elderly adults</li>
+        </ul>
+        <a class="job-apply" href="mailto:savpcs@yahoo.com?subject=Home Health Companion Application — Savannah Personal Care Services" aria-label="Apply for Home Health Companion position">
+          Apply now →
+        </a>
+      </article>
+
+    </div><!-- /.jobs-grid -->
+
+    <p style="font-size:0.78rem; color:var(--soft); margin-top:24px;">All applicants personally reviewed by Shannon · Savannah metro area · Equal opportunity employer</p>
   </div>
 </section>
 
