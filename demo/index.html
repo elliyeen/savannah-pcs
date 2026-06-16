@@ -879,8 +879,8 @@
     }
 
     .franchise-row-text {
-      font-size: clamp(14px, 1.4vw, 16px);
-      line-height: 1.55;
+      font-size: clamp(15px, 1.5vw, 16px);
+      line-height: 1.6;
       font-weight: 400;
     }
 
@@ -1116,10 +1116,119 @@
     }
 
     .card-answer {
-      font-size: clamp(14px, 1.5vw, 16px);
+      font-size: clamp(15px, 1.6vw, 16px);
       font-weight: 400;
       line-height: 1.7;
       color: var(--soft);
+    }
+
+    /* =========================================
+       WHY FAMILIES CHOOSE
+    ========================================= */
+    .why-section {
+      background: var(--white);
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1px;
+      background: var(--rule);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: clamp(48px, 6vw, 72px);
+    }
+
+    @media (min-width: 680px) {
+      .why-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+
+    .why-card {
+      background: var(--white);
+      padding: clamp(32px, 4vw, 48px) clamp(28px, 3.5vw, 40px);
+      transition: background 0.18s;
+    }
+
+    .why-card:hover {
+      background: #f9f7f3;
+    }
+
+    .why-card-title {
+      font-size: clamp(20px, 2.4vw, 26px);
+      font-weight: 500;
+      line-height: 1.2;
+      color: var(--ink);
+      margin-bottom: 12px;
+      letter-spacing: -0.015em;
+    }
+
+    .why-card-body {
+      font-size: clamp(15px, 1.5vw, 16px);
+      font-weight: 400;
+      line-height: 1.7;
+      color: var(--soft);
+    }
+
+    .why-pullquote {
+      margin: 0;
+      padding: clamp(40px, 5vw, 64px) 0 0;
+      text-align: center;
+      border-top: 1px solid var(--rule);
+    }
+
+    .why-pullquote-text {
+      font-size: clamp(24px, 3.5vw, 40px);
+      font-weight: 500;
+      font-style: italic;
+      line-height: 1.25;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    .why-pullquote-caption {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--soft);
+    }
+
+    /* =========================================
+       SAFETY STANDARDS SECTION
+    ========================================= */
+    .safety-section {
+      background: var(--sand);
+    }
+
+    /* Reuses .why-grid / .why-card / .why-card-title / .why-card-body */
+
+    .safety-section .why-card {
+      background: var(--white);
+    }
+
+    .trust-bar {
+      margin-top: clamp(48px, 6vw, 72px);
+      padding-top: clamp(32px, 4vw, 48px);
+      border-top: 1px solid var(--rule);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 40px;
+      justify-content: center;
+    }
+
+    .trust-bar-item {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+
+    .trust-bar-item::before {
+      content: '\2713\00a0';
+      color: var(--teal);
+      font-weight: 700;
     }
 
     /* =========================================
@@ -1132,7 +1241,7 @@
     .founder-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 48px;
+      gap: 32px;
       align-items: center;
     }
 
@@ -1186,7 +1295,7 @@
     }
 
     .founder-body {
-      font-size: clamp(15px, 1.6vw, 17px);
+      font-size: clamp(17px, 1.6vw, 18px);
       font-weight: 400;
       line-height: 1.7;
       color: var(--ink);
@@ -1346,7 +1455,7 @@
     }
 
     .process-body {
-      font-size: clamp(14px, 1.4vw, 16px);
+      font-size: clamp(15px, 1.6vw, 16px);
       font-weight: 400;
       line-height: 1.65;
       color: var(--soft);
@@ -1489,7 +1598,7 @@
     }
 
     .cta-body {
-      font-size: clamp(15px, 1.8vw, 17px);
+      font-size: clamp(17px, 1.8vw, 18px);
       font-weight: 400;
       line-height: 1.65;
       color: rgba(255,255,255,0.68);
@@ -2206,15 +2315,49 @@
     }
 
     /* =========================================
-       RESPONSIVE UTILITIES
+       RESPONSIVE UTILITIES — 640px (phones)
+    ========================================= */
+    @media (max-width: 640px) {
+      /* All section types: tighten vertical, 20px horizontal */
+      .section                { padding: 60px 20px; }
+      .testimonials-section   { padding: 60px 20px; }
+      .cta-section            { padding: 60px 20px; }
+      .guide-section          { padding: 48px 20px; }
+      .featured-testimonial   { padding: 44px 20px; }
+      .footer-v2              { padding: 52px 20px 0; }
+
+      /* Section header — tighter on phone */
+      .section-header         { margin-bottom: 28px; }
+
+      /* Founder stacked gap */
+      .founder-grid           { gap: 24px; }
+
+      /* Process rows — more compact */
+      .process-list           { margin-top: 32px; }
+      .process-row            { padding: 24px 0; gap: 16px; }
+
+      /* Testimonial cards */
+      .testimonial-card       { padding: 36px 24px; }
+
+      /* Credential strip */
+      .credential-strip       { padding: 14px 20px; gap: 8px 16px; }
+    }
+
+    /* =========================================
+       RESPONSIVE UTILITIES — 480px (small phones)
     ========================================= */
     @media (max-width: 480px) {
-      .section { padding: 64px 20px; }
-      .credential-strip { padding: 16px 20px; gap: 8px 20px; }
-      .card { padding: 32px 24px; }
+      .section                { padding: 52px 20px; }
+      .testimonials-section   { padding: 52px 20px; }
+      .cta-section            { padding: 52px 20px; }
+      .guide-section          { padding: 44px 20px; }
+      .card                   { padding: 32px 24px; }
       .founder-credential-block { padding: 36px 28px; }
-      .testimonial-card { padding: 32px 24px; }
-      .founder-ctas { grid-template-columns: 1fr; gap: 10px 0; }
+      .testimonial-card       { padding: 32px 20px; }
+      .process-row            { padding: 20px 0; gap: 14px; }
+      .process-list           { margin-top: 24px; }
+      .section-header         { margin-bottom: 24px; }
+      .founder-ctas           { grid-template-columns: 1fr; gap: 10px 0; }
       .founder-cta-block .btn { width: 100%; justify-content: center; text-align: center; }
     }
 
@@ -2366,14 +2509,20 @@
     @media (max-width: 360px) {
       .nav { padding: 0 16px; }
       .nav-phone { font-size: 0.88rem; }
-      .hero { padding: 68px 16px 60px; }
-      .section { padding: 56px 16px; }
+      .hero { padding: 68px 16px 52px; }
+      .section              { padding: 48px 16px; }
+      .testimonials-section { padding: 48px 16px; }
+      .cta-section          { padding: 48px 16px; }
+      .guide-section        { padding: 40px 16px; }
+      .featured-testimonial { padding: 40px 16px; }
       .card { padding: 28px 18px; }
       .franchise-col { padding: 28px 20px; }
       .testimonial-card { padding: 28px 18px; }
       .founder-credential-block { padding: 30px 22px; }
-      .footer-v2 { padding: 44px 16px 0; }
+      .footer-v2 { padding: 40px 16px 0; }
       .modal-card { padding: 28px 18px 24px; }
+      .section-header { margin-bottom: 20px; }
+      .process-row { padding: 18px 0; gap: 12px; }
     }
 
     /* =========================================
@@ -2573,6 +2722,16 @@
       .featured-testimonial {
         padding: 48px 20px;
       }
+
+      /* 6. ALL SECTION TYPES — 20px horizontal at tablet/mobile */
+      .testimonials-section   { padding: clamp(52px, 8vw, 80px) 20px; }
+      .cta-section            { padding: clamp(60px, 8vw, 100px) 20px; }
+      .guide-section          { padding: clamp(44px, 6vw, 72px) 20px; }
+      .section                { padding: clamp(52px, 8vw, 80px) 20px; }
+      .footer-v2              { padding: 56px 20px 0; }
+
+      /* 7. SECTION HEADERS — tighter on mobile */
+      .section-header         { margin-bottom: 32px; }
     }
 
   </style>
@@ -2856,6 +3015,129 @@
       </div>
 
     </div>
+  </div>
+</section>
+
+
+<!-- ========== WHY FAMILIES CHOOSE ========== -->
+<section class="section why-section" id="why-families" aria-labelledby="why-title">
+  <div class="section-inner">
+
+    <div class="section-header">
+      <span class="label section-label">Why Families Choose Savannah</span>
+      <h2 class="section-title serif" id="why-title">Because care should bring<br />peace to the whole family.</h2>
+      <p class="section-body">
+        Families rarely call because they need help with a schedule.<br />
+        They call because they're exhausted. Because they're worried.<br />
+        Because they want their loved one to remain safe, respected, and independent.<br /><br />
+        The right care doesn't just help the person you love.<br />
+        It gives your whole family room to breathe again.
+      </p>
+    </div>
+
+    <div class="why-grid" role="list">
+
+      <div class="why-card" role="listitem">
+        <p class="why-card-title serif">Peace of Mind</p>
+        <p class="why-card-body">Knowing someone is there when you cannot be.</p>
+      </div>
+
+      <div class="why-card" role="listitem">
+        <p class="why-card-title serif">Sleep</p>
+        <p class="why-card-body">Finally resting through the night without constant worry.</p>
+      </div>
+
+      <div class="why-card" role="listitem">
+        <p class="why-card-title serif">Relief</p>
+        <p class="why-card-body">Sharing the responsibility instead of carrying it alone.</p>
+      </div>
+
+      <div class="why-card" role="listitem">
+        <p class="why-card-title serif">Dignity</p>
+        <p class="why-card-body">Protecting independence while honoring the person they have always been.</p>
+      </div>
+
+      <div class="why-card" role="listitem">
+        <p class="why-card-title serif">Safety</p>
+        <p class="why-card-body">Confidence in who enters your loved one's home.</p>
+      </div>
+
+      <div class="why-card" role="listitem">
+        <p class="why-card-title serif">Independence</p>
+        <p class="why-card-body">Helping families remain together and at home longer.</p>
+      </div>
+
+    </div>
+
+    <figure class="why-pullquote" aria-label="Family testimonial">
+      <blockquote class="why-pullquote-text serif">"We finally slept through the night."</blockquote>
+      <figcaption class="why-pullquote-caption">This is what families are really searching for.</figcaption>
+    </figure>
+
+  </div>
+</section>
+
+
+<!-- ========== SAFETY STANDARDS ========== -->
+<section class="section safety-section" id="safety" aria-labelledby="safety-title">
+  <div class="section-inner">
+
+    <div class="section-header">
+      <span class="label section-label">Your Family's Safety Comes First</span>
+      <h2 class="section-title serif" id="safety-title">Because trust should never be assumed.</h2>
+      <p class="section-body">
+        Inviting someone into your loved one's home is one of the most important decisions a family can make.<br /><br />
+        That's why every caregiver relationship begins with safety, thoughtful matching, and ongoing support.<br /><br />
+        Because peace of mind starts long before the first visit.
+      </p>
+    </div>
+
+    <div class="why-grid" role="list">
+
+      <div class="why-card" role="listitem">
+        <p class="why-card-title serif">Background Checks</p>
+        <p class="why-card-body">Every care professional undergoes screening and reference verification before joining our team.</p>
+      </div>
+
+      <div class="why-card" role="listitem">
+        <p class="why-card-title serif">Thoughtful Matching</p>
+        <p class="why-card-body">We carefully consider personalities, needs, and preferences to create meaningful relationships.</p>
+      </div>
+
+      <div class="why-card" role="listitem">
+        <p class="why-card-title serif">Training and Preparation</p>
+        <p class="why-card-body">Care professionals receive ongoing training and support to provide care with dignity and confidence.</p>
+      </div>
+
+      <div class="why-card" role="listitem">
+        <p class="why-card-title serif">Supervision and Oversight</p>
+        <p class="why-card-body">Shannon remains personally involved to ensure families always have support and guidance.</p>
+      </div>
+
+      <div class="why-card" role="listitem">
+        <p class="why-card-title serif">Introductions Before Care Begins</p>
+        <p class="why-card-body">Families have the opportunity to meet caregivers before services begin whenever possible.</p>
+      </div>
+
+      <div class="why-card" role="listitem">
+        <p class="why-card-title serif">Ongoing Communication</p>
+        <p class="why-card-body">Questions, concerns, and changing needs are addressed with compassion and responsiveness.</p>
+      </div>
+
+    </div>
+
+    <figure class="why-pullquote" aria-label="Shannon's standard on trust">
+      <blockquote class="why-pullquote-text serif">Trust is earned long before the first visit.</blockquote>
+    </figure>
+
+    <div class="trust-bar" role="list" aria-label="Safety commitments">
+      <span class="trust-bar-item" role="listitem">Background Checked</span>
+      <span class="trust-bar-item" role="listitem">Personally Supervised</span>
+      <span class="trust-bar-item" role="listitem">Thoughtfully Matched</span>
+      <span class="trust-bar-item" role="listitem">Ongoing Support</span>
+      <span class="trust-bar-item" role="listitem">Family-Focused Care</span>
+    </div>
+
   </div>
 </section>
 
