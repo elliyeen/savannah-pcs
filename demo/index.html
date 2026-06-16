@@ -1652,32 +1652,17 @@
       flex-shrink: 0;
       display: flex;
       align-items: center;
-      padding: 0 22px 0 28px;
-      font-size: 0.62rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--ink);
+      justify-content: center;
+      padding: 0 24px;
       border-right: 1px solid rgba(17,17,17,0.12);
       background: var(--white);
       z-index: 3;
-      white-space: nowrap;
-      gap: 8px;
     }
 
-    .ticker-label::before {
-      content: '';
+    .ticker-label img {
+      height: 32px;
+      width: auto;
       display: block;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--teal);
-      animation: ticker-pulse 1.6s ease-in-out infinite;
-    }
-
-    @keyframes ticker-pulse {
-      0%, 100% { opacity: 1; }
-      50%       { opacity: 0.25; }
     }
 
     .ticker-overflow {
@@ -1750,7 +1735,8 @@
     }
 
     @media (max-width: 480px) {
-      .ticker-label { padding: 0 14px 0 16px; font-size: 0.55rem; }
+      .ticker-label { padding: 0 14px; }
+      .ticker-label img { height: 24px; }
       .ticker-city { padding: 0 20px; font-size: 1rem; }
     }
 
@@ -2909,33 +2895,35 @@
 <!-- ========== CITY TICKER ========== -->
 <div class="ticker-wrap" role="complementary" aria-label="Service areas">
   <div class="ticker-inner" aria-hidden="true">
-    <span class="ticker-label">Now Serving</span>
+    <span class="ticker-label">
+      <img src="./georgia-dch-logo.png" alt="Georgia Department of Community Health licensed" />
+    </span>
     <div class="ticker-overflow">
       <div class="ticker-track">
-        <span class="ticker-city">Savannah, GA</span><span class="ticker-sep">◆</span>
-        <span class="ticker-city"><a href="./pooler.html">Pooler, GA</a></span><span class="ticker-sep">◆</span>
-        <span class="ticker-city"><a href="./tybee-island.html">Tybee Island, GA</a></span><span class="ticker-sep">◆</span>
-        <span class="ticker-city"><a href="./wilmington-island.html">Wilmington Island, GA</a></span><span class="ticker-sep">◆</span>
-        <span class="ticker-city"><a href="./brunswick.html">Brunswick, GA</a></span><span class="ticker-sep">◆</span>
-        <span class="ticker-city"><a href="./hinesville.html">Hinesville, GA</a></span><span class="ticker-sep">◆</span>
-        <span class="ticker-city"><a href="./bloomingdale.html">Bloomingdale, GA</a></span><span class="ticker-sep">◆</span>
-        <span class="ticker-city"><a href="./port-wentworth.html">Port Wentworth, GA</a></span><span class="ticker-sep">◆</span>
-        <span class="ticker-city">Savannah, GA</span><span class="ticker-sep">◆</span>
-        <span class="ticker-city"><a href="./pooler.html">Pooler, GA</a></span><span class="ticker-sep">◆</span>
-        <span class="ticker-city"><a href="./tybee-island.html">Tybee Island, GA</a></span><span class="ticker-sep">◆</span>
-        <span class="ticker-city"><a href="./wilmington-island.html">Wilmington Island, GA</a></span><span class="ticker-sep">◆</span>
-        <span class="ticker-city"><a href="./brunswick.html">Brunswick, GA</a></span><span class="ticker-sep">◆</span>
-        <span class="ticker-city"><a href="./hinesville.html">Hinesville, GA</a></span><span class="ticker-sep">◆</span>
-        <span class="ticker-city"><a href="./bloomingdale.html">Bloomingdale, GA</a></span><span class="ticker-sep">◆</span>
-        <span class="ticker-city"><a href="./port-wentworth.html">Port Wentworth, GA</a></span><span class="ticker-sep">◆</span>
-        <span class="ticker-city">Savannah, GA</span><span class="ticker-sep">◆</span>
-        <span class="ticker-city"><a href="./pooler.html">Pooler, GA</a></span><span class="ticker-sep">◆</span>
-        <span class="ticker-city"><a href="./tybee-island.html">Tybee Island, GA</a></span><span class="ticker-sep">◆</span>
-        <span class="ticker-city"><a href="./wilmington-island.html">Wilmington Island, GA</a></span><span class="ticker-sep">◆</span>
-        <span class="ticker-city"><a href="./brunswick.html">Brunswick, GA</a></span><span class="ticker-sep">◆</span>
-        <span class="ticker-city"><a href="./hinesville.html">Hinesville, GA</a></span><span class="ticker-sep">◆</span>
-        <span class="ticker-city"><a href="./bloomingdale.html">Bloomingdale, GA</a></span><span class="ticker-sep">◆</span>
-        <span class="ticker-city"><a href="./port-wentworth.html">Port Wentworth, GA</a></span><span class="ticker-sep">◆</span>
+        <span class="ticker-city">Savannah</span><span class="ticker-sep">◆</span>
+        <span class="ticker-city"><a href="./pooler.html">Pooler</a></span><span class="ticker-sep">◆</span>
+        <span class="ticker-city"><a href="./tybee-island.html">Tybee Island</a></span><span class="ticker-sep">◆</span>
+        <span class="ticker-city"><a href="./wilmington-island.html">Wilmington Island</a></span><span class="ticker-sep">◆</span>
+        <span class="ticker-city"><a href="./brunswick.html">Brunswick</a></span><span class="ticker-sep">◆</span>
+        <span class="ticker-city"><a href="./hinesville.html">Hinesville</a></span><span class="ticker-sep">◆</span>
+        <span class="ticker-city"><a href="./bloomingdale.html">Bloomingdale</a></span><span class="ticker-sep">◆</span>
+        <span class="ticker-city"><a href="./port-wentworth.html">Port Wentworth</a></span><span class="ticker-sep">◆</span>
+        <span class="ticker-city">Savannah</span><span class="ticker-sep">◆</span>
+        <span class="ticker-city"><a href="./pooler.html">Pooler</a></span><span class="ticker-sep">◆</span>
+        <span class="ticker-city"><a href="./tybee-island.html">Tybee Island</a></span><span class="ticker-sep">◆</span>
+        <span class="ticker-city"><a href="./wilmington-island.html">Wilmington Island</a></span><span class="ticker-sep">◆</span>
+        <span class="ticker-city"><a href="./brunswick.html">Brunswick</a></span><span class="ticker-sep">◆</span>
+        <span class="ticker-city"><a href="./hinesville.html">Hinesville</a></span><span class="ticker-sep">◆</span>
+        <span class="ticker-city"><a href="./bloomingdale.html">Bloomingdale</a></span><span class="ticker-sep">◆</span>
+        <span class="ticker-city"><a href="./port-wentworth.html">Port Wentworth</a></span><span class="ticker-sep">◆</span>
+        <span class="ticker-city">Savannah</span><span class="ticker-sep">◆</span>
+        <span class="ticker-city"><a href="./pooler.html">Pooler</a></span><span class="ticker-sep">◆</span>
+        <span class="ticker-city"><a href="./tybee-island.html">Tybee Island</a></span><span class="ticker-sep">◆</span>
+        <span class="ticker-city"><a href="./wilmington-island.html">Wilmington Island</a></span><span class="ticker-sep">◆</span>
+        <span class="ticker-city"><a href="./brunswick.html">Brunswick</a></span><span class="ticker-sep">◆</span>
+        <span class="ticker-city"><a href="./hinesville.html">Hinesville</a></span><span class="ticker-sep">◆</span>
+        <span class="ticker-city"><a href="./bloomingdale.html">Bloomingdale</a></span><span class="ticker-sep">◆</span>
+        <span class="ticker-city"><a href="./port-wentworth.html">Port Wentworth</a></span><span class="ticker-sep">◆</span>
       </div>
     </div>
   </div>
