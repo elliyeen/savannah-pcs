@@ -482,7 +482,7 @@
       font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      color: var(--soft);
+      color: var(--ink);
     }
 
     .compare-th-plan {
@@ -507,7 +507,7 @@
       font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      color: var(--soft);
+      color: var(--ink);
       display: block;
       margin-bottom: 16px;
     }
@@ -517,25 +517,26 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 9px 18px;
+      gap: 6px;
+      padding: 10px 20px;
       border-radius: 999px;
       font-size: 12px;
-      font-weight: 500;
+      font-weight: 600;
       font-family: 'Inter', sans-serif;
-      border: 1px solid rgba(17,17,17,0.25);
-      color: var(--ink);
-      background: transparent;
-      transition: background 0.15s, color 0.15s, border-color 0.15s;
+      border: none;
+      color: var(--white);
+      background: var(--ink);
+      transition: background 0.15s, transform 0.12s;
       cursor: pointer;
       white-space: nowrap;
+      letter-spacing: 0.01em;
     }
-    .compare-plan-btn:hover { background: var(--ink); color: var(--white); border-color: var(--ink); }
+    .compare-plan-btn:hover { background: #333; transform: translateY(-1px); }
     .compare-th-plan.is-featured .compare-plan-btn {
       background: var(--white);
       color: var(--ink);
-      border-color: var(--white);
     }
-    .compare-th-plan.is-featured .compare-plan-btn:hover { background: rgba(255,255,255,0.88); }
+    .compare-th-plan.is-featured .compare-plan-btn:hover { background: rgba(255,255,255,0.9); }
 
     /* Category rows */
     .compare-table tbody .cat-row td {
@@ -563,31 +564,27 @@
       color: var(--ink);
       vertical-align: middle;
     }
-    .compare-td-label p { font-size: 12px; font-weight: 400; color: var(--soft); margin-top: 2px; }
+    .compare-td-label p { font-size: 12px; font-weight: 400; color: var(--ink); margin-top: 2px; opacity: 0.6; }
 
     .compare-td {
       padding: 14px 16px;
       text-align: center;
       vertical-align: middle;
       font-size: 14px;
-      color: var(--soft);
+      color: var(--ink);
       font-weight: 400;
     }
     .compare-td.is-featured-col { background: rgba(74,171,165,0.06); }
 
     .check {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 22px; height: 22px;
-      background: rgba(17,17,17,0.07);
-      border-radius: 50%;
-      color: var(--ink);
-      font-size: 11px;
+      display: inline-block;
+      color: var(--teal-dark);
+      font-size: clamp(18px, 2.2vw, 22px);
       font-weight: 700;
+      line-height: 1;
     }
-    .is-featured-col .check { background: rgba(74,171,165,0.2); }
-    .dash { color: rgba(74,171,165,0.3); font-size: 18px; font-weight: 400; }
+    .is-featured-col .check { color: var(--teal-dark); }
+    .dash { color: rgba(17,17,17,0.2); font-size: clamp(16px, 2vw, 20px); font-weight: 400; }
 
     /* =========================================
        TABLE COLUMN HOVER HIGHLIGHT
@@ -1200,9 +1197,7 @@
 <section class="compare-section" aria-labelledby="compare-title">
   <div class="compare-inner">
     <div class="compare-header">
-      <span class="label" style="display:block;margin-bottom:12px;">Side by side</span>
-      <h2 class="section-title serif" id="compare-title">What's included<br />in each type of care.</h2>
-      <p class="section-body">Not sure which applies? Every column includes the Savannah Standard. The difference is what each care type specializes in.</p>
+      <h2 class="section-title serif" id="compare-title">Select the right Care.</h2>
     </div>
 
     <div class="compare-scroll" role="region" aria-label="Care type comparison table" tabindex="0">
@@ -1213,22 +1208,22 @@
             <th class="compare-th-plan" scope="col">
               <span class="compare-plan-name serif">Transitional Care</span>
               <span class="compare-plan-tag">Post-hospital</span>
-              <button class="compare-plan-btn open-modal">Get started</button>
+              <button class="compare-plan-btn open-modal">Get started →</button>
             </th>
             <th class="compare-th-plan is-featured" scope="col">
               <span class="compare-plan-name serif">Daily Living</span>
               <span class="compare-plan-tag">Ongoing support</span>
-              <button class="compare-plan-btn open-modal">Get started</button>
+              <button class="compare-plan-btn open-modal">Get started →</button>
             </th>
             <th class="compare-th-plan" scope="col">
               <span class="compare-plan-name serif">Dementia Care</span>
               <span class="compare-plan-tag">Cognitive decline</span>
-              <button class="compare-plan-btn open-modal">Get started</button>
+              <button class="compare-plan-btn open-modal">Get started →</button>
             </th>
             <th class="compare-th-plan" scope="col">
               <span class="compare-plan-name serif">Respite Care</span>
               <span class="compare-plan-tag">Family relief</span>
-              <button class="compare-plan-btn open-modal">Get started</button>
+              <button class="compare-plan-btn open-modal">Get started →</button>
             </th>
           </tr>
         </thead>
@@ -1630,13 +1625,6 @@
           <a href="#" class="footer-social-link" aria-label="Follow us on Facebook" rel="noopener noreferrer">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-            </svg>
-          </a>
-          <a href="#" class="footer-social-link" aria-label="Follow us on Instagram" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-              <circle cx="12" cy="12" r="4"/>
-              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
             </svg>
           </a>
         </div>
