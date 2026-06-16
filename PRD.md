@@ -1,7 +1,9 @@
 # PRD — Savannah Personal Care Services
-**Version:** 2.0 — Demo-first build
-**Status:** Build Phase 1 (demo) now. Phase 2 after Shannon responds.
-**Stack:** Single HTML file for demo. Next.js or static HTML for Phase 2.
+**Version:** 3.0 — Demo built and deployed. Awaiting Shannon's response.
+**Status:** Phase 1 COMPLETE. Phase 2 pending Shannon's reply.
+**Live URL:** https://elliyeen.github.io/savannah-pcs/demo/
+**GitHub:** https://github.com/elliyeen/savannah-pcs
+**Stack:** Multi-page static HTML (no build step). All CSS inline per page. Phase 2 extracts shared CSS.
 **Audience:** Claude Code
 
 ---
@@ -18,19 +20,33 @@ The demo is a single deployable HTML file sent to Shannon as a cold outreach lin
 
 ---
 
-## Phase 1 — Demo Spec (Build This Now)
+## Phase 1 — Demo (COMPLETE)
 
-### What It Is
+### What Was Built
 
-One HTML file. Deploys to Netlify via drag and drop. No build step. No dependencies except Google Fonts (async). All CSS inline or in a single `<style>` block. Must load in under 1.5 seconds on mobile.
+Multi-page static HTML site. No build step. No dependencies except Google Fonts. All CSS inline per page.
 
-**File:** `demo/index.html`
+**Deployed:** https://elliyeen.github.io/savannah-pcs/demo/
 
-**Serves:** Buyer 1 only — the adult daughter. One journey. One message. One CTA.
+**Pages built:**
+- `demo/index.html` — Homepage (hero, credential strip, pain section, Meet Shannon, process, services, testimonials, CTA, guide teaser, footer)
+- `demo/about.html` — Shannon's full story + franchise comparison table
+- `demo/care-options.html` — Four care types with reason-why copy
+- `demo/faq.html` — 16 real FAQ questions, accordion behavior, FAQ schema markup
+- `demo/careers.html` — Join the Care Team
+- `demo/pooler.html`, `demo/tybee-island.html`, `demo/wilmington-island.html`, `demo/brunswick.html`, `demo/hinesville.html`, `demo/bloomingdale.html`, `demo/port-wentworth.html` — Location pages
 
-**Does not include:** Buyer switcher tabs, senior journey, referral journey, guide landing page, contact page, legal pages. Those are Phase 2.
+**Typography (as implemented):**
+- Display: `Cormorant Garamond` (weights 400, 500, 600 — regular + italic)
+- Body: `Inter` (weights 400, 500, 600)
+- Google Fonts: `family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600`
 
-**Must include:** Full homepage for the adult daughter journey — hero, credential strip, pain section, founder section, process section, services section, testimonials, CTA section, guided intake flow (modal), areas strip, footer.
+**CTA button copy (as implemented):**
+- Primary: "Talk With Someone Who Understands" → opens intake modal
+- Secondary (hero): "See What Happens After You Call" → anchors to #process
+- Phone: "Call (912) 856-1885"
+
+Note: The original PRD spec said "Find the right care — 60 seconds" — this was updated during build.
 
 ---
 
@@ -620,47 +636,74 @@ Secondary: "In the meantime, the free Savannah Family Guide is worth a read."
 
 ---
 
-## Phase 2 — Full Site Spec (Build After Shannon Responds)
+## Phase 2 — Full Site (After Shannon Responds)
 
-Phase 2 adds:
-- Senior journey (Journey 2)
-- Discharge coordinator / referral journey (Journey 3)
-- Buyer switcher tabs
-- About page — Shannon's full story
-- Services page — 4 services with reason-why copy
-- FAQ page — 7 real questions
-- Guide landing page + thank-you page
-- Contact page with booking calendar
-- Legal pages (Privacy Policy, T&C, Accessibility)
-- Real Formspree integration for intake flow
-- Email delivery system for guide (Mailchimp free tier)
-- 3-email follow-up sequence
+Many Phase 2 pages exist in the demo already. Phase 2 means:
+1. Moving to the real domain (savannahpersonalcare.com)
+2. Substituting all [VERIFY] placeholders with real data from Shannon
+3. Connecting real infrastructure (Formspree, Mailchimp, booking calendar)
+4. QA on all pages at production domain
 
-Full specs for all Phase 2 sections are defined in the previous PRD version. Claude Code will receive those specs when Phase 2 begins.
+### Already built (in demo, need production QA):
+- [x] About page — Shannon's story + franchise comparison
+- [x] Care options page — 4 services with reason-why copy
+- [x] FAQ page — 16 questions, schema markup, accordion
+- [x] Location pages — 7 service area pages
+
+### Still needs building for Phase 2:
+- [ ] Guide landing page + thank-you page
+- [ ] Contact page with booking calendar embed
+- [ ] Privacy Policy, Terms & Conditions, Accessibility pages
+- [ ] Senior journey (Buyer 2) — separate copy track
+- [ ] Discharge coordinator / referral page (Buyer 3) — clinical copy track
+- [ ] Buyer switcher tabs on homepage (for all 3 journeys)
+
+### Infrastructure Phase 2:
+- [ ] Formspree form submission on intake modal (real data delivery)
+- [ ] Mailchimp (or equivalent) for Family Guide email delivery
+- [ ] 3-email follow-up sequence for guide downloads
+- [ ] Shared CSS file extracted from per-page inline styles
+- [ ] Booking calendar integration (Calendly or equivalent)
+- [ ] Real Savannah Family Guide PDF (pending Shannon approval)
+
+### All [VERIFY] items must resolve before Phase 2 launch:
+See CLAUDE.md Known Data Gaps. Every placeholder needs Shannon's real answer.
 
 ---
 
-## Build Priority — Phase 1
+## Build Priority — Phase 1 (COMPLETE)
 
-1. Demo HTML file — all sections above, in order
-2. Guided intake flow modal — 3 steps + confirmation
-3. Responsive mobile behavior — test at 375px width
-4. Performance — Google Fonts async, no unused CSS, no JS libraries
-5. Deploy instructions in a README.md comment at top of demo/index.html
+1. [x] Demo HTML file — all sections, in order
+2. [x] Guided intake flow modal — 3 steps + confirmation (fake submission in demo)
+3. [x] Responsive mobile behavior — breakpoints at 360/480/560/640/680/760/768/860px
+4. [x] Performance — Google Fonts loaded with display=block, no JS libraries, vanilla JS only
+5. [x] Multi-page navigation — frosted glass nav with dropdown, mobile drawer, phone always visible
+6. [x] Shannon founder section with high-res photo (shannon-founder.jpg, 2264×3344px)
+7. [x] About page — founder story + franchise comparison (light sand theme, no black sections)
+8. [x] FAQ page — 16 real questions with accordion + FAQ schema markup
+9. [x] Care options page, careers page, 7 location pages
+
+## Build Priority — Phase 2 (Pending Shannon's Reply)
+
+1. Send outreach message to Shannon (exact text in CLAUDE.md — do not modify)
+2. Resolve all [VERIFY] placeholders from Shannon discovery call
+3. Move to production domain with real Formspree + email delivery
+4. Build guide landing page, contact page, legal pages
+5. QA all pages end-to-end at production domain
 
 ---
 
-## Technical Requirements — Demo
+## Technical Requirements — Demo (As Implemented)
 
-### Must Have
-- Single HTML file, all CSS in `<style>` block
-- Google Fonts loaded async: `DM Serif Display` + `DM Sans`
-- No JS libraries (vanilla JS only for modal and tab behavior)
-- Mobile-first — primary buyer is on her phone
+### Implemented
+- Multi-page HTML, all CSS in per-page `<style>` block (no external stylesheet yet)
+- Google Fonts loaded with `display=block`: `Cormorant Garamond` + `Inter`
+- No JS libraries — vanilla JS only for nav drawer, intake modal, FAQ accordion
+- Mobile-first — breakpoints: 360 / 480 / 560 / 640 / 680 / 760 / 768 / 860px
 - All tap targets minimum 44×44px
-- Intake modal: full screen on mobile (no card chrome)
-- Page loads in under 1.5s on mobile 4G
 - No horizontal scroll at any viewport width
+- Frosted glass nav: `backdrop-filter: saturate(180%) blur(20px)`
+- Intake modal: 3-step flow with fake submission (400ms loading → confirmation state)
 
 ### Accessibility
 - One `<h1>` on the page

@@ -1,5 +1,7 @@
 # CLAUDE.md — Savannah Personal Care Services
-**Version:** 2.0 — Demo build. Outreach first. Full site second.
+**Version:** 3.0 — Demo built and deployed. Awaiting Shannon's response.
+**Live URL:** https://elliyeen.github.io/savannah-pcs/demo/
+**GitHub:** https://github.com/elliyeen/savannah-pcs (auto-deploys to GitHub Pages on push to main)
 
 ---
 
@@ -7,11 +9,13 @@
 
 This project has two phases.
 
-**Phase 1 — Demo (build this now)**
-A single deployable HTML file. One page. Serves one buyer: the adult daughter at 11pm. Full copy. Full design. Guided intake flow. Deploys to Netlify in five minutes via drag and drop. This is what Shannon receives as a link with no pitch attached.
+**Phase 1 — Demo (COMPLETE)**
+Multi-page demo site deployed at https://elliyeen.github.io/savannah-pcs/demo/
+Pages built: index.html, about.html, care-options.html, faq.html, careers.html + 7 location pages.
+Outreach message to Shannon is ready (see below) but has not yet been sent.
 
 **Phase 2 — Full site (build after Shannon responds)**
-The complete multi-page site from PRD §4. Does not exist yet. Do not build it until Shannon has seen the demo and responded.
+The complete production site with real domain, Formspree, email capture, and all [VERIFY] items resolved. Do not move Shannon to Phase 2 infrastructure until she has responded to the demo.
 
 **The governing principle of this entire engagement:**
 > People don't buy websites. They buy more clients, less stress, more certainty, peace of mind, and hope. The demo is not a product pitch — it is a demonstration of what her business could feel like to a family who needs her. Show her that first. The sale comes from her asking what it costs to continue.
@@ -216,32 +220,52 @@ One PDF. Free download. Email capture. Authority before the sale.
 - No more than one CTA per visible screen
 
 ### Type System
-- Display: `DM Serif Display` — editorial warmth, not clinical
-- Body: `DM Sans` — clean, human, readable on mobile
-- Hero headline: 88px desktop / 44px mobile
-- Section title: 54px desktop / 32px mobile
-- Body: 17px desktop / 15px mobile
-- Label: 13px, 500 weight, 0.14em letter-spacing, uppercase
+- Display: `Cormorant Garamond` — editorial warmth, weights 400/500/600, italic available
+- Body: `Inter` — clean, human, weights 400/500/600
+- Google Fonts import: `family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600`
+- Hero headline: clamp(44px, 9vw, 88px) desktop / 44px mobile
+- Section title: clamp(28px, 4vw, 54px) desktop / 32px mobile
+- Body: 17–18px desktop / 16–17px mobile
+- Label: 0.65rem, 500 weight, 0.16em letter-spacing, uppercase
 - Letter-spacing on display: `-0.025em`
+- **Weight rules:** Never 700+ on headings. Never 300 on body. Headings: 500–600. Body: 400–600.
 
 ### Color System
+These are the actual CSS custom properties used in all built pages.
 ```
---teal:       #0a5c52   primary — CTAs, credential, Shannon's identity
---teal-dark:  #073d36   hover states, footer background
---teal-lt:    #e4f0ee   light teal sections
---sand:       #f5f0e8   hero background, warm sections
---ink:        #1d1d1f   body text (Apple's exact near-black)
---soft:       #6e6e73   secondary text (Apple's secondary gray)
---white:      #ffffff
---rule:       rgba(0,0,0,0.08)
---gold:       #c09040   five stars only — nowhere else
+--teal:      #4AABA5   primary — CTAs, credential badges, brand accents
+--teal-dark: #2A8280   hover states, darker teal text
+--teal-lt:   #E3F5F4   light teal section backgrounds (comparison Shannon col, photo cards)
+--sand:      #F0FAFA   hero background, comparison section, warm page-hero sections
+--ink:       #1d1d1f   body text (Apple's exact near-black)
+--ink-deep:  #0a0a0a   footer background only — do not use elsewhere
+--soft:      #6e6e73   secondary text, captions, subheads (Apple's secondary gray)
+--white:     #ffffff
+--gold:      #c09040   five stars in testimonials only — nowhere else
 ```
+
+**Hard rules on color:**
+- No black sections other than the footer (--ink-deep). All content sections use white, sand, or teal-lt.
+- Labels and eyebrow text: `color: var(--ink)` — not teal.
+- CTAs (buttons): teal background or teal border — never orange, never purple, never navy.
+- Teal text (as color on text): only on `.compare-col-shannon .compare-col-label` and `.compare-col-shannon .compare-icon`. All other labels use ink.
 
 ### Nav
 - Frosted glass: `backdrop-filter: saturate(180%) blur(20px)`
-- Height: 52px, fixed
-- Logo left · Nav links center (hidden mobile) · Phone number right
+- Height: 68px, fixed (body padding-top: 68px on all pages)
+- Logo left (sea turtle logo.png, height 62px clipped to 38px visible) · Nav links center (hidden mobile, show at 760px+) · Phone right
 - Phone always visible — this is a care business, calls convert
+- Mobile: hamburger menu → full-width drawer slides in from top, includes sub-links for care types
+- Dropdown: "Types of Care" has hover dropdown with 4 care type links
+
+### CTA Button Copy
+The primary CTA button copy was updated from the original PRD spec:
+- **Primary action:** "Talk With Someone Who Understands" (not "Find the right care — 60 seconds")
+- **Secondary action (hero):** "See What Happens After You Call" → anchors to #process
+- **Phone CTA:** "Call (912) 856-1885"
+- **Nav drawer:** "Talk With Someone Who Understands" + "Call (912) 856-1885"
+
+This applies to all pages: index.html, care-options.html, faq.html, about.html.
 
 ---
 
@@ -262,32 +286,51 @@ Do not invent numbers. Use placeholders. Every [VERIFY] must be resolved before 
 
 ## File Structure
 
-### Phase 1 — Demo (build now)
+### Phase 1 — Demo (COMPLETE — deployed at GitHub Pages)
 ```
 /
 ├── CLAUDE.md
 ├── PRD.md
 └── demo/
-    └── index.html    ← Single deployable file. All CSS inline. No dependencies except Google Fonts.
+    ├── index.html              ← Homepage. Hero, process, testimonials, intake modal.
+    ├── about.html              ← Shannon's story + franchise comparison table (light theme)
+    ├── care-options.html       ← Four care types with reason-why copy
+    ├── faq.html                ← 16 real FAQ questions, accordion, schema markup
+    ├── careers.html            ← Join the care team page
+    ├── bloomingdale.html       ← Location page
+    ├── brunswick.html          ← Location page
+    ├── hinesville.html         ← Location page
+    ├── pooler.html             ← Location page
+    ├── port-wentworth.html     ← Location page
+    ├── tybee-island.html       ← Location page
+    ├── wilmington-island.html  ← Location page
+    ├── logo.png                ← Sea turtle logo
+    ├── shannon-founder.jpg     ← 2264×3344px high-res founder photo (USE THIS)
+    ├── shannon.avif            ← Old 150×150px thumbnail (do not use)
+    ├── shannon.jpg             ← Old 903×1126px photo (do not use)
+    ├── hero-photo.jpg          ← Hero background photo
+    ├── sitemap.xml             ← Static sitemap
+    └── robots.txt              ← Allow all crawlers
+
 ```
 
+**Image note:** Always use `shannon-founder.jpg` for Shannon's photo. The other two image files
+(`shannon.avif`, `shannon.jpg`) are older lower-resolution versions that are no longer used.
+
 ### Phase 2 — Full site (after Shannon responds)
+Phase 2 moves to a real domain with Formspree, email capture, and all [VERIFY] items resolved.
+The pages already exist in the demo as starting points — they need production-level QA and
+real data substituted before moving to the production domain.
+
+Production needs added in Phase 2 (does not exist yet):
 ```
 /
-├── index.html
-├── /pages
-│   ├── about.html
-│   ├── services.html
-│   ├── faq.html
-│   ├── contact.html
-│   ├── guide.html
-│   └── guide-thank-you.html
 ├── /styles
-│   └── main.css
+│   └── main.css          ← Extract shared CSS from all pages into one stylesheet
 ├── /components
-│   └── intake-flow.js
+│   └── intake-flow.js    ← Extract intake modal JS into standalone file
 └── /assets
-    └── savannah-family-guide.pdf  [PENDING: Shannon approval]
+    └── savannah-family-guide.pdf   [PENDING: Shannon approval before publication]
 ```
 
 ---
@@ -297,15 +340,17 @@ Do not invent numbers. Use placeholders. Every [VERIFY] must be resolved before 
 Do not ship Phase 2 with any of these open.
 
 - [ ] Real PHCP license number in footer
-- [ ] Branded email replacing Yahoo
+- [ ] Branded email replacing savpcs@yahoo.com
 - [ ] Privacy Policy — real, not Wix sample
 - [ ] Terms & Conditions
-- [ ] Navigation on every page
-- [ ] Guided intake flow tested on mobile — all 3 steps
+- [x] Navigation on every page — complete
+- [x] Guided intake flow built (3 steps + confirmation) — demo shows fake submission, needs real Formspree
+- [ ] Formspree form submission connected (real data delivery)
 - [ ] Guide PDF approved by Shannon
-- [ ] Email capture connected to delivery system
+- [ ] Email capture connected to delivery system (Mailchimp free tier)
 - [ ] Care Team branding confirmed with Shannon
-- [ ] All [VERIFY] placeholders resolved
+- [ ] All [VERIFY] placeholders resolved with real data from Shannon call
+- [ ] Mobile QA — intake modal tested at 375px width end-to-end
 
 ---
 
