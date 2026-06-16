@@ -28,6 +28,18 @@
       --rule:       rgba(74,171,165,0.15);
       --gold:       #c09040;
       --muted:      #9a9a9a;
+
+      /* Spacing scale (8px base) */
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-5: 24px;
+      --space-6: 32px;
+      --space-7: 48px;
+      --space-8: 64px;
+      --space-9: 80px;
+      --space-10: 96px;
     }
 
     /* =========================================
@@ -110,7 +122,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 28px;
+      padding: 0 clamp(20px, 3.5vw, 48px);
       background: rgba(255,255,255,0.96);
       backdrop-filter: saturate(180%) blur(20px);
       -webkit-backdrop-filter: saturate(180%) blur(20px);
@@ -290,7 +302,7 @@
       transition: opacity 0.25s;
     }
     .nav-backdrop.is-open { opacity: 1; pointer-events: all; }
-    .nav-drawer-inner { max-width: 980px; margin: 0 auto; padding: 8px 24px 24px; }
+    .nav-drawer-inner { max-width: 1200px; margin: 0 auto; padding: 8px 24px 24px; }
     .nav-drawer-links { list-style: none; border-bottom: 1px solid rgba(74,171,165,0.15); margin-bottom: 20px; padding-bottom: 8px; }
     .nav-drawer-links li a {
       display: flex;
@@ -327,7 +339,7 @@
     ========================================= */
     .page-hero {
       background: var(--sand);
-      padding: 136px 28px 80px;
+      padding: 136px clamp(20px, 4vw, 64px) 80px;
       text-align: center;
     }
     .page-hero-inner { max-width: 680px; margin: 0 auto; }
@@ -355,11 +367,11 @@
        SERVICE CARDS (top overview)
     ========================================= */
     .services-overview {
-      padding: clamp(64px, 8vw, 100px) 28px;
+      padding: clamp(64px, 7vw, 96px) clamp(20px, 4vw, 64px);
       background: var(--white);
     }
-    .services-overview-inner { max-width: 1080px; margin: 0 auto; }
-    .services-overview-header { text-align: center; margin-bottom: clamp(36px, 5vw, 56px); }
+    .services-overview-inner { max-width: 1200px; margin: 0 auto; }
+    .services-overview-header { text-align: center; margin-bottom: clamp(32px, 4vw, 48px); }
     .section-title {
       font-family: 'Cormorant Garamond', Georgia, serif;
       font-size: clamp(32px, 5vw, 56px);
@@ -449,13 +461,19 @@
        COMPARISON TABLE
     ========================================= */
     .compare-section {
-      padding: clamp(64px, 8vw, 100px) 28px;
+      padding: clamp(64px, 7vw, 96px) clamp(20px, 4vw, 64px);
       background: var(--sand);
     }
-    .compare-inner { max-width: 1080px; margin: 0 auto; }
-    .compare-header { text-align: center; margin-bottom: clamp(36px, 5vw, 56px); }
+    .compare-inner { max-width: 1200px; margin: 0 auto; }
+    .compare-header { text-align: center; margin-bottom: clamp(32px, 4vw, 48px); }
 
-    .compare-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .compare-scroll {
+      overflow-x: auto;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      max-height: 72vh;
+      border-radius: 8px;
+    }
     .compare-table {
       width: 100%;
       min-width: 680px;
@@ -468,7 +486,7 @@
       padding: 0;
       background: var(--sand);
       position: sticky;
-      top: 68px;
+      top: 0;
       z-index: 10;
     }
     .compare-table thead tr { border-bottom: 2px solid rgba(74,171,165,0.2); }
@@ -605,14 +623,14 @@
        SERVICE DETAIL SECTIONS
     ========================================= */
     .service-detail {
-      padding: clamp(64px, 8vw, 100px) 28px;
+      padding: clamp(64px, 7vw, 96px) clamp(20px, 4vw, 64px);
       scroll-margin-top: 72px;
     }
     .service-detail:nth-child(odd) { background: var(--white); }
     .service-detail:nth-child(even) { background: var(--sand); }
 
     .service-detail-inner {
-      max-width: 980px;
+      max-width: 1200px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr;
@@ -694,7 +712,7 @@
     ========================================= */
     .faq-section {
       background: var(--white);
-      padding: clamp(72px, 9vw, 120px) 28px;
+      padding: clamp(64px, 7vw, 96px) clamp(20px, 4vw, 64px);
     }
     .faq-inner { max-width: 720px; margin: 0 auto; }
     .faq-header { margin-bottom: clamp(36px, 5vw, 56px); }
@@ -763,7 +781,7 @@
     ========================================= */
     .cta-strip {
       background: var(--teal);
-      padding: clamp(64px, 8vw, 100px) 28px;
+      padding: clamp(64px, 7vw, 96px) clamp(20px, 4vw, 64px);
       text-align: center;
     }
     .cta-strip-inner { max-width: 600px; margin: 0 auto; }
@@ -800,9 +818,9 @@
     ========================================= */
     .footer-v2 {
       background: var(--ink-deep);
-      padding: 64px 28px 0;
+      padding: 64px clamp(20px, 4vw, 64px) 0;
     }
-    .footer-v2-inner { max-width: 1080px; margin: 0 auto; }
+    .footer-v2-inner { max-width: 1200px; margin: 0 auto; }
 
     .footer-v2-top {
       display: grid;
