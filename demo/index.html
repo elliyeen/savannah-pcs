@@ -1138,8 +1138,8 @@
 
     @media (min-width: 680px) {
       .founder-grid {
-        grid-template-columns: 1fr 1.4fr;
-        gap: 72px;
+        grid-template-columns: auto 1fr;
+        gap: 56px;
       }
     }
 
@@ -1189,7 +1189,7 @@
       font-size: clamp(15px, 1.6vw, 17px);
       font-weight: 400;
       line-height: 1.7;
-      color: var(--soft);
+      color: var(--ink);
       margin-bottom: 28px;
     }
 
@@ -1204,20 +1204,21 @@
       margin-bottom: 28px;
     }
 
-    /* Photo card — left column */
+    /* Photo card — sized to native resolution (150×150) to avoid upscale blur */
     .founder-photo-card {
-      position: relative;
-      border-radius: 8px;
-      overflow: hidden;
-      background: var(--teal-lt);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
     }
 
     .founder-photo-card img {
-      width: 100%;
-      height: auto;
+      width: 150px;
+      height: 150px;
       display: block;
       object-fit: cover;
-      aspect-ratio: 4 / 5;
+      border-radius: 8px;
+      /* No upscaling — rendered at pixel-native size */
+      image-rendering: auto;
     }
 
     /* Credential badges below photo */
@@ -1226,6 +1227,7 @@
       flex-wrap: wrap;
       gap: 8px;
       margin-top: 16px;
+      max-width: 280px;
     }
 
     .founder-badge {
@@ -1234,7 +1236,7 @@
       font-family: 'Inter', sans-serif;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      color: var(--soft);
+      color: var(--ink);
       background: var(--white);
       border: 1px solid rgba(74,171,165,0.25);
       padding: 5px 11px;
@@ -1278,7 +1280,7 @@
       font-weight: 500;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--ink);
     }
 
     /* =========================================
@@ -2798,8 +2800,8 @@
             src="./shannon.avif"
             alt="Shannon Stafford Simpson, founder of Savannah Personal Care Services"
             loading="lazy"
-            width="800"
-            height="1000"
+            width="150"
+            height="150"
           />
         </div>
         <div class="founder-badges" role="list" aria-label="Shannon's credentials">
@@ -2834,7 +2836,7 @@
         <blockquote class="founder-quote">
           "I started Savannah Personal Care Services because families deserve care that feels human from the very first conversation."
         </blockquote>
-        <p style="font-size:13px;font-weight:500;color:var(--soft);margin-top:-18px;margin-bottom:0;padding-left:24px;">— Shannon</p>
+        <p style="font-size:13px;font-weight:500;color:var(--ink);margin-top:-18px;margin-bottom:0;padding-left:24px;">— Shannon</p>
 
         <div class="founder-ctas" role="group" aria-label="Talk with Shannon">
           <div class="founder-cta-block">
