@@ -23,7 +23,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://savannahpersonalcare.com/" />
   <meta property="og:title" content="Savannah Personal Care Services | Home Care by a Certified CNA" />
-  <meta property="og:description" content="Founded by Shannon Stafford Simpson, CNA. Trusted home care for families across coastal Georgia. The Shannon Standard: Free assessment same day, caregiver match within 48 hours, supervised first visit." />
+  <meta property="og:description" content="Founded by Shannon Stafford Simpson, CNA. Trusted home care for families across coastal Georgia. The Savannah Standard: Free assessment same day, caregiver match within 48 hours, supervised first visit." />
   <meta property="og:locale" content="en_US" />
 
   <!-- Twitter Card -->
@@ -1408,30 +1408,33 @@
 
     .process-row {
       display: grid;
-      grid-template-columns: 48px 1fr;
-      gap: 24px;
-      padding: 36px 0;
+      grid-template-columns: clamp(56px, 8vw, 88px) 1fr;
+      gap: clamp(16px, 3vw, 32px);
+      padding: clamp(28px, 4vw, 44px) 0;
       border-top: 1px solid rgba(74,171,165,0.18);
       align-items: start;
     }
 
     @media (min-width: 640px) {
       .process-row {
-        grid-template-columns: 64px 1fr;
+        grid-template-columns: 88px 1fr;
       }
     }
 
     .process-step-num {
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 1rem;
-      color: var(--soft);
-      padding-top: 4px;
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      padding-top: 2px;
     }
 
     .process-row-content {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 12px;
+      gap: clamp(10px, 2vw, 16px);
     }
 
     @media (min-width: 640px) {
@@ -1443,25 +1446,26 @@
 
     .process-title {
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: clamp(18px, 2.5vw, 24px);
+      font-size: clamp(20px, 3vw, 28px);
       font-weight: 600;
       color: var(--ink);
-      line-height: 1.2;
+      line-height: 1.15;
     }
 
     .process-time {
-      font-size: 11px;
+      font-size: clamp(11px, 1.2vw, 13px);
+      font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      color: var(--soft);
-      margin-top: 6px;
+      color: var(--ink);
+      margin-top: 7px;
     }
 
     .process-body {
-      font-size: clamp(15px, 1.6vw, 16px);
+      font-size: clamp(16px, 1.8vw, 18px);
       font-weight: 400;
-      line-height: 1.65;
-      color: var(--soft);
+      line-height: 1.7;
+      color: var(--ink);
     }
 
     /* =========================================
@@ -2321,9 +2325,9 @@
       /* Founder stacked gap */
       .founder-grid           { gap: 24px; }
 
-      /* Process rows — more compact */
+      /* Process rows */
       .process-list           { margin-top: 32px; }
-      .process-row            { padding: 24px 0; gap: 16px; }
+      .process-row            { padding: 28px 0; gap: 18px; }
 
       /* Testimonial cards */
       .testimonial-card       { padding: 36px 24px; }
@@ -2343,7 +2347,7 @@
       .card                   { padding: 32px 24px; }
       .founder-credential-block { padding: 36px 28px; }
       .testimonial-card       { padding: 32px 20px; }
-      .process-row            { padding: 20px 0; gap: 14px; }
+      .process-row            { padding: 24px 0; gap: 16px; }
       .process-list           { margin-top: 24px; }
       .section-header         { margin-bottom: 24px; }
       .founder-ctas           { grid-template-columns: 1fr; gap: 10px 0; }
@@ -2511,7 +2515,7 @@
       .footer-v2 { padding: 40px 16px 0; }
       .modal-card { padding: 28px 18px 24px; }
       .section-header { margin-bottom: 20px; }
-      .process-row { padding: 18px 0; gap: 12px; }
+      .process-row { padding: 22px 0; gap: 14px; }
     }
 
     /* =========================================
@@ -3133,12 +3137,12 @@
 <section class="section process-section" id="process" aria-labelledby="process-title">
   <div class="section-inner">
     <div class="section-header">
-      <span class="label section-label">The Shannon Standard</span>
+      <span class="label section-label">The Savannah Standard</span>
       <h2 class="section-title serif" id="process-title">What happens between your call<br />and day one.</h2>
       <p class="section-body">Most agencies make the process vague by design. We believe clarity is a form of care. Here is exactly what to expect.</p>
     </div>
 
-    <ol class="process-list" aria-label="The Shannon Standard — five steps">
+    <ol class="process-list" aria-label="The Savannah Standard — five steps">
       <li class="process-row">
         <span class="process-step-num serif" aria-hidden="true">01</span>
         <div class="process-row-content">
