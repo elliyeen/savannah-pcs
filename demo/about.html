@@ -233,6 +233,10 @@
     .btn-white:hover { opacity: .9; }
     .btn-ghost-white { background: transparent; color: rgba(255,255,255,.85); border-color: rgba(255,255,255,.35); }
     .btn-ghost-white:hover { border-color: rgba(255,255,255,.7); }
+    .btn-ghost { background: transparent; color: var(--ink); border-color: rgba(74,171,165,0.3); }
+    .btn-ghost:hover { border-color: var(--teal); }
+    .btn-teal { background: var(--teal); color: #fff; border-color: var(--teal); }
+    .btn-teal:hover { background: var(--teal-dark); border-color: var(--teal-dark); }
 
     /* FOOTER */
     .footer { background: var(--ink-deep); padding: 36px 28px 28px; }
@@ -246,15 +250,83 @@
 </head>
 <body>
 
+<!-- NAV -->
 <nav class="nav" role="navigation" aria-label="Main navigation">
   <a class="nav-logo-link" href="./index.html" aria-label="Savannah Personal Care Services — home">
-    <img src="./logo.png" alt="Savannah Personal Care Services" />
+    <img src="./logo.png" alt="Savannah Personal Care Services — sea turtle logo" />
   </a>
+  <ul class="nav-links" role="list">
+    <li class="nav-dropdown">
+      <a href="./care-options.html">Types of Care <span class="nav-caret" aria-hidden="true">▾</span></a>
+      <div class="nav-dropdown-menu">
+        <a href="./care-options.html#transitional">Transitional Care</a>
+        <a href="./care-options.html#daily-living">Daily Living Assistance</a>
+        <a href="./care-options.html#dementia">Dementia Care Support</a>
+        <a href="./care-options.html#respite">Respite Care</a>
+      </div>
+    </li>
+    <li><a href="./index.html#process">How It Works</a></li>
+    <li><a href="./about.html">About Us</a></li>
+    <li><a href="./careers.html">Careers</a></li>
+  </ul>
   <div class="nav-right">
-    <a class="nav-back" href="./index.html">← Back to home</a>
-    <a class="nav-phone" href="tel:+19128561885">(912) 856-1885</a>
+    <a class="nav-phone" href="tel:+19128561885" aria-label="Call us at (912) 856-1885">
+      (912) 856-1885
+    </a>
+    <button class="nav-menu-btn" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </div>
 </nav>
+
+<!-- NAV DRAWER -->
+<div class="nav-backdrop" id="nav-backdrop" aria-hidden="true"></div>
+<div class="nav-drawer" id="nav-drawer" aria-label="Mobile navigation" hidden>
+  <div class="nav-drawer-inner">
+    <ul class="nav-drawer-links" role="list">
+      <li>
+        <a href="./care-options.html">
+          Types of Care
+          <span class="nav-drawer-arrow" aria-hidden="true">→</span>
+        </a>
+        <ul style="list-style:none;padding:0 0 8px 16px;margin:0;">
+          <li><a href="./care-options.html#transitional" style="font-size:13px;color:rgba(26,26,26,0.6);padding:6px 0;display:block;">Transitional Care</a></li>
+          <li><a href="./care-options.html#daily-living" style="font-size:13px;color:rgba(26,26,26,0.6);padding:6px 0;display:block;">Daily Living Assistance</a></li>
+          <li><a href="./care-options.html#dementia" style="font-size:13px;color:rgba(26,26,26,0.6);padding:6px 0;display:block;">Dementia Care Support</a></li>
+          <li><a href="./care-options.html#respite" style="font-size:13px;color:rgba(26,26,26,0.6);padding:6px 0;display:block;">Respite Care</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="./index.html#process">
+          How It Works
+          <span class="nav-drawer-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li>
+        <a href="./about.html">
+          About Us
+          <span class="nav-drawer-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li>
+        <a href="./careers.html">
+          Careers
+          <span class="nav-drawer-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+    </ul>
+    <div class="nav-drawer-actions">
+      <a class="btn btn-ghost" href="tel:+19128561885">
+        Call (912) 856-1885
+      </a>
+      <a class="btn btn-teal" href="./index.html">
+        Get Care →
+      </a>
+    </div>
+  </div>
+</div>
 
 <main>
 
@@ -382,5 +454,54 @@
   </div>
 </footer>
 
+<script>
+(function() {
+  'use strict';
+  var menuBtn = document.querySelector('.nav-menu-btn');
+  var navDrawer = document.getElementById('nav-drawer');
+  var navBackdrop = document.getElementById('nav-backdrop');
+  var isDrawerOpen = false;
+  function openDrawer() {
+    isDrawerOpen = true;
+    navDrawer.removeAttribute('hidden');
+    requestAnimationFrame(function() {
+      requestAnimationFrame(function() {
+        navDrawer.classList.add('is-open');
+        navBackdrop.classList.add('is-open');
+        menuBtn.classList.add('is-open');
+        menuBtn.setAttribute('aria-expanded', 'true');
+        menuBtn.setAttribute('aria-label', 'Close menu');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    document.addEventListener('keydown', onDrawerKey);
+  }
+  function closeDrawer() {
+    isDrawerOpen = false;
+    navDrawer.classList.remove('is-open');
+    navBackdrop.classList.remove('is-open');
+    menuBtn.classList.remove('is-open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+    menuBtn.setAttribute('aria-label', 'Open menu');
+    document.body.style.overflow = '';
+    document.removeEventListener('keydown', onDrawerKey);
+    setTimeout(function() {
+      if (!isDrawerOpen) navDrawer.setAttribute('hidden', '');
+    }, 260);
+  }
+  function onDrawerKey(e) { if (e.key === 'Escape') closeDrawer(); }
+  if (menuBtn) {
+    menuBtn.addEventListener('click', function() {
+      isDrawerOpen ? closeDrawer() : openDrawer();
+    });
+  }
+  if (navBackdrop) { navBackdrop.addEventListener('click', closeDrawer); }
+  if (navDrawer) {
+    navDrawer.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() { closeDrawer(); });
+    });
+  }
+})();
+</script>
 </body>
 </html>
