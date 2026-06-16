@@ -10,8 +10,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" /></noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=block" />
 
   <style>
     /* =========================================
@@ -22,9 +21,9 @@
       --teal-dark:  #2A8280;
       --teal-lt:    #E3F5F4;
       --sand:       #F0FAFA;
-      --ink:        #0f0f0f;
-      --ink-deep:   #031F1E;
-      --soft:       #3a3a3a;
+      --ink:        #1a1a1a;
+      --ink-deep:   #0a0a0a;
+      --soft:       #555555;
       --white:      #ffffff;
       --rule:       rgba(74,171,165,0.15);
       --gold:       #c09040;
@@ -35,16 +34,19 @@
        RESET & BASE
     ========================================= */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      font-size: 15px;
-      line-height: 1.65;
+      font-size: 17px;
+      line-height: 1.7;
       color: var(--ink);
       background: var(--white);
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      font-optical-sizing: auto;
+      font-synthesis: none;
     }
     img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
@@ -1019,6 +1021,30 @@
       .nav-phone { font-size: 0.76rem; }
       .service-card { padding: 28px 20px 24px; }
       .service-detail-aside { padding: 28px 20px; }
+    }
+
+    /* =========================================
+       MOBILE TYPOGRAPHY
+    ========================================= */
+    @media (max-width: 768px) {
+      .page-hero-headline { font-size: clamp(36px, 10vw, 64px); }
+      .section-title { font-size: clamp(28px, 8vw, 44px); }
+      .section-body { font-size: 17px; }
+      .page-hero-sub { font-size: 17px; }
+      .service-detail-text { font-size: 17px; }
+      .faq-answer { font-size: 16px; }
+      .cta-strip-body { font-size: 17px; }
+      .page-hero-actions { flex-direction: column; align-items: stretch; }
+      .page-hero-actions .btn { width: 100%; min-height: 56px; font-size: 17px; font-weight: 700; }
+      .service-detail-cta { flex-direction: column; align-items: stretch; }
+      .service-detail-cta .btn { width: 100%; min-height: 56px; font-size: 17px; font-weight: 700; }
+      .cta-strip-buttons { flex-direction: column; align-items: stretch; }
+      .cta-strip-buttons .btn { width: 100%; min-height: 56px; font-size: 17px; font-weight: 700; }
+      .services-overview,
+      .compare-section,
+      .service-detail,
+      .faq-section,
+      .cta-strip { padding: 48px 20px; }
     }
 
     /* Sticky mobile CTA */

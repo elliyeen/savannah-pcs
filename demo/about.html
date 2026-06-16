@@ -26,8 +26,7 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" /></noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=block" />
   <style>
     :root {
       --teal:      #4AABA5;
@@ -41,10 +40,10 @@
       --gold:      #c09040;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'DM Sans', -apple-system, sans-serif; font-size: 16px; line-height: 1.65; color: var(--ink); background: var(--white); -webkit-font-smoothing: antialiased; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 17px; line-height: 1.7; color: var(--ink); background: var(--white); overflow-x: hidden; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; font-optical-sizing: auto; font-synthesis: none; }
     a { color: inherit; text-decoration: none; }
-    .serif { font-family: 'DM Serif Display', Georgia, serif; }
+    .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
 
     /* ── NAV ── */
     .nav {
@@ -178,7 +177,7 @@
     .page-hero-inner { max-width: 900px; margin: 0 auto; }
     .page-label { font-size: .65rem; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: var(--teal); display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
     .page-label::before { content: ''; display: block; width: 20px; height: 1px; background: var(--teal); flex-shrink: 0; }
-    .page-h1 { font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(40px, 7vw, 72px); line-height: 1.05; letter-spacing: -.025em; margin-bottom: 24px; }
+    .page-h1 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(36px, 7vw, 72px); line-height: 1.05; letter-spacing: -.025em; margin-bottom: 24px; }
     .page-intro { font-size: clamp(16px, 2vw, 19px); font-weight: 300; color: var(--soft); line-height: 1.65; max-width: 600px; }
 
     /* FOUNDER GRID */
@@ -188,22 +187,22 @@
     @media (min-width: 680px) { .founder-grid { grid-template-columns: 220px 1fr; gap: 64px; } }
 
     .founder-badge { background: var(--teal); border-radius: 10px; padding: 40px 32px; }
-    .founder-name { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.75rem; color: #fff; line-height: 1.15; margin-bottom: 8px; }
+    .founder-name { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.75rem; color: #fff; line-height: 1.15; margin-bottom: 8px; }
     .founder-role-label { font-size: .65rem; text-transform: uppercase; letter-spacing: .1em; color: rgba(255,255,255,.5); margin-bottom: 20px; display: block; }
     .founder-pills { display: flex; flex-wrap: wrap; gap: 6px; }
     .founder-pill { border: 1px solid rgba(255,255,255,.22); color: rgba(255,255,255,.78); font-size: .65rem; text-transform: uppercase; letter-spacing: .06em; padding: 5px 10px; border-radius: 4px; }
 
     .section-label { font-size: .65rem; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: var(--teal); display: block; margin-bottom: 12px; }
-    .section-title { font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(28px, 4vw, 46px); line-height: 1.1; letter-spacing: -.02em; margin-bottom: 24px; }
+    .section-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(28px, 4vw, 46px); line-height: 1.1; letter-spacing: -.02em; margin-bottom: 24px; }
     .founder-body { font-size: .95rem; font-weight: 300; color: var(--soft); line-height: 1.75; margin-bottom: 18px; }
-    .founder-quote { font-family: 'DM Serif Display', Georgia, serif; font-style: italic; font-size: clamp(17px, 2vw, 22px); line-height: 1.45; border-left: 2px solid var(--teal); padding-left: 22px; margin: 28px 0; color: var(--ink); }
+    .founder-quote { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: clamp(17px, 2vw, 22px); line-height: 1.45; border-left: 2px solid var(--teal); padding-left: 22px; margin: 28px 0; color: var(--ink); }
 
     /* COMPARISON */
     .compare-section { background: var(--ink-deep); padding: clamp(64px, 8vw, 112px) 28px; }
     .compare-inner { max-width: 900px; margin: 0 auto; }
     .compare-header { margin-bottom: 56px; }
     .compare-label { font-size: .65rem; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: var(--teal); display: block; margin-bottom: 12px; }
-    .compare-title { font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(28px, 4vw, 46px); line-height: 1.1; letter-spacing: -.02em; color: #fff; margin-bottom: 16px; }
+    .compare-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(28px, 4vw, 46px); line-height: 1.1; letter-spacing: -.02em; color: #fff; margin-bottom: 16px; }
     .compare-sub { font-size: clamp(14px, 1.6vw, 16px); font-weight: 300; color: rgba(255,255,255,.45); max-width: 540px; line-height: 1.65; }
     .compare-grid { display: grid; grid-template-columns: 1fr; gap: 1px; background: rgba(255,255,255,.06); border-radius: 10px; overflow: hidden; }
     @media (min-width: 640px) { .compare-grid { grid-template-columns: 1fr 1fr; } }
@@ -225,7 +224,7 @@
     /* CTA */
     .cta-bar { background: var(--teal); padding: 72px 28px; text-align: center; }
     .cta-bar-inner { max-width: 540px; margin: 0 auto; }
-    .cta-bar h2 { font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(28px, 4vw, 44px); color: #fff; line-height: 1.1; margin-bottom: 14px; }
+    .cta-bar h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(28px, 4vw, 44px); color: #fff; line-height: 1.1; margin-bottom: 14px; }
     .cta-bar p { font-size: clamp(14px, 1.6vw, 17px); font-weight: 300; color: rgba(255,255,255,.7); margin-bottom: 32px; line-height: 1.65; }
     .cta-bar-btns { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
     .btn { display: inline-flex; align-items: center; justify-content: center; padding: 14px 28px; border-radius: 999px; font-size: .9rem; font-weight: 500; min-height: 44px; border: 1px solid transparent; transition: background .18s, color .18s, border-color .18s; font-family: inherit; cursor: pointer; }
@@ -241,11 +240,28 @@
     /* FOOTER */
     .footer { background: var(--ink-deep); padding: 36px 28px 28px; }
     .footer-inner { max-width: 900px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; }
-    .footer-brand { font-family: 'DM Serif Display', Georgia, serif; color: #fff; font-size: .9rem; }
+    .footer-brand { font-family: 'Cormorant Garamond', Georgia, serif; color: #fff; font-size: .9rem; }
     .footer-links { display: flex; flex-wrap: wrap; gap: 8px 20px; }
     .footer-links a { font-size: .78rem; color: rgba(255,255,255,.4); transition: color .15s; }
     .footer-links a:hover { color: rgba(255,255,255,.8); }
     .footer-copy { font-size: .62rem; color: rgba(255,255,255,.18); width: 100%; margin-top: 8px; }
+
+    @media (max-width: 768px) {
+      .page-h1 { font-size: clamp(36px, 10vw, 64px); }
+      .section-title { font-size: clamp(28px, 8vw, 44px); }
+      .page-intro { font-size: 17px; }
+      .founder-body { font-size: 17px; }
+      .founder-quote { font-size: 17px; }
+      .compare-sub { font-size: 17px; }
+      .compare-row-text { font-size: 17px; }
+      .cta-bar p { font-size: 17px; }
+      .cta-bar-btns { flex-direction: column; align-items: stretch; }
+      .cta-bar-btns .btn { width: 100%; min-height: 56px; font-size: 17px; font-weight: 700; }
+      .page-hero,
+      .founder-section,
+      .compare-section,
+      .cta-bar { padding: 48px 20px; }
+    }
   </style>
 </head>
 <body>

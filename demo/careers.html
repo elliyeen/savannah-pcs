@@ -11,7 +11,7 @@
   <link rel="canonical" href="https://savannahpersonalcare.com/careers" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=block" />
 
   <script type="application/ld+json">
   {
@@ -57,16 +57,24 @@
       --rule:       rgba(74,171,165,0.15);
     }
 
-    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 
     body {
-      font-family: 'DM Sans', system-ui, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 17px;
+      line-height: 1.7;
       color: var(--ink);
       background: var(--white);
+      overflow-x: hidden;
       min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      font-optical-sizing: auto;
+      font-synthesis: none;
     }
 
-    .serif { font-family: 'DM Serif Display', Georgia, serif; }
+    .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
 
     /* ── NAV ── */
     .nav {
@@ -197,7 +205,7 @@
 
     /* ── PAGE HERO ── */
     .page-hero {
-      padding: 72px 28px 60px;
+      padding: 92px 28px 60px;
       max-width: 720px;
       margin: 0 auto;
     }
@@ -273,7 +281,7 @@
     }
 
     .job-title {
-      font-family: 'DM Serif Display', Georgia, serif;
+      font-family: 'Cormorant Garamond', Georgia, serif;
       font-size: 1.2rem;
       color: var(--ink-deep);
       line-height: 1.25;
@@ -394,7 +402,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       font-size: 0.88rem;
       font-weight: 600;
       padding: 13px 26px;
@@ -412,6 +420,13 @@
     }
 
     .btn-teal:hover { background: var(--teal-dark); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid rgba(74,171,165,0.3);
+    }
+    .btn-ghost:hover { border-color: var(--teal); }
 
     .btn-ghost-white {
       background: transparent;
@@ -463,17 +478,96 @@
       .careers-section { padding: 0 20px 72px; }
       .jobs-grid { grid-template-columns: 1fr; }
     }
+
+    @media (max-width: 768px) {
+      .page-hero-title { font-size: clamp(36px, 10vw, 64px); }
+      .cta-bar-title { font-size: clamp(28px, 8vw, 44px); }
+      .page-hero-body { font-size: 17px; }
+      .job-desc { font-size: 17px; }
+      .cta-bar-buttons { flex-direction: column; align-items: stretch; }
+      .cta-bar-buttons .btn { width: 100%; min-height: 56px; font-size: 17px; font-weight: 700; }
+    }
   </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav class="nav" role="navigation" aria-label="Site navigation">
-  <a class="nav-back" href="./index.html" aria-label="Back to home">
-    ← Home
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <a class="nav-logo-link" href="./index.html" aria-label="Savannah Personal Care Services — home">
+    <img src="./logo.png" alt="Savannah Personal Care Services — sea turtle logo" />
   </a>
-  <a class="nav-phone" href="tel:+19128561885">(912) 856-1885</a>
+  <ul class="nav-links" role="list">
+    <li class="nav-dropdown">
+      <a href="./care-options.html">Types of Care <span class="nav-caret" aria-hidden="true">▾</span></a>
+      <div class="nav-dropdown-menu">
+        <a href="./care-options.html#transitional">Transitional Care</a>
+        <a href="./care-options.html#daily-living">Daily Living Assistance</a>
+        <a href="./care-options.html#dementia">Dementia Care Support</a>
+        <a href="./care-options.html#respite">Respite Care</a>
+      </div>
+    </li>
+    <li><a href="./index.html#process">How It Works</a></li>
+    <li><a href="./about.html">About Us</a></li>
+    <li><a href="./careers.html">Careers</a></li>
+  </ul>
+  <div class="nav-right">
+    <a class="nav-phone" href="tel:+19128561885" aria-label="Call us at (912) 856-1885">
+      (912) 856-1885
+    </a>
+    <button class="nav-menu-btn" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
 </nav>
+
+<!-- NAV DRAWER -->
+<div class="nav-backdrop" id="nav-backdrop" aria-hidden="true"></div>
+<div class="nav-drawer" id="nav-drawer" aria-label="Mobile navigation" hidden>
+  <div class="nav-drawer-inner">
+    <ul class="nav-drawer-links" role="list">
+      <li>
+        <a href="./care-options.html">
+          Types of Care
+          <span class="nav-drawer-arrow" aria-hidden="true">→</span>
+        </a>
+        <ul style="list-style:none;padding:0 0 8px 16px;margin:0;">
+          <li><a href="./care-options.html#transitional" style="font-size:13px;color:rgba(26,26,26,0.6);padding:6px 0;display:block;">Transitional Care</a></li>
+          <li><a href="./care-options.html#daily-living" style="font-size:13px;color:rgba(26,26,26,0.6);padding:6px 0;display:block;">Daily Living Assistance</a></li>
+          <li><a href="./care-options.html#dementia" style="font-size:13px;color:rgba(26,26,26,0.6);padding:6px 0;display:block;">Dementia Care Support</a></li>
+          <li><a href="./care-options.html#respite" style="font-size:13px;color:rgba(26,26,26,0.6);padding:6px 0;display:block;">Respite Care</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="./index.html#process">
+          How It Works
+          <span class="nav-drawer-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li>
+        <a href="./about.html">
+          About Us
+          <span class="nav-drawer-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+      <li>
+        <a href="./careers.html">
+          Careers
+          <span class="nav-drawer-arrow" aria-hidden="true">→</span>
+        </a>
+      </li>
+    </ul>
+    <div class="nav-drawer-actions">
+      <a class="btn btn-ghost" href="tel:+19128561885">
+        Call (912) 856-1885
+      </a>
+      <a class="btn btn-teal" href="./index.html">
+        Get Care →
+      </a>
+    </div>
+  </div>
+</div>
 
 <!-- PAGE HERO -->
 <header class="page-hero">
@@ -597,5 +691,54 @@
   <p class="footer-copy">© 2024 Savannah Personal Care Services · Savannah, GA · Georgia PHCP Licensed [VERIFY]</p>
 </footer>
 
+<script>
+(function() {
+  'use strict';
+  var menuBtn = document.querySelector('.nav-menu-btn');
+  var navDrawer = document.getElementById('nav-drawer');
+  var navBackdrop = document.getElementById('nav-backdrop');
+  var isDrawerOpen = false;
+  function openDrawer() {
+    isDrawerOpen = true;
+    navDrawer.removeAttribute('hidden');
+    requestAnimationFrame(function() {
+      requestAnimationFrame(function() {
+        navDrawer.classList.add('is-open');
+        navBackdrop.classList.add('is-open');
+        menuBtn.classList.add('is-open');
+        menuBtn.setAttribute('aria-expanded', 'true');
+        menuBtn.setAttribute('aria-label', 'Close menu');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    document.addEventListener('keydown', onDrawerKey);
+  }
+  function closeDrawer() {
+    isDrawerOpen = false;
+    navDrawer.classList.remove('is-open');
+    navBackdrop.classList.remove('is-open');
+    menuBtn.classList.remove('is-open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+    menuBtn.setAttribute('aria-label', 'Open menu');
+    document.body.style.overflow = '';
+    document.removeEventListener('keydown', onDrawerKey);
+    setTimeout(function() {
+      if (!isDrawerOpen) navDrawer.setAttribute('hidden', '');
+    }, 260);
+  }
+  function onDrawerKey(e) { if (e.key === 'Escape') closeDrawer(); }
+  if (menuBtn) {
+    menuBtn.addEventListener('click', function() {
+      isDrawerOpen ? closeDrawer() : openDrawer();
+    });
+  }
+  if (navBackdrop) { navBackdrop.addEventListener('click', closeDrawer); }
+  if (navDrawer) {
+    navDrawer.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() { closeDrawer(); });
+    });
+  }
+})();
+</script>
 </body>
 </html>
