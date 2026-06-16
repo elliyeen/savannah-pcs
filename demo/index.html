@@ -1138,8 +1138,8 @@
 
     @media (min-width: 680px) {
       .founder-grid {
-        grid-template-columns: auto 1fr;
-        gap: 56px;
+        grid-template-columns: 1fr 1.4fr;
+        gap: 72px;
       }
     }
 
@@ -1204,21 +1204,19 @@
       margin-bottom: 28px;
     }
 
-    /* Photo card — sized to native resolution (150×150) to avoid upscale blur */
+    /* Photo card — full portrait, 903×1126 source */
     .founder-photo-card {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--teal-lt);
     }
 
     .founder-photo-card img {
-      width: 150px;
-      height: 150px;
+      width: 100%;
+      height: auto;
       display: block;
       object-fit: cover;
-      border-radius: 8px;
-      /* No upscaling — rendered at pixel-native size */
-      image-rendering: auto;
+      aspect-ratio: 4 / 5;
     }
 
     /* Credential badges below photo */
@@ -1227,7 +1225,6 @@
       flex-wrap: wrap;
       gap: 8px;
       margin-top: 16px;
-      max-width: 280px;
     }
 
     .founder-badge {
@@ -2797,11 +2794,11 @@
             Replace src if filename changes. Maintain aspect-ratio 4/5.
           -->
           <img
-            src="./shannon.avif"
+            src="./shannon.jpg"
             alt="Shannon Stafford Simpson, founder of Savannah Personal Care Services"
             loading="lazy"
-            width="150"
-            height="150"
+            width="903"
+            height="1126"
           />
         </div>
         <div class="founder-badges" role="list" aria-label="Shannon's credentials">
