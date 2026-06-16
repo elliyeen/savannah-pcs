@@ -26,7 +26,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=block" />
   <style>
-    :root { --teal:#4AABA5; --teal-dark:#2A8280; --teal-lt:#E3F5F4; --sand:#F0FAFA; --ink:#1a1a1a; --ink-deep:#0a0a0a; --soft:#555555; --white:#fff; --gold:#c09040; --rule:rgba(74,171,165,0.15); --muted:#9a9a9a; }
+    :root { --teal:#4AABA5; --teal-dark:#2A8280; --teal-lt:#E3F5F4; --sand:#F0FAFA; --ink:#1d1d1f; --ink-deep:#0a0a0a; --soft:#6e6e73; --white:#fff; --gold:#c09040; --rule:rgba(74,171,165,0.15); --muted:#9a9a9a; }
     *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
     html { scroll-behavior:smooth; -webkit-text-size-adjust:100%; text-size-adjust:100%; }
     body { font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:17px; line-height:1.7; color:var(--ink); background:var(--white); overflow-x:hidden; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; text-rendering:optimizeLegibility; font-optical-sizing:auto; font-synthesis:none; }
@@ -163,10 +163,10 @@
     .hero-inner { max-width:720px; margin:0 auto; }
     .hero-label { font-size:.68rem; font-weight:500; letter-spacing:.16em; text-transform:uppercase; color:var(--teal); display:flex; align-items:center; gap:12px; margin-bottom:24px; }
     .hero-label::before { content:''; display:block; width:20px; height:1px; background:var(--teal); flex-shrink:0; }
-    .hero-h1 { font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(36px,7vw,68px); line-height:1.05; letter-spacing:-.025em; margin-bottom:24px; }
-    .hero-sub { font-size:clamp(15px,2vw,18px); font-weight:300; color:var(--soft); line-height:1.65; max-width:560px; margin-bottom:36px; }
+    .hero-h1 { font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(36px,7vw,68px); line-height:1.05; letter-spacing:-.025em; font-weight:600; margin-bottom:24px; }
+    .hero-sub { font-size:clamp(15px,2vw,18px); font-weight:400; color:var(--soft); line-height:1.65; max-width:560px; margin-bottom:36px; }
     .hero-ctas { display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
-    .btn { display:inline-flex; align-items:center; justify-content:center; padding:14px 28px; border-radius:999px; font-size:.9rem; font-weight:500; min-height:44px; border:1px solid transparent; transition:background .18s,color .18s,border-color .18s; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; padding:14px 28px; border-radius:999px; font-size:.9rem; font-weight:600; min-height:44px; border:1px solid transparent; transition:background .18s,color .18s,border-color .18s; }
     .btn-teal { background:var(--teal); color:#fff; border-color:var(--teal); }
     .btn-teal:hover { background:var(--teal-dark); border-color:var(--teal-dark); }
     .btn-ghost { background:transparent; color:var(--ink); border-color:rgba(74,171,165,0.3); }
@@ -174,14 +174,14 @@
     .features { padding:64px 28px; background:var(--white); }
     .features-inner { max-width:900px; margin:0 auto; }
     .label { font-size:.68rem; font-weight:500; letter-spacing:.16em; text-transform:uppercase; color:var(--teal); display:block; margin-bottom:12px; }
-    .section-h2 { font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(28px,4vw,44px); line-height:1.1; letter-spacing:-.02em; margin-bottom:16px; }
-    .section-body { font-size:clamp(14px,1.6vw,16px); font-weight:300; color:var(--soft); line-height:1.65; max-width:540px; margin-bottom:48px; }
+    .section-h2 { font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(28px,4vw,44px); line-height:1.1; letter-spacing:-.02em; font-weight:600; margin-bottom:16px; }
+    .section-body { font-size:clamp(14px,1.6vw,16px); font-weight:400; color:var(--soft); line-height:1.65; max-width:640px; margin-bottom:48px; }
     .grid-3 { display:grid; grid-template-columns:1fr; gap:1px; background:rgba(74,171,165,0.15); border-radius:10px; overflow:hidden; }
     @media(min-width:600px){ .grid-3 { grid-template-columns:repeat(3,1fr); } }
     .feature-card { background:var(--white); padding:36px 28px; }
     .feature-num { font-family:'Cormorant Garamond',Georgia,serif; font-size:.75rem; color:var(--teal); margin-bottom:14px; display:block; }
-    .feature-title { font-family:'Cormorant Garamond',Georgia,serif; font-size:1.1rem; margin-bottom:10px; }
-    .feature-body { font-size:.85rem; font-weight:300; color:var(--soft); line-height:1.65; }
+    .feature-title { font-family:'Cormorant Garamond',Georgia,serif; font-size:1.1rem; font-weight:600; margin-bottom:10px; }
+    .feature-body { font-size:.85rem; font-weight:400; color:var(--soft); line-height:1.65; }
     .shannon { background:var(--sand); padding:64px 28px; }
     .shannon-inner { max-width:900px; margin:0 auto; display:grid; grid-template-columns:1fr; gap:40px; align-items:center; }
     @media(min-width:640px){ .shannon-inner { grid-template-columns:200px 1fr; } }
@@ -191,11 +191,11 @@
     .shannon-cred { display:flex; flex-wrap:wrap; gap:6px; }
     .shannon-cred span { border:1px solid rgba(255,255,255,.2); color:rgba(255,255,255,.75); font-size:.65rem; text-transform:uppercase; letter-spacing:.06em; padding:4px 8px; border-radius:4px; }
     .shannon-quote { font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:clamp(16px,2vw,20px); line-height:1.5; border-left:2px solid var(--teal); padding-left:20px; margin-bottom:16px; }
-    .shannon-body { font-size:.9rem; font-weight:300; color:var(--soft); line-height:1.7; }
+    .shannon-body { font-size:.9rem; font-weight:400; color:var(--soft); line-height:1.7; }
     .cta { background:var(--teal); padding:80px 28px; text-align:center; }
     .cta-inner { max-width:560px; margin:0 auto; }
-    .cta h2 { font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(28px,5vw,48px); color:#fff; margin-bottom:14px; line-height:1.1; }
-    .cta p { font-size:clamp(14px,1.6vw,17px); font-weight:300; color:rgba(255,255,255,.7); margin-bottom:36px; line-height:1.65; }
+    .cta h2 { font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(28px,5vw,48px); color:#fff; margin-bottom:14px; font-weight:600; line-height:1.1; }
+    .cta p { font-size:clamp(14px,1.6vw,17px); font-weight:400; color:rgba(255,255,255,.7); margin-bottom:36px; line-height:1.65; }
     .cta-btns { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; }
     .btn-white { background:#fff; color:var(--teal); border-color:#fff; }
     .btn-white:hover { opacity:.9; }
@@ -211,7 +211,7 @@
     .footer { background:var(--teal-dark); padding:40px 28px 28px; }
     .footer-inner { max-width:900px; margin:0 auto; }
     .footer-brand { font-family:'Cormorant Garamond',Georgia,serif; color:#fff; font-size:1rem; margin-bottom:6px; }
-    .footer-sub { font-size:.78rem; color:rgba(255,255,255,.4); font-weight:300; line-height:1.6; margin-bottom:16px; }
+    .footer-sub { font-size:.78rem; color:rgba(255,255,255,.4); font-weight:400; line-height:1.6; margin-bottom:16px; }
     .footer-links { display:flex; flex-wrap:wrap; gap:8px 20px; }
     .footer-links a { font-size:.8rem; color:rgba(255,255,255,.5); transition:color .15s; }
     .footer-links a:hover { color:#fff; }
@@ -277,10 +277,10 @@
           <span class="nav-drawer-arrow" aria-hidden="true">→</span>
         </a>
         <ul style="list-style:none;padding:0 0 8px 16px;margin:0;">
-          <li><a href="./care-options.html#transitional" style="font-size:13px;color:rgba(26,26,26,0.6);padding:6px 0;display:block;">Transitional Care</a></li>
-          <li><a href="./care-options.html#daily-living" style="font-size:13px;color:rgba(26,26,26,0.6);padding:6px 0;display:block;">Daily Living Assistance</a></li>
-          <li><a href="./care-options.html#dementia" style="font-size:13px;color:rgba(26,26,26,0.6);padding:6px 0;display:block;">Dementia Care Support</a></li>
-          <li><a href="./care-options.html#respite" style="font-size:13px;color:rgba(26,26,26,0.6);padding:6px 0;display:block;">Respite Care</a></li>
+          <li><a href="./care-options.html#transitional" style="font-size:13px;color:rgba(29,29,31,0.6);padding:6px 0;display:block;">Transitional Care</a></li>
+          <li><a href="./care-options.html#daily-living" style="font-size:13px;color:rgba(29,29,31,0.6);padding:6px 0;display:block;">Daily Living Assistance</a></li>
+          <li><a href="./care-options.html#dementia" style="font-size:13px;color:rgba(29,29,31,0.6);padding:6px 0;display:block;">Dementia Care Support</a></li>
+          <li><a href="./care-options.html#respite" style="font-size:13px;color:rgba(29,29,31,0.6);padding:6px 0;display:block;">Respite Care</a></li>
         </ul>
       </li>
       <li>
@@ -412,5 +412,54 @@
   </div>
 </footer>
 
+<script>
+(function() {
+  'use strict';
+  var menuBtn = document.querySelector('.nav-menu-btn');
+  var navDrawer = document.getElementById('nav-drawer');
+  var navBackdrop = document.getElementById('nav-backdrop');
+  var isDrawerOpen = false;
+  function openDrawer() {
+    isDrawerOpen = true;
+    navDrawer.removeAttribute('hidden');
+    requestAnimationFrame(function() {
+      requestAnimationFrame(function() {
+        navDrawer.classList.add('is-open');
+        navBackdrop.classList.add('is-open');
+        menuBtn.classList.add('is-open');
+        menuBtn.setAttribute('aria-expanded', 'true');
+        menuBtn.setAttribute('aria-label', 'Close menu');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    document.addEventListener('keydown', onDrawerKey);
+  }
+  function closeDrawer() {
+    isDrawerOpen = false;
+    navDrawer.classList.remove('is-open');
+    navBackdrop.classList.remove('is-open');
+    menuBtn.classList.remove('is-open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+    menuBtn.setAttribute('aria-label', 'Open menu');
+    document.body.style.overflow = '';
+    document.removeEventListener('keydown', onDrawerKey);
+    setTimeout(function() {
+      if (!isDrawerOpen) navDrawer.setAttribute('hidden', '');
+    }, 260);
+  }
+  function onDrawerKey(e) { if (e.key === 'Escape') closeDrawer(); }
+  if (menuBtn) {
+    menuBtn.addEventListener('click', function() {
+      isDrawerOpen ? closeDrawer() : openDrawer();
+    });
+  }
+  if (navBackdrop) { navBackdrop.addEventListener('click', closeDrawer); }
+  if (navDrawer) {
+    navDrawer.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() { closeDrawer(); });
+    });
+  }
+})();
+</script>
 </body>
 </html>
