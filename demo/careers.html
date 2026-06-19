@@ -46,6 +46,7 @@
 
     :root {
       --teal:       #4AABA5;
+      --muted:      #767676;
       --teal-dark:  #2A8280;
       --teal-lt:    #E3F5F4;
       --sand:       #F0FAFA;
@@ -55,6 +56,18 @@
       --white:      #fff;
       --gold:       #c09040;
       --rule:       rgba(74,171,165,0.15);
+
+      /* Spacing scale (8px base) */
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-5: 24px;
+      --space-6: 32px;
+      --space-7: 48px;
+      --space-8: 64px;
+      --space-9: 80px;
+      --space-10: 96px;
     }
 
     html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
@@ -74,6 +87,8 @@
       font-synthesis: none;
     }
 
+    a { color: inherit; text-decoration: none; }
+
     .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
 
     /* ── NAV ── */
@@ -85,12 +100,10 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 28px;
+      padding: 0 clamp(20px, 3.5vw, 48px);
       background: rgba(255,255,255,0.96);
       backdrop-filter: saturate(180%) blur(20px);
       -webkit-backdrop-filter: saturate(180%) blur(20px);
-      border-bottom: 1px solid rgba(17,17,17,0.08);
-      box-shadow: 0 1px 0 rgba(17,17,17,0.04);
     }
     .nav-logo-link {
       display: flex; align-items: flex-start; flex-shrink: 0;
@@ -130,7 +143,7 @@
       transition: transform 0.25s ease, opacity 0.2s ease;
     }
     .nav-drawer.is-open { transform: translateY(0); opacity: 1; pointer-events: all; }
-    .nav-drawer-inner { max-width: 980px; margin: 0 auto; padding: 8px 24px 24px; }
+    .nav-drawer-inner { max-width: 1200px; margin: 0 auto; padding: 8px 24px 24px; }
     .nav-drawer-links {
       list-style: none;
       border-bottom: 1px solid rgba(74,171,165,0.15);
@@ -168,6 +181,7 @@
       padding: 8px 16px; border-radius: 6px;
       transition: color 0.15s, background 0.15s;
       white-space: nowrap; min-height: 44px; display: flex; align-items: center;
+      text-decoration: none;
     }
     .nav-links a:hover, .nav-links a:focus-visible {
       color: var(--ink); background: rgba(17,17,17,0.05);
@@ -205,7 +219,7 @@
 
     /* ── PAGE HERO ── */
     .page-hero {
-      padding: 92px 28px 60px;
+      padding: 92px clamp(20px, 4vw, 64px) 60px;
       max-width: 720px;
       margin: 0 auto;
     }
@@ -216,7 +230,7 @@
       font-weight: 600;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--teal);
+      color: var(--ink);
       margin-bottom: 16px;
     }
 
@@ -232,13 +246,13 @@
     .page-hero-body {
       font-size: 1.05rem;
       line-height: 1.7;
-      color: var(--soft);
+      color: var(--ink);
       max-width: 580px;
     }
 
     /* ── JOBS ── */
     .careers-section {
-      padding: 0 28px 96px;
+      padding: 0 clamp(20px, 4vw, 64px) 96px;
     }
 
     .careers-inner {
@@ -274,7 +288,7 @@
       font-weight: 600;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--teal-dark);
+      color: #0a5c52;
       background: var(--teal-lt);
       border-radius: 4px;
       padding: 3px 8px;
@@ -308,7 +322,7 @@
     .job-desc {
       font-size: 0.88rem;
       line-height: 1.65;
-      color: var(--soft);
+      color: var(--ink);
     }
 
     .job-quals-label {
@@ -331,7 +345,7 @@
     .job-quals li {
       font-size: 0.84rem;
       line-height: 1.55;
-      color: var(--soft);
+      color: var(--ink);
       padding-left: 14px;
       position: relative;
     }
@@ -362,15 +376,15 @@
 
     .jobs-note {
       font-size: 0.78rem;
-      color: var(--soft);
+      color: var(--ink);
       margin-top: 28px;
       text-align: center;
     }
 
     /* ── CTA BAR ── */
     .cta-bar {
-      background: var(--ink-deep);
-      padding: 52px 28px;
+      background: var(--teal-dark);
+      padding: 52px clamp(20px, 4vw, 64px);
       text-align: center;
     }
 
@@ -380,7 +394,7 @@
       font-weight: 600;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgba(74,171,165,0.7);
+      color: rgba(255,255,255,0.7);
       margin-bottom: 14px;
     }
 
@@ -416,11 +430,11 @@
     }
 
     .btn-teal {
-      background: var(--teal);
+      background: #0a5c52;
       color: var(--white);
     }
 
-    .btn-teal:hover { background: var(--teal-dark); }
+    .btn-teal:hover { background: #073d36; }
 
     .btn-ghost {
       background: transparent;
@@ -443,43 +457,43 @@
     /* =========================================
        FOOTER V2
     ========================================= */
-    .footer-v2 { background: var(--ink-deep, #0a0a0a); padding: 64px 28px 0; }
-    .footer-v2-inner { max-width: 1080px; margin: 0 auto; }
+    .footer-v2 { background: var(--white); padding: 40px clamp(16px,3vw,48px) 0; border-top: 1px solid rgba(74,171,165,0.15); }
+    .footer-v2-inner { max-width: 1200px; margin: 0 auto; }
     .footer-v2-top {
       display: grid; grid-template-columns: 1fr;
       gap: 48px; padding-bottom: 48px;
-      border-bottom: 1px solid rgba(255,255,255,0.07);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
     }
     @media (min-width: 640px) {
       .footer-v2-top { grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 32px; }
     }
     .footer-logo-mark { display: flex; flex-direction: column; gap: 1px; text-decoration: none; margin-bottom: 20px; }
-    .footer-logo-eyebrow { font-family: 'Inter', system-ui, sans-serif; font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.2em; color: rgba(255,255,255,0.5); line-height: 1; }
-    .footer-logo-primary { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 22px; color: #fff; line-height: 1.1; letter-spacing: -0.01em; }
-    .footer-brand-tagline { font-size: 13px; color: rgba(255,255,255,0.38); line-height: 1.6; margin-bottom: 20px; }
+    .footer-logo-eyebrow { font-family: 'Inter', system-ui, sans-serif; font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.2em; color: var(--soft); line-height: 1; }
+    .footer-logo-primary { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 22px; color: var(--ink); line-height: 1.1; letter-spacing: -0.01em; }
+    .footer-brand-tagline { font-size: 13px; color: var(--soft); line-height: 1.6; margin-bottom: 20px; }
     .footer-social { display: flex; gap: 12px; }
-    .footer-social a { width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.45); transition: background 0.15s, color 0.15s; }
-    .footer-social a:hover { background: rgba(255,255,255,0.08); color: #fff; }
+    .footer-social a { width: 36px; height: 36px; border-radius: 8px; background: rgba(0,0,0,0.04); display: flex; align-items: center; justify-content: center; color: var(--soft); transition: background 0.15s, color 0.15s; }
+    .footer-social a:hover { background: rgba(74,171,165,0.12); color: var(--teal-dark); }
     .footer-social svg { width: 16px; height: 16px; }
-    .footer-col-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.32); margin-bottom: 16px; }
+    .footer-col-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #6e6e73; margin-bottom: 16px; }
     .footer-col-links { display: flex; flex-direction: column; gap: 10px; }
-    .footer-col-links a { font-size: 14px; color: rgba(255,255,255,0.5); transition: color 0.15s; line-height: 1.3; }
-    .footer-col-links a:hover { color: rgba(255,255,255,0.88); }
+    .footer-col-links a { font-size: 14px; color: var(--soft); transition: color 0.15s; line-height: 1.3; }
+    .footer-col-links a:hover { color: var(--ink); }
     .footer-col-contact { display: flex; flex-direction: column; gap: 10px; }
-    .footer-col-contact a, .footer-col-contact span { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.3; transition: color 0.15s; }
-    .footer-col-contact a:hover { color: rgba(255,255,255,0.88); }
-    .footer-license-badge { display: inline-flex; align-items: center; border: 1px solid rgba(255,255,255,0.08); padding: 3px 8px; border-radius: 3px; font-size: 10px; color: rgba(255,255,255,0.28); margin-top: 8px; }
-    .footer-guide-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; padding: 28px 32px; margin: 40px 0 0; border-radius: 10px; background: rgba(74,171,165,0.08); border: 1px solid rgba(74,171,165,0.18); }
+    .footer-col-contact a, .footer-col-contact span { font-size: 14px; color: var(--soft); line-height: 1.3; transition: color 0.15s; }
+    .footer-col-contact a:hover { color: var(--ink); }
+    .footer-license-badge { display: inline-flex; align-items: center; border: 1px solid rgba(74,171,165,0.25); padding: 3px 8px; border-radius: 3px; font-size: 10px; color: var(--soft); margin-top: 8px; }
+    .footer-guide-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; padding: 28px 32px; margin: 40px 0 0; border-radius: 10px; background: var(--teal-lt); border: 1px solid rgba(74,171,165,0.2); }
     .footer-guide-text { display: flex; flex-direction: column; gap: 4px; }
-    .footer-guide-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
-    .footer-guide-headline { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 17px; color: rgba(255,255,255,0.88); line-height: 1.2; }
-    .footer-guide-btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 22px; border-radius: 999px; font-size: 0.82rem; font-weight: 500; min-height: 42px; border: 1px solid rgba(255,255,255,0.3); background: transparent; color: rgba(255,255,255,0.8); text-decoration: none; white-space: nowrap; transition: background 0.18s, border-color 0.18s, color 0.18s; flex-shrink: 0; }
-    .footer-guide-btn:hover { background: var(--teal); border-color: var(--teal); color: #fff; }
+    .footer-guide-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #0a5c52; }
+    .footer-guide-headline { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 17px; color: var(--ink); line-height: 1.2; }
+    .footer-guide-btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 22px; border-radius: 999px; font-size: 0.82rem; font-weight: 500; min-height: 42px; border: 1px solid rgba(74,171,165,0.4); background: transparent; color: #0a5c52; text-decoration: none; white-space: nowrap; transition: background 0.18s, border-color 0.18s, color 0.18s; flex-shrink: 0; }
+    .footer-guide-btn:hover { background: #0a5c52; border-color: var(--teal); color: #fff; }
     .footer-v2-bottom { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding: 20px 0 24px; }
-    .footer-v2-bottom span { font-size: 11px; color: rgba(255,255,255,0.25); }
+    .footer-v2-bottom span { font-size: 11px; color: var(--soft); }
     .footer-v2-legal { display: flex; gap: 20px; flex-wrap: wrap; }
-    .footer-v2-legal a { font-size: 11px; color: rgba(255,255,255,0.25); transition: color 0.15s; }
-    .footer-v2-legal a:hover { color: rgba(255,255,255,0.5); }
+    .footer-v2-legal a { font-size: 11px; color: var(--soft); transition: color 0.15s; }
+    .footer-v2-legal a:hover { color: var(--ink); }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 640px) {
@@ -497,9 +511,36 @@
       .cta-bar-buttons { flex-direction: column; align-items: stretch; }
       .cta-bar-buttons .btn { width: 100%; min-height: 56px; font-size: 17px; font-weight: 700; }
     }
-  </style>
+  
+    /* =========================================
+       WCAG 2.2 AA: 2.4.1 Bypass Blocks — Skip Link
+    ========================================= */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 16px;
+      z-index: 10000;
+      background: #1d1d1f;
+      color: #ffffff;
+      padding: 10px 20px;
+      border-radius: 4px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 2px solid #ffffff;
+      transition: top 0.12s ease;
+    }
+    .skip-link:focus {
+      top: 16px;
+      outline: 3px solid #0a5c52;
+      outline-offset: 2px;
+    }
+
+    </style>
 </head>
 <body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
 <!-- NAV -->
 <nav class="nav" role="navigation" aria-label="Main navigation">
@@ -587,12 +628,14 @@
 </header>
 
 <!-- JOB LISTINGS -->
+<main id="main-content">
+
 <section class="careers-section" aria-labelledby="careers-jobs-title">
   <div class="careers-inner">
-    <div class="jobs-grid" role="list" aria-label="Open positions">
+    <ul class="jobs-grid" aria-label="Open positions">
 
       <!-- CNA -->
-      <article class="job-card" role="listitem">
+      <li class="job-card">
         <span class="job-role-label">Clinical</span>
         <h2 class="job-title">Certified Nursing Assistant (CNA)</h2>
         <div class="job-chips">
@@ -617,10 +660,10 @@
         <a class="job-apply" href="mailto:savpcs@yahoo.com?subject=CNA Application — Savannah Personal Care Services" aria-label="Apply for CNA position">
           Apply now →
         </a>
-      </article>
+      </li>
 
       <!-- RN -->
-      <article class="job-card" role="listitem">
+      <li class="job-card">
         <span class="job-role-label">Nursing</span>
         <h2 class="job-title">Registered Nurse (RN)</h2>
         <div class="job-chips">
@@ -645,10 +688,10 @@
         <a class="job-apply" href="mailto:savpcs@yahoo.com?subject=RN Application — Savannah Personal Care Services" aria-label="Apply for RN position">
           Apply now →
         </a>
-      </article>
+      </li>
 
       <!-- Home Health Companion -->
-      <article class="job-card" role="listitem">
+      <li class="job-card">
         <span class="job-role-label">Companion Care</span>
         <h2 class="job-title">Home Health Companion</h2>
         <div class="job-chips">
@@ -673,7 +716,7 @@
         <a class="job-apply" href="mailto:savpcs@yahoo.com?subject=Home Health Companion Application — Savannah Personal Care Services" aria-label="Apply for Home Health Companion position">
           Apply now →
         </a>
-      </article>
+      </li>
 
     </div><!-- /.jobs-grid -->
 
@@ -692,6 +735,8 @@
 </section>
 
 <!-- ========== FOOTER ========== -->
+</main><!-- end #main-content -->
+
 <footer class="footer-v2" role="contentinfo">
   <div class="footer-v2-inner">
     <div class="footer-v2-top">
@@ -706,13 +751,6 @@
         <div class="footer-social">
           <a href="https://www.facebook.com/share/1JH11GeHQ5/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-          </a>
-          <a href="#" aria-label="Follow us on Instagram">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-              <circle cx="12" cy="12" r="4"/>
-              <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/>
-            </svg>
           </a>
         </div>
       </div>
@@ -735,6 +773,7 @@
         <nav class="footer-col-links" aria-label="Company links">
           <a href="./about.html">About Shannon</a>
           <a href="./index.html#process">How It Works</a>
+          <a href="./faq.html">FAQ</a>
           <a href="./careers.html">Careers</a>
           <a href="./index.html#guide-section">Free Family Guide</a>
         </nav>

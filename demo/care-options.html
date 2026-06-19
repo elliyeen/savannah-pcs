@@ -27,7 +27,7 @@
       --white:      #ffffff;
       --rule:       rgba(74,171,165,0.15);
       --gold:       #c09040;
-      --muted:      #9a9a9a;
+      --muted:      #767676;
 
       /* Spacing scale (8px base) */
       --space-1: 4px;
@@ -63,6 +63,8 @@
     img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
     button { font-family: inherit; cursor: pointer; border: none; background: none; }
+    input, textarea, select { font-family: inherit; font-size: 1rem; }
+    button, a { touch-action: manipulation; }
     * { -webkit-tap-highlight-color: transparent; }
     .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
@@ -101,15 +103,15 @@
     }
     .btn-dark  { background: var(--teal-dark); color: var(--white); border-color: var(--teal-dark); }
     .btn-dark:hover  { background: var(--teal); border-color: var(--teal); }
-    .btn-teal  { background: var(--teal); color: var(--white); border-color: var(--teal); }
-    .btn-teal:hover  { background: var(--teal-dark); border-color: var(--teal-dark); }
+    .btn-teal  { background: #0a5c52; color: var(--white); border-color: #0a5c52; }
+    .btn-teal:hover  { background: #073d36; border-color: var(--teal-dark); }
     .btn-ghost { background: transparent; color: var(--ink); border-color: rgba(74,171,165,0.3); }
     .btn-ghost:hover { border-color: var(--ink); }
     .btn-white { background: var(--white); color: var(--ink); border-color: var(--white); }
     .btn-white:hover { opacity: 0.9; }
     .btn-ghost-white { background: transparent; color: rgba(255,255,255,0.85); border-color: rgba(255,255,255,0.3); }
     .btn-ghost-white:hover { border-color: rgba(255,255,255,0.7); color: var(--white); }
-    :focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+    :focus-visible { outline: 2px solid #0a5c52; outline-offset: 3px; }
 
     /* =========================================
        NAV
@@ -126,8 +128,6 @@
       background: rgba(255,255,255,0.96);
       backdrop-filter: saturate(180%) blur(20px);
       -webkit-backdrop-filter: saturate(180%) blur(20px);
-      border-bottom: 1px solid rgba(17,17,17,0.08);
-      box-shadow: 0 1px 0 rgba(17,17,17,0.04);
     }
 
     .nav-logo-link {
@@ -411,7 +411,7 @@
     }
     .service-card:hover { background: var(--sand); }
     .service-card.is-featured {
-      background: var(--teal);
+      background: #0a5c52;
     }
     .service-card.is-featured:hover { background: var(--teal-dark); }
 
@@ -423,7 +423,7 @@
       color: var(--soft);
       margin-bottom: 16px;
     }
-    .service-card.is-featured .service-card-num { color: rgba(255,255,255,0.6); }
+    .service-card.is-featured .service-card-num { color: rgba(255,255,255,0.85); }
 
     .service-card-name {
       font-family: 'Cormorant Garamond', Georgia, serif;
@@ -463,17 +463,44 @@
     .compare-section {
       padding: clamp(64px, 7vw, 96px) clamp(20px, 4vw, 64px);
       background: var(--sand);
+      overflow-x: hidden;
     }
     .compare-inner { max-width: 1200px; margin: 0 auto; }
     .compare-header { text-align: center; margin-bottom: clamp(32px, 4vw, 48px); }
 
+    .compare-scroll-wrap {
+      position: relative;
+      overflow-x: hidden;
+      max-width: 100%;
+    }
+    .compare-scroll-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 56px;
+      background: linear-gradient(to bottom, transparent, var(--sand));
+      pointer-events: none;
+      border-radius: 0 0 8px 8px;
+      z-index: 5;
+      transition: opacity 0.2s;
+    }
+    .compare-scroll-wrap.at-bottom::after {
+      opacity: 0;
+    }
     .compare-scroll {
       overflow-x: auto;
       overflow-y: auto;
       -webkit-overflow-scrolling: touch;
       max-height: 72vh;
       border-radius: 8px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(74,171,165,0.3) transparent;
     }
+    .compare-scroll::-webkit-scrollbar { width: 5px; height: 5px; }
+    .compare-scroll::-webkit-scrollbar-thumb { background: rgba(74,171,165,0.3); border-radius: 999px; }
+    .compare-scroll::-webkit-scrollbar-track { background: transparent; }
     .compare-table {
       width: 100%;
       min-width: 680px;
@@ -508,7 +535,7 @@
       padding: 20px 16px;
       min-width: 160px;
     }
-    .compare-th-plan.is-featured { background: var(--teal); border-radius: 12px 12px 0 0; }
+    .compare-th-plan.is-featured { background: #0a5c52; border-radius: 12px 12px 0 0; }
 
     .compare-plan-name {
       font-family: 'Cormorant Garamond', Georgia, serif;
@@ -582,7 +609,7 @@
       color: var(--ink);
       vertical-align: middle;
     }
-    .compare-td-label p { font-size: 12px; font-weight: 400; color: var(--ink); margin-top: 2px; opacity: 0.6; }
+    .compare-td-label p { font-size: 12px; font-weight: 400; color: var(--soft); margin-top: 2px; }
 
     .compare-td {
       padding: 14px 16px;
@@ -647,7 +674,7 @@
       padding: 40px 36px;
     }
     .service-detail:nth-child(even) .service-detail-aside {
-      background: var(--ink-deep);
+      background: var(--sand, #F0FAFA);
     }
 
     .service-detail-num {
@@ -780,7 +807,7 @@
        MAIN CTA STRIP
     ========================================= */
     .cta-strip {
-      background: var(--teal);
+      background: #0a5c52;
       padding: clamp(64px, 7vw, 96px) clamp(20px, 4vw, 64px);
       text-align: center;
     }
@@ -809,7 +836,7 @@
     }
     .cta-strip-note {
       font-size: 13px;
-      color: rgba(255,255,255,0.4);
+      color: rgba(255,255,255,0.82);
       margin-top: 20px;
     }
 
@@ -817,8 +844,9 @@
        FOOTER — EVERNOTE STYLE
     ========================================= */
     .footer-v2 {
-      background: var(--ink-deep);
-      padding: 64px clamp(20px, 4vw, 64px) 0;
+      background: #ffffff;
+      border-top: 1px solid rgba(0,0,0,0.08);
+      padding: 40px clamp(16px,3vw,48px) 0;
     }
     .footer-v2-inner { max-width: 1200px; margin: 0 auto; }
 
@@ -827,7 +855,7 @@
       grid-template-columns: 1fr;
       gap: 48px;
       padding-bottom: 48px;
-      border-bottom: 1px solid rgba(255,255,255,0.07);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
     }
     @media (min-width: 640px) {
       .footer-v2-top { grid-template-columns: 220px 1fr; gap: 64px; }
@@ -845,7 +873,7 @@
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.2em;
-      color: rgba(255,255,255,0.5);
+      color: var(--soft);
       font-weight: 500;
       margin-bottom: 4px;
     }
@@ -853,7 +881,7 @@
       display: block;
       font-family: 'Cormorant Garamond', Georgia, serif;
       font-size: 22px;
-      color: var(--white);
+      color: var(--ink);
       line-height: 1.15;
       letter-spacing: -0.01em;
     }
@@ -861,7 +889,7 @@
     .footer-v2-tagline {
       font-size: 13px;
       font-weight: 400;
-      color: rgba(255,255,255,0.4);
+      color: #9a9a9a;
       line-height: 1.6;
       margin-bottom: 28px;
     }
@@ -873,17 +901,17 @@
     .footer-social-link {
       width: 38px; height: 38px;
       border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.12);
+      border: 1px solid rgba(0,0,0,0.1);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: rgba(255,255,255,0.5);
+      color: var(--soft);
       transition: border-color 0.15s, color 0.15s, background 0.15s;
     }
     .footer-social-link:hover {
-      border-color: rgba(255,255,255,0.5);
-      color: var(--white);
-      background: rgba(255,255,255,0.08);
+      border-color: rgba(74,171,165,0.4);
+      color: var(--teal-dark);
+      background: rgba(74,171,165,0.08);
     }
     .footer-social-link svg { width: 16px; height: 16px; }
 
@@ -902,7 +930,7 @@
       font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 0.14em;
-      color: rgba(255,255,255,0.35);
+      color: var(--ink);
       margin-bottom: 16px;
     }
     .footer-v2-col-links {
@@ -913,11 +941,11 @@
     .footer-v2-col-links a {
       font-size: 14px;
       font-weight: 400;
-      color: rgba(255,255,255,0.55);
+      color: #9a9a9a;
       transition: color 0.15s;
       line-height: 1.4;
     }
-    .footer-v2-col-links a:hover { color: var(--white); }
+    .footer-v2-col-links a:hover { color: var(--ink); }
 
     /* Bottom bar */
     .footer-v2-bottom {
@@ -930,7 +958,7 @@
     }
     .footer-v2-copy {
       font-size: 12px;
-      color: rgba(255,255,255,0.22);
+      color: var(--soft);
     }
     .footer-v2-legal {
       display: flex;
@@ -938,10 +966,10 @@
     }
     .footer-v2-legal a {
       font-size: 12px;
-      color: rgba(255,255,255,0.22);
+      color: var(--soft);
       transition: color 0.15s;
     }
-    .footer-v2-legal a:hover { color: rgba(255,255,255,0.55); }
+    .footer-v2-legal a:hover { color: var(--ink); }
 
     /* =========================================
        MODAL
@@ -1005,7 +1033,7 @@
     .modal-back:hover { color: var(--ink); }
     .modal-fields { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
     .modal-field label { display: block; font-size: 0.78rem; font-weight: 500; color: var(--soft); margin-bottom: 6px; }
-    .modal-field input { width: 100%; border: 1px solid rgba(74,171,165,0.22); border-radius: 8px; padding: 14px 16px; font-size: 0.9rem; color: var(--ink); background: var(--white); transition: border-color 0.15s; min-height: 44px; }
+    .modal-field input { width: 100%; border: 1px solid rgba(74,171,165,0.22); border-radius: 8px; padding: 14px 16px; font-size: 1rem; color: var(--ink); background: var(--white); transition: border-color 0.15s; min-height: 44px; }
     .modal-field input:focus { outline: none; border-color: var(--teal); box-shadow: 0 0 0 3px rgba(74,171,165,0.18); }
     .modal-field input::placeholder { color: rgba(110,110,115,0.5); }
     .modal-submit { width: 100%; border-radius: 8px; background: var(--teal); color: var(--white); font-size: 0.9rem; font-weight: 500; padding: 16px; border: none; cursor: pointer; min-height: 52px; font-family: 'Inter', sans-serif; transition: background 0.18s; display: flex; align-items: center; justify-content: center; }
@@ -1018,7 +1046,7 @@
     .modal-confirm-body { font-size: 0.9rem; font-weight: 400; color: var(--soft); line-height: 1.6; margin-bottom: 8px; }
     .modal-confirm-secondary { font-size: 0.82rem; color: var(--soft); margin-bottom: 28px; font-weight: 400; }
     .modal-confirm-actions { display: flex; flex-direction: column; gap: 10px; }
-    .spinner { display: inline-block; width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.4); border-top-color: white; border-radius: 50%; animation: spin 0.7s linear infinite; margin-right: 8px; }
+    .spinner { display: inline-block; width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.82); border-top-color: white; border-radius: 50%; animation: spin 0.7s linear infinite; margin-right: 8px; }
     @keyframes spin { to { transform: rotate(360deg); } }
     #modal-live { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
 
@@ -1033,6 +1061,9 @@
       .page-hero-actions .btn { width: 100%; }
       .cta-strip-buttons { flex-direction: column; align-items: stretch; }
       .cta-strip-buttons .btn { width: 100%; }
+    }
+    @media (max-width: 640px) {
+      .compare-scroll { max-height: none; overflow-y: visible; }
     }
     @media (max-width: 360px) {
       .nav { padding: 0 14px; }
@@ -1080,9 +1111,36 @@
     .sticky-cta-text strong { display: block; color: var(--white); font-weight: 500; }
     .sticky-cta-actions { display: flex; gap: 8px; flex-shrink: 0; }
     .sticky-cta .btn { padding: 10px 18px; font-size: 0.82rem; }
-  </style>
+  
+    /* =========================================
+       WCAG 2.2 AA: 2.4.1 Bypass Blocks — Skip Link
+    ========================================= */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 16px;
+      z-index: 10000;
+      background: var(--sand, #F0FAFA);
+      color: #ffffff;
+      padding: 10px 20px;
+      border-radius: 4px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 2px solid #ffffff;
+      transition: top 0.12s ease;
+    }
+    .skip-link:focus {
+      top: 16px;
+      outline: 3px solid #0a5c52;
+      outline-offset: 2px;
+    }
+
+    </style>
 </head>
 <body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
 <div id="modal-live" aria-live="polite" aria-atomic="true"></div>
 
@@ -1145,6 +1203,8 @@
   </div>
 </div>
 
+<main id="main-content">
+
 <!-- ===== HERO ===== -->
 <section class="page-hero" aria-labelledby="care-hero-title">
   <div class="page-hero-inner">
@@ -1167,47 +1227,47 @@
       <p class="section-body">Every service includes the Savannah Standard: free same-day assessment, supervised first visit, caregiver match within 48 hours, and a 72-hour follow-up.</p>
     </div>
 
-    <div class="services-grid" role="list">
+    <ul class="services-grid">
       <!-- Transitional Care -->
-      <article class="service-card" role="listitem">
+      <li class="service-card">
         <span class="service-card-num">01</span>
         <h3 class="service-card-name serif">Transitional Care</h3>
         <p class="service-card-desc">We help with discharge coordination and execution — whether leaving from a hospital, rehabilitation facility, or nursing home. A Care Coordinator develops your home care needs and liaises with the facility social worker before discharge.</p>
         <a href="#transitional" class="service-card-cta">
           Learn more <span aria-hidden="true">→</span>
         </a>
-      </article>
+      </li>
 
       <!-- Daily Living (featured) -->
-      <article class="service-card is-featured" role="listitem">
+      <li class="service-card is-featured">
         <span class="service-card-num">02</span>
         <h3 class="service-card-name serif">Daily Living Assistance</h3>
         <p class="service-card-desc">Assisting with daily activities to promote independence and enhance quality of life — dressing, bathing, meals, medication reminders, housekeeping, transportation, mobility support, and fall prevention.</p>
         <a href="#daily-living" class="service-card-cta">
           Learn more <span aria-hidden="true">→</span>
         </a>
-      </article>
+      </li>
 
       <!-- Dementia -->
-      <article class="service-card" role="listitem">
+      <li class="service-card">
         <span class="service-card-num">03</span>
         <h3 class="service-card-name serif">Dementia Care Support</h3>
         <p class="service-card-desc">Personalized, non-medical support allowing individuals with cognitive decline to remain in a familiar, comfortable environment — rather than transitioning to a facility.</p>
         <a href="#dementia" class="service-card-cta">
           Learn more <span aria-hidden="true">→</span>
         </a>
-      </article>
+      </li>
 
       <!-- Respite -->
-      <article class="service-card" role="listitem">
+      <li class="service-card">
         <span class="service-card-num">04</span>
         <h3 class="service-card-name serif">Respite Care</h3>
         <p class="service-card-desc">Trained caregivers providing temporary relief — for a few hours, days, or weeks when family caregivers need a break. You cannot pour from an empty cup.</p>
         <a href="#respite" class="service-card-cta">
           Learn more <span aria-hidden="true">→</span>
         </a>
-      </article>
-    </div>
+      </li>
+    </ul>
   </div>
 </section>
 
@@ -1537,9 +1597,9 @@
       <h2 class="section-title serif" id="faq-title" style="margin-top:16px;">What families ask<br />before they call.</h2>
     </div>
 
-    <div class="faq-list" role="list">
+    <ul class="faq-list">
 
-      <div class="faq-item" role="listitem">
+      <li class="faq-item">
         <button class="faq-question" aria-expanded="false" aria-controls="faq-a1">
           How do I know which type of care my parent needs?
           <span class="faq-icon" aria-hidden="true">+</span>
@@ -1547,9 +1607,9 @@
         <div class="faq-answer" id="faq-a1" role="region">
           The best place to start is our free 20-minute care assessment. Shannon or a Care Coordinator will listen to your situation and tell you exactly which care type fits — or whether a combination makes sense. You don't need to know the answer before you call.
         </div>
-      </div>
+      </li>
 
-      <div class="faq-item" role="listitem">
+      <li class="faq-item">
         <button class="faq-question" aria-expanded="false" aria-controls="faq-a2">
           How quickly can care begin after we call?
           <span class="faq-icon" aria-hidden="true">+</span>
@@ -1557,9 +1617,9 @@
         <div class="faq-answer" id="faq-a2" role="region">
           Same-day assessments are available. We typically match a caregiver and begin services within 48 hours of your first call. For hospital discharge situations, we prefer to be involved before your loved one leaves the facility — call us as soon as you know discharge is coming.
         </div>
-      </div>
+      </li>
 
-      <div class="faq-item" role="listitem">
+      <li class="faq-item">
         <button class="faq-question" aria-expanded="false" aria-controls="faq-a3">
           Can we change care types as needs evolve?
           <span class="faq-icon" aria-hidden="true">+</span>
@@ -1567,9 +1627,9 @@
         <div class="faq-answer" id="faq-a3" role="region">
           Yes. Many families start with Transitional Care after a hospital discharge, then transition to Daily Living Assistance as a long-term arrangement. Your care plan is reviewed and updated as your loved one's needs change — this is a living document, not a one-time decision.
         </div>
-      </div>
+      </li>
 
-      <div class="faq-item" role="listitem">
+      <li class="faq-item">
         <button class="faq-question" aria-expanded="false" aria-controls="faq-a4">
           Is there a minimum number of hours per week?
           <span class="faq-icon" aria-hidden="true">+</span>
@@ -1577,9 +1637,9 @@
         <div class="faq-answer" id="faq-a4" role="region">
           We'll discuss the right schedule during your free assessment. Many families start with just a few hours a week and scale from there. We meet your loved one where they are — we don't require a minimum commitment before you've seen whether it's the right fit.
         </div>
-      </div>
+      </li>
 
-      <div class="faq-item" role="listitem">
+      <li class="faq-item">
         <button class="faq-question" aria-expanded="false" aria-controls="faq-a5">
           What does "Supervised First Visit" actually mean?
           <span class="faq-icon" aria-hidden="true">+</span>
@@ -1587,9 +1647,9 @@
         <div class="faq-answer" id="faq-a5" role="region">
           Shannon or a senior coordinator is physically present when your caregiver meets your loved one for the first time. It is not a phone call. It is not paperwork. Someone you have already spoken with and trust is in the room — for every family, every time. This is not standard in home care. It is our standard.
         </div>
-      </div>
+      </li>
 
-      <div class="faq-item" role="listitem">
+      <li class="faq-item">
         <button class="faq-question" aria-expanded="false" aria-controls="faq-a6">
           Does Medicare or insurance cover in-home care?
           <span class="faq-icon" aria-hidden="true">+</span>
@@ -1597,9 +1657,9 @@
         <div class="faq-answer" id="faq-a6" role="region">
           Private in-home personal care services are typically not covered by Medicare or standard health insurance. Long-term care insurance may cover some services depending on your policy. We will walk you through what applies to your family's situation during the free assessment — there are no surprises.
         </div>
-      </div>
+      </li>
 
-      <div class="faq-item" role="listitem">
+      <li class="faq-item">
         <button class="faq-question" aria-expanded="false" aria-controls="faq-a7">
           My loved one is resistant to having someone come in. What do we do?
           <span class="faq-icon" aria-hidden="true">+</span>
@@ -1607,9 +1667,9 @@
         <div class="faq-answer" id="faq-a7" role="region">
           This is the most common thing families tell us. Shannon has navigated this conversation hundreds of times. We typically recommend starting with one afternoon a week and focusing on the relationship first — the care comes from the connection, not the other way around. The resistance usually softens when the right caregiver shows up. We match on personality first.
         </div>
-      </div>
+      </li>
 
-    </div>
+    </ul>
   </div>
 </section>
 
@@ -1628,6 +1688,8 @@
 </section>
 
 <!-- ===== FOOTER ===== -->
+</main><!-- end #main-content -->
+
 <footer class="footer-v2" role="contentinfo">
   <div class="footer-v2-inner">
     <div class="footer-v2-top">

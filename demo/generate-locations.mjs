@@ -1,14 +1,391 @@
-<!DOCTYPE html>
+import { writeFileSync } from 'fs';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const OUTPUT_DIR = __dirname;
+
+// ─────────────────────────────────────────────
+// CITIES DATA
+// ─────────────────────────────────────────────
+const cities = [
+  {
+    slug: 'savannah',
+    name: 'Savannah',
+    county: 'Chatham County',
+    zip: '31401',
+    lat: 32.0835, lng: -81.0998,
+    metaDescription: 'Home care in Savannah, GA founded by a Certified Nursing Assistant. Free same-day assessment. Caregiver matched in 48 hours. Shannon present on the first visit. Call (912) 856-1885.',
+    h1: 'Home Care in Savannah, GA<br>Founded Here. Built for Here.',
+    heroPara: 'Savannah is where Shannon started. Every process, every standard, every expectation was built for the families in this city first. Not a franchise. Not a call center. A CNA who decided her hometown deserved better.',
+    featuresLabel: 'Why Savannah families choose us',
+    featuresH2: 'This is where the standard was built.',
+    featuresPara: 'Shannon did not move to Savannah to open a business. She built this agency for the families she already knew, because she had been in their homes as a caregiver and knew what was missing.',
+    card1Title: 'Free Same-Day Assessment',
+    card1Body: 'A 20-minute call that tells you exactly what care would look like and what it costs. No obligation, no sales pitch. Just clarity.',
+    card2Title: 'One Caregiver. Matched in 48 Hours.',
+    card2Body: "We select one specific person based on your loved one's personality and routine, not whoever is free. You receive their profile before the first visit.",
+    card3Title: 'Shannon on Day One',
+    card3Body: 'Shannon or a senior coordinator is present for every first visit. That is how trust gets built in the room, not in a brochure.',
+    shannonPara: 'Savannah families who call Shannon are not talking to a dispatch queue. They are talking to the person who built this from the inside, as a Certified Nursing Assistant who held every caregiver on her team to the same standard she held herself.',
+    localAngle: 'Serving all Savannah neighborhoods: Historic District, Ardsley Park, Midtown, Southside, Georgetown, Windsor Forest, and beyond.',
+    faq: [
+      { q: 'Do you serve all Savannah neighborhoods?', a: 'Yes. We serve the entire Savannah metro area including the Historic District, Ardsley Park, Southside, Georgetown, Midtown, Windsor Forest, and surrounding communities.' },
+      { q: 'How quickly can care start in Savannah?', a: 'Same-day assessment. Caregiver match within 48 hours. Most Savannah families have care in place within 2-3 days of the first call.' },
+      { q: 'Is Shannon personally involved with Savannah clients?', a: 'Yes. Shannon is present on every first visit and personally reviews all care plans for Savannah families.' },
+      { q: 'What makes SPCS different from other Savannah home care agencies?', a: 'Shannon is a Certified Nursing Assistant who built this agency — not a business operator who hired caregivers. Every process was designed from clinical experience, not a franchise manual.' }
+    ]
+  },
+  {
+    slug: 'pooler',
+    name: 'Pooler',
+    county: 'Chatham County',
+    zip: '31322',
+    lat: 32.1149, lng: -81.2498,
+    metaDescription: 'Home care in Pooler, GA by a CNA-founded agency. Free same-day assessment, caregiver matched in 48 hours, founder present on day one. Call (912) 856-1885.',
+    h1: 'Home Care in Pooler, GA<br>The Same Standard, Closer to Home.',
+    heroPara: "Pooler is growing. The families moving here deserve care that does not feel distant or corporate. Shannon's team brings the same five-step process to Pooler that Savannah families have trusted — same response time, same caregiver vetting, same supervised first visit.",
+    featuresLabel: 'Why Pooler families choose us',
+    featuresH2: 'Distance does not change the standard.',
+    featuresPara: 'Pooler families receive the same caregiver matching, the same supervised first visit, and the same 72-hour written follow-up as every family we serve. Geography changes. The standard does not.',
+    card1Title: 'Free Same-Day Assessment',
+    card1Body: 'One call tells you exactly what care would cost and who would provide it. No obligation, no surprises.',
+    card2Title: 'Caregiver Matched in 48 Hours',
+    card2Body: "One specific person, selected for your loved one's personality and routine — not just whoever is available this week.",
+    card3Title: 'Supervised First Visit',
+    card3Body: "Shannon or a senior coordinator is in the room on day one. A stranger does not walk into your parent's home alone.",
+    shannonPara: 'Pooler families who call Shannon get the same attention as Savannah families who have known her for years. The drive is different. The standard is not.',
+    localAngle: 'Serving Pooler, Godley Station, Pooler Parkway corridor, and surrounding Chatham County communities.',
+    faq: [
+      { q: 'Do you serve all of Pooler, GA?', a: 'Yes. We serve all Pooler neighborhoods including Godley Station and the Pooler Parkway area, as well as surrounding communities in western Chatham County.' },
+      { q: 'Is the response time the same in Pooler as in Savannah?', a: 'Yes. Same-day assessment, caregiver match within 48 hours, and care in place within 2-3 days, regardless of whether you are in Pooler or Savannah.' },
+      { q: "Will Shannon personally be involved with my family's care in Pooler?", a: 'Yes. Shannon or a senior coordinator is present on the first visit for every Pooler family, and Shannon reviews all care plans personally.' }
+    ]
+  },
+  {
+    slug: 'tybee-island',
+    name: 'Tybee Island',
+    county: 'Chatham County',
+    zip: '31328',
+    lat: 31.9982, lng: -80.8437,
+    metaDescription: 'Home care on Tybee Island, GA. CNA-founded. Shannon present on day one. Free same-day assessment. The island is home — we come to you. Call (912) 856-1885.',
+    h1: 'Home Care on Tybee Island<br>The Island Is Home. We Come to You.',
+    heroPara: "Tybee Island is not just a beach town — it is home to families who have lived here for decades and have no intention of leaving. When care is needed, it should come to the island. Shannon's team does.",
+    featuresLabel: 'Why Tybee Island families choose us',
+    featuresH2: 'Care that comes to where you live,<br>not the other way around.',
+    featuresPara: "Tybee Island families should not have to leave their community to get qualified home care. Shannon's team travels to the island and delivers the same five-step process as every family we serve on the mainland.",
+    card1Title: 'We Come to Tybee',
+    card1Body: 'The assessment, the caregiver match, and the first visit all happen on the island. You do not have to go anywhere.',
+    card2Title: 'One Caregiver. Matched for the Person.',
+    card2Body: 'Island routines are different. We account for that in every match, selecting for personality, schedule, and the rhythms of life on Tybee.',
+    card3Title: 'Shannon on Day One',
+    card3Body: 'Shannon or a senior coordinator is present for the first visit on Tybee Island. Every time. No exceptions.',
+    shannonPara: "Tybee Island families who call Shannon do not get handed to a coordinator in a downtown office. They get someone who has been to the island, who knows the community, and who holds her team to the same standard whether the client is in the Historic District or at the end of Butler Avenue.",
+    localAngle: 'Serving all of Tybee Island including North Beach, South End, and mid-island neighborhoods.',
+    faq: [
+      { q: 'Do you really travel to Tybee Island for home care?', a: 'Yes. We serve Tybee Island directly. The assessment, caregiver introduction, and all scheduled care visits happen on the island.' },
+      { q: 'Is the rate the same on Tybee as on the mainland?', a: 'Call us at (912) 856-1885 for pricing. We discuss all costs during the free 20-minute assessment before any decision is made.' },
+      { q: 'What if my parent needs care during storm season?', a: 'We plan ahead with every island family. If conditions require schedule adjustments, we communicate proactively and ensure continuity of care.' }
+    ]
+  },
+  {
+    slug: 'wilmington-island',
+    name: 'Wilmington Island',
+    county: 'Chatham County',
+    zip: '31410',
+    lat: 32.0468, lng: -81.0138,
+    metaDescription: 'Home care on Wilmington Island, GA. CNA-founded agency serving island families with a free same-day assessment and founder present on the first visit. Call (912) 856-1885.',
+    h1: 'Home Care on Wilmington Island<br>Community Care from Someone Who Earned It.',
+    heroPara: "Wilmington Island families have built their lives here. When a parent needs support, the care should come from someone who understands what this community expects, not a franchise that sees an address on a dispatch list.",
+    featuresLabel: 'Why Wilmington Island families choose us',
+    featuresH2: 'An island community deserves a care standard that reflects it.',
+    featuresPara: "Wilmington Island is one of Savannah's most established communities. The families here expect quality. Shannon's five-step process was built to deliver it — same caregiver vetting, same first-visit supervision, same 72-hour follow-up.",
+    card1Title: 'Free Same-Day Assessment',
+    card1Body: 'We come to Wilmington Island for the assessment. One call starts the process. No obligation, no pressure.',
+    card2Title: 'Caregiver Matched for Your Loved One',
+    card2Body: 'One specific person, selected for personality fit — not availability. You receive their profile and credentials before anyone enters your home.',
+    card3Title: 'Supervised First Visit',
+    card3Body: 'Shannon or a senior coordinator is present for every first visit on Wilmington Island. Trust is built in person, not promised in a contract.',
+    shannonPara: "Wilmington Island families who call Shannon are not calling a call center. They are talking to someone who built this agency from clinical experience, and who holds every member of her Care Team to the same standard she held herself as a CNA.",
+    localAngle: 'Serving all Wilmington Island neighborhoods including Wilmington Park, Dutch Island area, and surrounding communities.',
+    faq: [
+      { q: 'Do you serve all of Wilmington Island?', a: 'Yes. We serve all Wilmington Island neighborhoods and surrounding Chatham County communities near the island.' },
+      { q: 'How fast can care begin on Wilmington Island?', a: 'Same-day assessment. Caregiver match within 48 hours. Most families have care in place within 2-3 days of the first call.' },
+      { q: 'What is the cost of home care on Wilmington Island?', a: 'We review all costs during the free 20-minute care assessment, before any decision is made. Call (912) 856-1885 to discuss pricing specific to your situation.' }
+    ]
+  },
+  {
+    slug: 'brunswick',
+    name: 'Brunswick',
+    county: 'Glynn County',
+    zip: '31520',
+    lat: 31.1499, lng: -81.4915,
+    metaDescription: 'Home care in Brunswick, GA and the Golden Isles. CNA-founded. Free same-day assessment, caregiver matched in 48 hours, Shannon present on the first visit. Call (912) 856-1885.',
+    h1: 'Home Care in Brunswick, GA<br>The Golden Isles Standard.',
+    heroPara: "Brunswick families deserve more than a distant agency with a local phone number. Shannon built this from clinical experience, and every Brunswick family receives the same five-step process as every family we have served since the beginning.",
+    featuresLabel: 'Why Brunswick and Golden Isles families choose us',
+    featuresH2: 'The Golden Isles deserve care that came from real clinical experience.',
+    featuresPara: "Brunswick is home to families who know the difference between a franchise and a person. Shannon's team travels to Brunswick with the same vetting process, the same supervised first visit, and the same follow-up that every family receives.",
+    card1Title: 'Free Same-Day Assessment',
+    card1Body: 'A 20-minute conversation with no agenda except understanding what your family needs. We come to Brunswick.',
+    card2Title: 'Caregiver Matched in 48 Hours',
+    card2Body: 'One specific caregiver, selected for personality fit and daily routine, not just availability. Profile shared before day one.',
+    card3Title: 'Supervised First Visit',
+    card3Body: 'Shannon or a senior coordinator is in the room on day one. This is how trust gets built — not promised in a brochure.',
+    shannonPara: 'Brunswick families who call Shannon are not talking to a dispatcher. They are talking to someone who has sat with elderly patients, managed complex care routines, and built a team to the same standard she held as a CNA. That is rare in Glynn County. That is the difference.',
+    localAngle: 'Serving Brunswick, St. Simons Island, Sea Island, Jekyll Island, and surrounding Glynn County communities.',
+    faq: [
+      { q: 'Do you serve St. Simons Island and Jekyll Island from Brunswick?', a: 'Yes. We serve Brunswick and the surrounding Golden Isles communities including St. Simons Island, Sea Island, and Jekyll Island.' },
+      { q: 'How long does it take to get care started in Brunswick?', a: 'Same-day assessment. Caregiver match within 48 hours. We aim to have care in place within 2-3 days of your first call.' },
+      { q: "Is Shannon's team certified to work in Glynn County?", a: 'Yes. Savannah Personal Care Services holds a Georgia PHCP license [verify number] and serves Glynn County families under the same standards as all of coastal Georgia.' }
+    ]
+  },
+  {
+    slug: 'hinesville',
+    name: 'Hinesville',
+    county: 'Liberty County',
+    zip: '31313',
+    lat: 31.8468, lng: -81.5968,
+    metaDescription: 'Home care in Hinesville, GA for military families and Liberty County residents. CNA-founded. Free same-day assessment. Shannon present on day one. Call (912) 856-1885.',
+    h1: 'Home Care in Hinesville, GA<br>Care That Shows Up. Every Time.',
+    heroPara: "Hinesville is home to military families who understand what it means to show up when it matters. Shannon built her agency around that same principle — consistent, reliable, no excuses. When a parent needs care in Liberty County, we are there.",
+    featuresLabel: 'Why Hinesville families choose us',
+    featuresH2: 'Military families near Fort Stewart deserve care that understands commitment.',
+    featuresPara: "Families stationed near Fort Stewart often manage a parent's care from a distance, or return home to find a situation that changed faster than expected. Shannon's team provides the reliability that military families already know how to demand.",
+    card1Title: 'Free Same-Day Assessment',
+    card1Body: 'One call. We tell you exactly what care looks like, what it costs, and who would provide it. No obligation.',
+    card2Title: 'One Caregiver. Dependable Schedule.',
+    card2Body: 'Consistency matters to military families. We match one specific caregiver and build a schedule that does not change without your knowledge.',
+    card3Title: 'Supervised First Visit. Always.',
+    card3Body: 'Shannon or a senior coordinator is in the room on day one, for every Hinesville family, every time.',
+    shannonPara: 'Hinesville and Fort Stewart families who call Shannon get someone who takes reliability seriously — not as a marketing promise, but as the operating standard. Every visit. Every follow-up. Every time.',
+    localAngle: 'Serving Hinesville, Fort Stewart area families, Flemington, Walthourville, and surrounding Liberty County communities.',
+    faq: [
+      { q: 'Do you work with military families at Fort Stewart?', a: 'Yes. We serve families in the Hinesville and Fort Stewart area, including active-duty families managing a parent\'s care near base.' },
+      { q: 'What if a military family needs to transfer and care continuity is at risk?', a: 'We plan transitions proactively. When a family member is redeployed or PCSing, we work with the family in advance to ensure the care plan does not lapse.' },
+      { q: 'How soon can care start in Hinesville?', a: 'Same-day assessment. Caregiver match within 48 hours. Most families have care in place within 2-3 days of the first call.' }
+    ]
+  },
+  {
+    slug: 'bloomingdale',
+    name: 'Bloomingdale',
+    county: 'Effingham County',
+    zip: '31302',
+    lat: 32.1215, lng: -81.3057,
+    metaDescription: 'Home care in Bloomingdale, GA. CNA-founded agency serving Effingham County families. Free same-day assessment. Shannon present on the first visit. Call (912) 856-1885.',
+    h1: 'Home Care in Bloomingdale, GA<br>Personal Care for a Close-Knit Community.',
+    heroPara: "Bloomingdale is a small community with high expectations. Families here know their neighbors and expect the same from anyone they let into their home. Shannon's agency was built on that same trust — person by person, family by family.",
+    featuresLabel: 'Why Bloomingdale families choose us',
+    featuresH2: 'Small community. High standard.',
+    featuresPara: 'Bloomingdale families do not want a corporate agency. They want someone who picks up the phone, knows their situation, and sends the same caregiver every time. That is exactly what Shannon built.',
+    card1Title: 'Free Same-Day Assessment',
+    card1Body: 'We come to you. One conversation tells you everything — what care looks like, who provides it, and what it costs.',
+    card2Title: 'Consistent Caregiver. Matched Carefully.',
+    card2Body: "One person, selected for your loved one. Same face, same routine. Not whoever is available that morning.",
+    card3Title: 'Shannon on Day One',
+    card3Body: "A founder-supervised first visit is not standard in home care. It is Shannon's standard. Every Bloomingdale family gets it.",
+    shannonPara: 'Bloomingdale families who call Shannon do not get lost in a system. They get personal attention from an agency small enough to know their situation, and credentialed enough to handle it.',
+    localAngle: 'Serving Bloomingdale, Rincon, Guyton, and surrounding Effingham County communities.',
+    faq: [
+      { q: 'Do you serve all of Effingham County from Bloomingdale?', a: 'Yes. We serve Bloomingdale, Rincon, Guyton, and surrounding Effingham County communities.' },
+      { q: 'My parent lives in a rural area near Bloomingdale. Can you still help?', a: 'Yes. Call us and describe the location. We work with families throughout the Bloomingdale and Effingham County area.' },
+      { q: 'How quickly can care begin in Bloomingdale?', a: 'Same-day assessment. Caregiver match within 48 hours. Most families have care in place within 2-3 days.' }
+    ]
+  },
+  {
+    slug: 'port-wentworth',
+    name: 'Port Wentworth',
+    county: 'Chatham County',
+    zip: '31407',
+    lat: 32.1490, lng: -81.1657,
+    metaDescription: 'Home care in Port Wentworth, GA. CNA-founded agency. Free same-day assessment. Caregiver matched in 48 hours. Shannon present on the first visit. Call (912) 856-1885.',
+    h1: 'Home Care in Port Wentworth, GA<br>Reliable Care for Working Families.',
+    heroPara: "Port Wentworth families work hard. The care for their parents should work just as hard. Shannon built this agency around one principle: reliability. Same caregiver. Same schedule. Same founder-supervised first visit. Every time.",
+    featuresLabel: 'Why Port Wentworth families choose us',
+    featuresH2: 'Working families deserve care they can actually count on.',
+    featuresPara: "Port Wentworth families need an agency that does not miss visits, change caregivers without notice, or leave them guessing. Shannon's five-step process was built to eliminate every one of those problems before they start.",
+    card1Title: 'Free Same-Day Assessment',
+    card1Body: "One call. No commitment. We tell you exactly what care looks like and what it costs before you decide anything.",
+    card2Title: 'One Caregiver. Every Visit.',
+    card2Body: "Consistency is not optional. We match one specific person to your loved one and protect that relationship.",
+    card3Title: 'Supervised First Visit',
+    card3Body: "Shannon or a senior coordinator is present on day one. No stranger walks into your parent's home without us there.",
+    shannonPara: 'Port Wentworth families who call Shannon get someone who understands that reliability is not a feature — it is the whole point. Shannon built this agency because she had seen what happens when it is missing.',
+    localAngle: 'Serving Port Wentworth, Garden City, and surrounding north Chatham County communities.',
+    faq: [
+      { q: 'Do you serve Garden City and surrounding areas near Port Wentworth?', a: 'Yes. We serve Port Wentworth, Garden City, and surrounding north Chatham County communities.' },
+      { q: 'My parent works an overnight schedule. Can caregivers accommodate that?', a: "Yes. We discuss scheduling in detail during the free assessment and match caregivers to your family's specific routine, including non-standard hours." },
+      { q: 'How fast can care begin in Port Wentworth?', a: 'Same-day assessment. Caregiver matched within 48 hours. Most families have care in place within 2-3 days of the first call.' }
+    ]
+  }
+];
+
+// ─────────────────────────────────────────────
+// ALL CITY LINKS (for strips + chips)
+// ─────────────────────────────────────────────
+const allCities = [
+  { slug: 'savannah',         name: 'Savannah' },
+  { slug: 'pooler',           name: 'Pooler' },
+  { slug: 'tybee-island',     name: 'Tybee Island' },
+  { slug: 'wilmington-island',name: 'Wilmington Island' },
+  { slug: 'brunswick',        name: 'Brunswick' },
+  { slug: 'hinesville',       name: 'Hinesville' },
+  { slug: 'bloomingdale',     name: 'Bloomingdale' },
+  { slug: 'port-wentworth',   name: 'Port Wentworth' },
+];
+
+// ─────────────────────────────────────────────
+// HELPERS
+// ─────────────────────────────────────────────
+function escapeHtml(str) {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function buildLocalBusinessSchema(city) {
+  return {
+    "@context": "https://schema.org",
+    "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
+    "name": "Savannah Personal Care Services",
+    "description": `CNA-founded home care agency serving ${city.name}, GA`,
+    "url": `https://savannahpersonalcareservices.com/home-care-${city.slug}-ga`,
+    "telephone": "+19128561885",
+    "email": "savpcs@yahoo.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": city.name,
+      "addressRegion": "GA",
+      "postalCode": city.zip,
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": city.lat,
+      "longitude": city.lng
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": city.name,
+      "containedInPlace": { "@type": "State", "name": "Georgia" }
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Home Care Services",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Transitional Care" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Daily Living Assistance" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Dementia Care Support" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Respite Care" } }
+      ]
+    },
+    "founder": {
+      "@type": "Person",
+      "name": "Shannon Stafford Simpson",
+      "jobTitle": "Founder & Certified Nursing Assistant"
+    },
+    "sameAs": ["https://www.facebook.com/share/1JH11GeHQ5/"]
+  };
+}
+
+function buildBreadcrumbSchema(city) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://savannahpersonalcareservices.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Service Areas", "item": "https://savannahpersonalcareservices.com/" },
+      { "@type": "ListItem", "position": 3, "name": `${city.name}, GA`, "item": `https://savannahpersonalcareservices.com/home-care-${city.slug}-ga` }
+    ]
+  };
+}
+
+function buildFaqSchema(city) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": city.faq.map(item => ({
+      "@type": "Question",
+      "name": item.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.a
+      }
+    }))
+  };
+}
+
+function buildAreasStrip(currentSlug) {
+  return allCities.map(c => {
+    const isCurrent = c.slug === currentSlug;
+    return `      <a href="./${c.slug}.html" class="area-chip${isCurrent ? ' current' : ''}"${isCurrent ? ' aria-current="page"' : ''}>${escapeHtml(c.name)}, GA</a>`;
+  }).join('\n');
+}
+
+function buildCitiesStrip(currentSlug) {
+  const items = allCities.map((c, i) => {
+    const isCurrent = c.slug === currentSlug;
+    const link = `<a href="./${c.slug}.html"${isCurrent ? ' aria-current="page"' : ''}>${escapeHtml(c.name)}, GA</a>`;
+    if (i === 0) return link;
+    return `<span class="cities-sep" aria-hidden="true">·</span>${link}`;
+  }).join('\n      ');
+  return items;
+}
+
+function buildHeroCities(currentSlug) {
+  return allCities.map(c => {
+    const isCurrent = c.slug === currentSlug;
+    return `<a href="./${c.slug}.html" class="hero-city-chip${isCurrent ? ' current' : ''}"${isCurrent ? ' aria-current="page"' : ''}>${escapeHtml(c.name)}</a>`;
+  }).join('\n        ');
+}
+
+function buildFaqItems(faqArray) {
+  return faqArray.map((item, i) => `
+    <div class="faq-item" id="faq-item-${i}">
+      <button class="faq-btn" aria-expanded="false" aria-controls="faq-ans-${i}">
+        ${escapeHtml(item.q)}
+        <span class="faq-caret" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-answer" id="faq-ans-${i}" role="region" aria-labelledby="faq-item-${i}">
+        ${item.a}
+      </div>
+    </div>`).join('');
+}
+
+// ─────────────────────────────────────────────
+// PAGE TEMPLATE
+// ─────────────────────────────────────────────
+function buildPage(city) {
+  const canonicalUrl = `https://savannahpersonalcareservices.com/home-care-${city.slug}-ga`;
+  const ogTitle = `Home Care in ${city.name}, GA | Savannah Personal Care Services`;
+  const pageTitle = ogTitle;
+
+  const lbSchema = JSON.stringify(buildLocalBusinessSchema(city), null, 2);
+  const bcSchema = JSON.stringify(buildBreadcrumbSchema(city), null, 2);
+  const faqSchema = JSON.stringify(buildFaqSchema(city), null, 2);
+
+  const areasStrip = buildAreasStrip(city.slug);
+  const citiesStrip = buildCitiesStrip(city.slug);
+  const heroCities = buildHeroCities(city.slug);
+  const faqItems = buildFaqItems(city.faq);
+
+  // Preposition for "in" vs "on" for island pages
+  const prep = (city.slug === 'tybee-island' || city.slug === 'wilmington-island') ? 'on' : 'in';
+
+  return `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Home Care in Port Wentworth, GA | Savannah Personal Care Services</title>
-  <meta name="description" content="Home care in Port Wentworth, GA. CNA-founded agency. Free same-day assessment. Caregiver matched in 48 hours. Shannon present on the first visit. Call (912) 856-1885." />
-  <meta name="keywords" content="home care Port Wentworth GA, in-home care Port Wentworth, senior care Port Wentworth, CNA home care Port Wentworth, personal care services Port Wentworth, Savannah Personal Care Services" />
+  <title>${escapeHtml(pageTitle)}</title>
+  <meta name="description" content="${escapeHtml(city.metaDescription)}" />
+  <meta name="keywords" content="home care ${escapeHtml(city.name)} GA, in-home care ${escapeHtml(city.name)}, senior care ${escapeHtml(city.name)}, CNA home care ${escapeHtml(city.name)}, personal care services ${escapeHtml(city.name)}, Savannah Personal Care Services" />
   <meta name="robots" content="index, follow" />
   <meta name="author" content="Shannon Stafford Simpson, Savannah Personal Care Services" />
-  <link rel="canonical" href="https://savannahpersonalcareservices.com/home-care-port-wentworth-ga" />
+  <link rel="canonical" href="${canonicalUrl}" />
 
   <!-- Theme & Mobile -->
   <meta name="theme-color" content="#4AABA5" />
@@ -19,15 +396,15 @@
 
   <!-- Geo -->
   <meta name="geo.region" content="US-GA" />
-  <meta name="geo.placename" content="Port Wentworth, Georgia" />
-  <meta name="geo.position" content="32.149;-81.1657" />
-  <meta name="ICBM" content="32.149, -81.1657" />
+  <meta name="geo.placename" content="${escapeHtml(city.name)}, Georgia" />
+  <meta name="geo.position" content="${city.lat};${city.lng}" />
+  <meta name="ICBM" content="${city.lat}, ${city.lng}" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Home Care in Port Wentworth, GA | Savannah Personal Care Services" />
-  <meta property="og:description" content="Home care in Port Wentworth, GA. CNA-founded agency. Free same-day assessment. Caregiver matched in 48 hours. Shannon present on the first visit. Call (912) 856-1885." />
-  <meta property="og:url" content="https://savannahpersonalcareservices.com/home-care-port-wentworth-ga" />
+  <meta property="og:title" content="${escapeHtml(ogTitle)}" />
+  <meta property="og:description" content="${escapeHtml(city.metaDescription)}" />
+  <meta property="og:url" content="${canonicalUrl}" />
   <meta property="og:site_name" content="Savannah Personal Care Services" />
   <meta property="og:locale" content="en_US" />
   <meta property="og:image" content="https://savannahpersonalcareservices.com/shannon-founder.jpg" />
@@ -37,149 +414,24 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Home Care in Port Wentworth, GA | Savannah Personal Care Services" />
-  <meta name="twitter:description" content="Home care in Port Wentworth, GA. CNA-founded agency. Free same-day assessment. Caregiver matched in 48 hours. Shannon present on the first visit. Call (912) 856-1885." />
+  <meta name="twitter:title" content="${escapeHtml(ogTitle)}" />
+  <meta name="twitter:description" content="${escapeHtml(city.metaDescription)}" />
   <meta name="twitter:image" content="https://savannahpersonalcareservices.com/shannon-founder.jpg" />
   <meta name="twitter:image:alt" content="Shannon Stafford Simpson, Founder &amp; CNA" />
 
   <!-- JSON-LD: LocalBusiness -->
   <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": [
-    "LocalBusiness",
-    "HomeAndConstructionBusiness"
-  ],
-  "name": "Savannah Personal Care Services",
-  "description": "CNA-founded home care agency serving Port Wentworth, GA",
-  "url": "https://savannahpersonalcareservices.com/home-care-port-wentworth-ga",
-  "telephone": "+19128561885",
-  "email": "savpcs@yahoo.com",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Port Wentworth",
-    "addressRegion": "GA",
-    "postalCode": "31407",
-    "addressCountry": "US"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 32.149,
-    "longitude": -81.1657
-  },
-  "areaServed": {
-    "@type": "City",
-    "name": "Port Wentworth",
-    "containedInPlace": {
-      "@type": "State",
-      "name": "Georgia"
-    }
-  },
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Home Care Services",
-    "itemListElement": [
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Transitional Care"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Daily Living Assistance"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Dementia Care Support"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Respite Care"
-        }
-      }
-    ]
-  },
-  "founder": {
-    "@type": "Person",
-    "name": "Shannon Stafford Simpson",
-    "jobTitle": "Founder & Certified Nursing Assistant"
-  },
-  "sameAs": [
-    "https://www.facebook.com/share/1JH11GeHQ5/"
-  ]
-}
+${lbSchema}
   </script>
 
   <!-- JSON-LD: BreadcrumbList -->
   <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://savannahpersonalcareservices.com/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Service Areas",
-      "item": "https://savannahpersonalcareservices.com/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "Port Wentworth, GA",
-      "item": "https://savannahpersonalcareservices.com/home-care-port-wentworth-ga"
-    }
-  ]
-}
+${bcSchema}
   </script>
 
   <!-- JSON-LD: FAQPage -->
   <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Do you serve Garden City and surrounding areas near Port Wentworth?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. We serve Port Wentworth, Garden City, and surrounding north Chatham County communities."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "My parent works an overnight schedule. Can caregivers accommodate that?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. We discuss scheduling in detail during the free assessment and match caregivers to your family's specific routine, including non-standard hours."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How fast can care begin in Port Wentworth?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Same-day assessment. Caregiver matched within 48 hours. Most families have care in place within 2-3 days of the first call."
-      }
-    }
-  ]
-}
+${faqSchema}
   </script>
 
   <!-- Fonts -->
@@ -705,23 +957,16 @@
   <!-- HERO -->
   <section class="hero" aria-labelledby="page-h1">
     <div class="hero-inner">
-      <div class="hero-label">Home Care &middot; Port Wentworth, GA</div>
-      <h1 class="hero-h1 serif" id="page-h1">Home Care in Port Wentworth, GA<br>Reliable Care for Working Families.</h1>
-      <p class="hero-sub">Port Wentworth families work hard. The care for their parents should work just as hard. Shannon built this agency around one principle: reliability. Same caregiver. Same schedule. Same founder-supervised first visit. Every time.</p>
+      <div class="hero-label">Home Care &middot; ${escapeHtml(city.name)}, GA</div>
+      <h1 class="hero-h1 serif" id="page-h1">${city.h1}</h1>
+      <p class="hero-sub">${city.heroPara}</p>
       <div class="hero-ctas">
         <a class="btn btn-teal" href="tel:+19128561885">Call (912) 856-1885</a>
         <a class="btn btn-ghost" href="./index.html#about">Meet Shannon</a>
       </div>
       <div class="hero-cities-scroll" aria-label="Browse all service areas">
         <div class="hero-cities-track">
-        <a href="./savannah.html" class="hero-city-chip">Savannah</a>
-        <a href="./pooler.html" class="hero-city-chip">Pooler</a>
-        <a href="./tybee-island.html" class="hero-city-chip">Tybee Island</a>
-        <a href="./wilmington-island.html" class="hero-city-chip">Wilmington Island</a>
-        <a href="./brunswick.html" class="hero-city-chip">Brunswick</a>
-        <a href="./hinesville.html" class="hero-city-chip">Hinesville</a>
-        <a href="./bloomingdale.html" class="hero-city-chip">Bloomingdale</a>
-        <a href="./port-wentworth.html" class="hero-city-chip current" aria-current="page">Port Wentworth</a>
+        ${heroCities}
         </div>
       </div>
     </div>
@@ -730,24 +975,24 @@
   <!-- FEATURES -->
   <section class="features" aria-labelledby="features-h2">
     <div class="features-inner">
-      <span class="label">Why Port Wentworth families choose us</span>
-      <h2 class="section-h2 serif" id="features-h2">Working families deserve care they can actually count on.</h2>
-      <p class="section-body">Port Wentworth families need an agency that does not miss visits, change caregivers without notice, or leave them guessing. Shannon's five-step process was built to eliminate every one of those problems before they start.</p>
+      <span class="label">${escapeHtml(city.featuresLabel)}</span>
+      <h2 class="section-h2 serif" id="features-h2">${city.featuresH2}</h2>
+      <p class="section-body">${city.featuresPara}</p>
       <div class="grid-3" role="list">
         <div class="feature-card" role="listitem">
           <span class="feature-num">01</span>
-          <p class="feature-title serif">Free Same-Day Assessment</p>
-          <p class="feature-body">One call. No commitment. We tell you exactly what care looks like and what it costs before you decide anything.</p>
+          <p class="feature-title serif">${city.card1Title}</p>
+          <p class="feature-body">${city.card1Body}</p>
         </div>
         <div class="feature-card" role="listitem">
           <span class="feature-num">02</span>
-          <p class="feature-title serif">One Caregiver. Every Visit.</p>
-          <p class="feature-body">Consistency is not optional. We match one specific person to your loved one and protect that relationship.</p>
+          <p class="feature-title serif">${city.card2Title}</p>
+          <p class="feature-body">${city.card2Body}</p>
         </div>
         <div class="feature-card" role="listitem">
           <span class="feature-num">03</span>
-          <p class="feature-title serif">Supervised First Visit</p>
-          <p class="feature-body">Shannon or a senior coordinator is present on day one. No stranger walks into your parent's home without us there.</p>
+          <p class="feature-title serif">${city.card3Title}</p>
+          <p class="feature-body">${city.card3Body}</p>
         </div>
       </div>
     </div>
@@ -769,7 +1014,7 @@
         <span class="label">Founded by a caregiver</span>
         <h2 class="section-h2 serif" id="shannon-h2">Every other agency hired caregivers. Shannon was one.</h2>
         <blockquote class="shannon-quote">"I didn't buy a franchise. I earned a credential &mdash; then built a team I'd trust with my own mother."</blockquote>
-        <p class="shannon-body">Port Wentworth families who call Shannon get someone who understands that reliability is not a feature — it is the whole point. Shannon built this agency because she had seen what happens when it is missing.</p>
+        <p class="shannon-body">${city.shannonPara}</p>
       </div>
     </div>
   </section>
@@ -777,18 +1022,11 @@
   <!-- LOCAL AREA -->
   <section class="local-area" aria-labelledby="local-h2">
     <div class="local-inner">
-      <span class="label">Areas we serve in Port Wentworth</span>
-      <h2 class="section-h2 serif" id="local-h2">We know Port Wentworth.</h2>
-      <p class="section-body" style="margin-bottom: 0;">Serving Port Wentworth, Garden City, and surrounding north Chatham County communities.</p>
+      <span class="label">Areas we serve ${prep} ${escapeHtml(city.name)}</span>
+      <h2 class="section-h2 serif" id="local-h2">We know ${escapeHtml(city.name)}.</h2>
+      <p class="section-body" style="margin-bottom: 0;">${city.localAngle}</p>
       <div class="areas-strip" role="navigation" aria-label="All service areas">
-      <a href="./savannah.html" class="area-chip">Savannah, GA</a>
-      <a href="./pooler.html" class="area-chip">Pooler, GA</a>
-      <a href="./tybee-island.html" class="area-chip">Tybee Island, GA</a>
-      <a href="./wilmington-island.html" class="area-chip">Wilmington Island, GA</a>
-      <a href="./brunswick.html" class="area-chip">Brunswick, GA</a>
-      <a href="./hinesville.html" class="area-chip">Hinesville, GA</a>
-      <a href="./bloomingdale.html" class="area-chip">Bloomingdale, GA</a>
-      <a href="./port-wentworth.html" class="area-chip current" aria-current="page">Port Wentworth, GA</a>
+${areasStrip}
       </div>
     </div>
   </section>
@@ -797,36 +1035,9 @@
   <section class="faq-section" id="faq" aria-labelledby="faq-h2">
     <div class="faq-inner">
       <span class="label">Common questions</span>
-      <h2 class="section-h2 serif" id="faq-h2">Questions from Port Wentworth families.</h2>
+      <h2 class="section-h2 serif" id="faq-h2">Questions from ${escapeHtml(city.name)} families.</h2>
       <div class="faq-list" role="list">
-
-    <div class="faq-item" id="faq-item-0">
-      <button class="faq-btn" aria-expanded="false" aria-controls="faq-ans-0">
-        Do you serve Garden City and surrounding areas near Port Wentworth?
-        <span class="faq-caret" aria-hidden="true">+</span>
-      </button>
-      <div class="faq-answer" id="faq-ans-0" role="region" aria-labelledby="faq-item-0">
-        Yes. We serve Port Wentworth, Garden City, and surrounding north Chatham County communities.
-      </div>
-    </div>
-    <div class="faq-item" id="faq-item-1">
-      <button class="faq-btn" aria-expanded="false" aria-controls="faq-ans-1">
-        My parent works an overnight schedule. Can caregivers accommodate that?
-        <span class="faq-caret" aria-hidden="true">+</span>
-      </button>
-      <div class="faq-answer" id="faq-ans-1" role="region" aria-labelledby="faq-item-1">
-        Yes. We discuss scheduling in detail during the free assessment and match caregivers to your family's specific routine, including non-standard hours.
-      </div>
-    </div>
-    <div class="faq-item" id="faq-item-2">
-      <button class="faq-btn" aria-expanded="false" aria-controls="faq-ans-2">
-        How fast can care begin in Port Wentworth?
-        <span class="faq-caret" aria-hidden="true">+</span>
-      </button>
-      <div class="faq-answer" id="faq-ans-2" role="region" aria-labelledby="faq-item-2">
-        Same-day assessment. Caregiver matched within 48 hours. Most families have care in place within 2-3 days of the first call.
-      </div>
-    </div>
+${faqItems}
       </div>
     </div>
   </section>
@@ -834,7 +1045,7 @@
   <!-- CTA -->
   <section class="cta" aria-labelledby="cta-h2">
     <div class="cta-inner">
-      <span class="label" style="color:rgba(255,255,255,0.4)">Get Started &middot; Port Wentworth, GA</span>
+      <span class="label" style="color:rgba(255,255,255,0.4)">Get Started &middot; ${escapeHtml(city.name)}, GA</span>
       <h2 id="cta-h2" class="serif">The first conversation costs nothing.</h2>
       <p>Free 20-minute care assessment. We tell you exactly what care looks like and what it costs before you decide anything.</p>
       <div class="cta-btns">
@@ -851,14 +1062,7 @@
 <nav class="cities-strip" aria-label="All service areas">
   <div class="cities-strip-inner">
     <span class="cities-strip-label">Service areas</span>
-    <a href="./savannah.html">Savannah, GA</a>
-      <span class="cities-sep" aria-hidden="true">·</span><a href="./pooler.html">Pooler, GA</a>
-      <span class="cities-sep" aria-hidden="true">·</span><a href="./tybee-island.html">Tybee Island, GA</a>
-      <span class="cities-sep" aria-hidden="true">·</span><a href="./wilmington-island.html">Wilmington Island, GA</a>
-      <span class="cities-sep" aria-hidden="true">·</span><a href="./brunswick.html">Brunswick, GA</a>
-      <span class="cities-sep" aria-hidden="true">·</span><a href="./hinesville.html">Hinesville, GA</a>
-      <span class="cities-sep" aria-hidden="true">·</span><a href="./bloomingdale.html">Bloomingdale, GA</a>
-      <span class="cities-sep" aria-hidden="true">·</span><a href="./port-wentworth.html" aria-current="page">Port Wentworth, GA</a>
+    ${citiesStrip}
   </div>
 </nav>
 
@@ -1025,4 +1229,38 @@
 </script>
 
 </body>
-</html>
+</html>`;
+}
+
+// ─────────────────────────────────────────────
+// GENERATE ALL PAGES
+// ─────────────────────────────────────────────
+function wordCount(html) {
+  // Strip tags, collapse whitespace, count words
+  const text = html
+    .replace(/<script[\s\S]*?<\/script>/gi, '')
+    .replace(/<style[\s\S]*?<\/style>/gi, '')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&[a-z#0-9]+;/gi, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+  return text.split(' ').filter(w => w.length > 0).length;
+}
+
+console.log('\nGenerating location pages for Savannah Personal Care Services...\n');
+console.log('File                        Size (KB)   Word Count');
+console.log('─'.repeat(52));
+
+cities.forEach(city => {
+  const html = buildPage(city);
+  const filename = `${city.slug}.html`;
+  const filepath = join(OUTPUT_DIR, filename);
+  writeFileSync(filepath, html, 'utf8');
+
+  const sizeKB = (Buffer.byteLength(html, 'utf8') / 1024).toFixed(1);
+  const words  = wordCount(html);
+  const pad    = filename.padEnd(28);
+  console.log(`${pad}${String(sizeKB).padStart(6)} KB   ${words} words`);
+});
+
+console.log('\nAll 8 pages written to ' + OUTPUT_DIR);
