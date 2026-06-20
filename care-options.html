@@ -870,114 +870,45 @@
       .footer-v2-top { grid-template-columns: 220px 1fr; gap: 64px; }
     }
 
-    /* Brand column */
-    .footer-v2-brand {}
-    .footer-logo-mark {
-      display: inline-block;
-      margin-bottom: 20px;
-      text-decoration: none;
+/* =========================================
+       FOOTER
+    ========================================= */
+    .footer-v2 { background: #ffffff; border-top: 1px solid rgba(0,0,0,0.08); padding: 40px clamp(16px,3vw,48px) 0; }
+    .footer-v2-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-v2-top {
+      display: grid; grid-template-columns: 1fr;
+      gap: 48px; padding-bottom: 48px;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
     }
-    .footer-logo-eyebrow {
-      display: block;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: var(--soft);
-      font-weight: 500;
-      margin-bottom: 4px;
+    @media (min-width: 640px) {
+      .footer-v2-top { grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 32px; }
     }
-    .footer-logo-primary {
-      display: block;
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 22px;
-      color: var(--ink);
-      line-height: 1.15;
-      letter-spacing: -0.01em;
-    }
-
-    .footer-v2-tagline {
-      font-size: 13px;
-      font-weight: 400;
-      color: #9a9a9a;
-      line-height: 1.6;
-      margin-bottom: 28px;
-    }
-
-    .footer-social {
-      display: flex;
-      gap: 10px;
-    }
-    .footer-social-link {
-      width: 38px; height: 38px;
-      border-radius: 50%;
-      border: 1px solid rgba(0,0,0,0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--soft);
-      transition: border-color 0.15s, color 0.15s, background 0.15s;
-    }
-    .footer-social-link:hover {
-      border-color: rgba(74,171,165,0.4);
-      color: var(--teal-dark);
-      background: rgba(74,171,165,0.08);
-    }
-    .footer-social-link svg { width: 16px; height: 16px; }
-
-    /* Nav columns */
-    .footer-v2-nav {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 32px;
-    }
-    @media (min-width: 480px) {
-      .footer-v2-nav { grid-template-columns: repeat(3, 1fr); }
-    }
-
-    .footer-v2-col-title {
-      font-size: 11px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--ink);
-      margin-bottom: 16px;
-    }
-    .footer-v2-col-links {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .footer-v2-col-links a {
-      font-size: 14px;
-      font-weight: 400;
-      color: #9a9a9a;
-      transition: color 0.15s;
-      line-height: 1.4;
-    }
-    .footer-v2-col-links a:hover { color: var(--ink); }
-
-    /* Bottom bar */
-    .footer-v2-bottom {
-      padding: 20px 0;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-    }
-    .footer-v2-copy {
-      font-size: 12px;
-      color: var(--soft);
-    }
-    .footer-v2-legal {
-      display: flex;
-      gap: 20px;
-    }
-    .footer-v2-legal a {
-      font-size: 12px;
-      color: var(--soft);
-      transition: color 0.15s;
-    }
+    .footer-logo-mark { display: flex; flex-direction: column; gap: 1px; text-decoration: none; margin-bottom: 20px; }
+    .footer-logo-eyebrow { font-family: 'Inter', system-ui, sans-serif; font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.2em; color: rgba(0,0,0,0.6); line-height: 1; }
+    .footer-logo-primary { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 22px; color: var(--ink, #1d1d1f); line-height: 1.1; letter-spacing: -0.01em; }
+    .footer-brand-tagline { font-size: 13px; color: var(--soft, #6e6e73); line-height: 1.6; margin-bottom: 20px; }
+    .footer-social { display: flex; gap: 12px; }
+    .footer-social a { width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; color: var(--soft); transition: background 0.15s, color 0.15s; }
+    .footer-social a:hover { background: rgba(0,0,0,0.08); color: var(--ink); }
+    .footer-social svg { width: 16px; height: 16px; }
+    .footer-col-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--soft, #6e6e73); margin-bottom: 16px; }
+    .footer-col-links { display: flex; flex-direction: column; gap: 10px; }
+    .footer-col-links a { font-size: 14px; color: var(--soft, #6e6e73); transition: color 0.15s; line-height: 1.3; }
+    .footer-col-links a:hover { color: var(--ink); }
+    .footer-col-contact { display: flex; flex-direction: column; gap: 10px; }
+    .footer-col-contact a, .footer-col-contact span { font-size: 14px; color: var(--soft, #6e6e73); line-height: 1.3; transition: color 0.15s; }
+    .footer-col-contact a:hover { color: var(--ink); }
+    .footer-license-badge { display: inline-flex; align-items: center; border: 1px solid rgba(0,0,0,0.12); padding: 3px 8px; border-radius: 3px; font-size: 10px; color: rgba(0,0,0,0.45); margin-top: 8px; }
+    .footer-guide-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; padding: 28px 32px; margin: 40px 0 0; border-radius: 10px; background: rgba(74,171,165,0.08); border: 1px solid rgba(74,171,165,0.18); }
+    .footer-guide-text { display: flex; flex-direction: column; gap: 4px; }
+    .footer-guide-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--soft, #6e6e73); }
+    .footer-guide-headline { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 17px; color: var(--ink, #1d1d1f); line-height: 1.2; }
+    .footer-guide-btn { display: inline-flex; align-items: center; justify-content: center; padding: 10px 20px; border-radius: 8px; font-size: 13px; font-weight: 600; min-height: 42px; border: 1px solid rgba(0,0,0,0.2); background: transparent; color: var(--ink, #1d1d1f); text-decoration: none; white-space: nowrap; transition: background 0.18s, border-color 0.18s, color 0.18s; flex-shrink: 0; }
+    .footer-guide-btn:hover { background: var(--teal); border-color: var(--teal); color: #fff; }
+    .footer-v2-bottom { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding: 20px 0 24px; }
+    .footer-v2-bottom span { font-size: 11px; color: #767676; }
+    .footer-v2-legal { display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer-v2-legal a { font-size: 11px; color: #767676; transition: color 0.15s; }
     .footer-v2-legal a:hover { color: var(--ink); }
 
     /* =========================================
@@ -1703,59 +1634,72 @@
   <div class="footer-v2-inner">
     <div class="footer-v2-top">
 
-      <!-- Brand -->
-      <div class="footer-v2-brand">
+      <!-- Brand column -->
+      <div>
         <a href="./index.html" class="footer-logo-mark" aria-label="Savannah Personal Care Services — home">
           <span class="footer-logo-eyebrow">Savannah</span>
           <span class="footer-logo-primary">Personal Care Services</span>
         </a>
-        <p class="footer-v2-tagline">Bringing Compassion and Mercy Home.</p>
+        <p class="footer-brand-tagline">Bringing Compassion and Mercy Home.</p>
         <div class="footer-social">
-          <a href="#" class="footer-social-link" aria-label="Follow us on Facebook" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-            </svg>
+          <a href="https://www.facebook.com/share/1JH11GeHQ5/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
           </a>
         </div>
       </div>
 
-      <!-- Nav columns -->
-      <nav class="footer-v2-nav" aria-label="Footer navigation">
-        <div>
-          <p class="footer-v2-col-title">Care Services</p>
-          <div class="footer-v2-col-links">
-            <a href="#transitional">Transitional Care</a>
-            <a href="#daily-living">Daily Living Assistance</a>
-            <a href="#dementia">Dementia Care Support</a>
-            <a href="#respite">Respite Care</a>
-          </div>
+      <!-- Care Services column -->
+      <div>
+        <p class="footer-col-label">Care Services</p>
+        <nav class="footer-col-links" aria-label="Care services">
+          <a href="./care-options.html#transitional">Transitional Care</a>
+          <a href="./care-options.html#daily-living">Daily Living Assistance</a>
+          <a href="./care-options.html#dementia">Dementia Care Support</a>
+          <a href="./care-options.html#respite">Respite Care</a>
+          <a href="./care-options.html">Compare All Services</a>
+        </nav>
+      </div>
+
+      <!-- Company column -->
+      <div>
+        <p class="footer-col-label">Company</p>
+        <nav class="footer-col-links" aria-label="Company links">
+          <a href="./about.html">About Shannon</a>
+          <a href="./index.html#process">How It Works</a>
+          <a href="./faq.html">FAQ</a>
+          <a href="./careers.html">Careers</a>
+          <a href="./index.html#guide-section">Free Family Guide</a>
+        </nav>
+      </div>
+
+      <!-- Contact column -->
+      <div>
+        <p class="footer-col-label">Contact</p>
+        <div class="footer-col-contact">
+          <a href="tel:+19128561885">(912) 856-1885</a>
+          <span>Savannah, Georgia</span>
+          <span class="footer-license-badge">Georgia PHCP Licensed</span>
         </div>
-        <div>
-          <p class="footer-v2-col-title">Company</p>
-          <div class="footer-v2-col-links">
-            <a href="./index.html#about">About Shannon</a>
-            <a href="./index.html#process">How It Works</a>
-            <a href="./faq.html">FAQ</a>
-            <a href="./index.html#careers">Careers</a>
-          </div>
-        </div>
-        <div>
-          <p class="footer-v2-col-title">Contact</p>
-          <div class="footer-v2-col-links">
-            <a href="tel:+19128561885">(912) 856-1885</a>
-            <a href="./index.html#guide-section">Free Family Guide</a>
-            <a href="./index.html">Home</a>
-          </div>
-        </div>
-      </nav>
+      </div>
 
     </div>
 
+    <!-- Guide bar -->
+    <div class="footer-guide-bar">
+      <div class="footer-guide-text">
+        <span class="footer-guide-eyebrow">Free Resource</span>
+        <span class="footer-guide-headline">The Savannah Family Guide to Home Care</span>
+      </div>
+      <a class="footer-guide-btn" href="./index.html#guide-section">
+        Download the Free Family Guide →
+      </a>
+    </div>
+
     <div class="footer-v2-bottom">
-      <span class="footer-v2-copy">© 2026 Savannah Personal Care Services · Georgia PHCP Licensed · Savannah, GA</span>
+      <span>© 2026 Savannah Personal Care Services. All rights reserved.</span>
       <nav class="footer-v2-legal" aria-label="Legal links">
-        <a href="#">Privacy</a>
-        <a href="#">Terms</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms &amp; Conditions</a>
         <a href="#">Accessibility</a>
       </nav>
     </div>
